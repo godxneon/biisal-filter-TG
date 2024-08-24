@@ -781,7 +781,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🎗️ ᴘʀᴇᴍɪᴜᴍ', callback_data='premium'),
+            InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info'),
         ],
         [
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{query.from_user.id}')
@@ -849,6 +849,22 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=enums.ParseMode.HTML
         )
+    elif query.data == "owner_info":
+        buttons = [[
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ​', callback_data='start'),    
+            InlineKeyboardButton('ᴘʀᴇᴍɪᴜᴍ ʟᴏɢᴏ ᴘʀᴏ', url='https://t.me/PremiumLogoPro')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://telegra.ph/file/d12cbba3daed5330005aa.jpg")
+        )
+        await query.message.edit_text(
+            text=script.OWNER_INFO,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+	)
     elif query.data == 'about':
         await query.message.edit_text(
             script.ABOUT_TEXT.format(query.from_user.mention(),temp.B_LINK),
