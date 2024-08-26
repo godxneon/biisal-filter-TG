@@ -357,7 +357,7 @@ async def start(client:Client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     delCap = "<b>ʏᴏᴜʀ ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
-    afterDelCap = "<b>your file successfully deleted</b>") 
+    afterDelCap = "<b>your file successfully deleted</b>"
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
