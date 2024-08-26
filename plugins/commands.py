@@ -298,7 +298,7 @@ async def start(client:Client, message):
             grp_id = temp.CHAT.get(user_id)
             settings = await get_settings(grp_id, pm_mode=pm_mode)
             CAPTION = settings['caption']
-            f_caption = CAPTION.format(
+            f_caption = FILE_CAPTION.format(
                 file_name=formate_file_name(file.file_name),
                 file_size=get_size(file.file_size),
                 file_caption=file.caption
@@ -340,7 +340,7 @@ async def start(client:Client, message):
     files = files_[0]
     settings = await get_settings(grp_id , pm_mode=pm_mode)
     CAPTION = settings['caption']
-    f_caption = CAPTION.format(
+    f_caption = FILE_CAPTION.format(
         file_name = formate_file_name(files.file_name),
         file_size = get_size(files.file_size),
         file_caption=files.caption
@@ -357,7 +357,7 @@ async def start(client:Client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     delCap = "<b>ʏᴏᴜʀ ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
-    afterDelCap = "<b>ʏᴏᴜʀ ғɪʟᴇ ɪs ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs') 
+    afterDelCap = "<b>your file successfully deleted</b>') 
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
@@ -469,7 +469,7 @@ async def settings(client, message):
     else:
         await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>')
 
-@Client.on_message(filters.command('set_template'))
+#@Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
@@ -612,7 +612,7 @@ async def delete_files(bot, message):
     if not_found_files:
         await message.reply_text(f'<b>Files not found in the database - <code>{", ".join(not_found_files)}</code></b>')
 
-@Client.on_message(filters.command('set_caption'))
+#@Client.on_message(filters.command('set_caption'))
 async def save_caption(client, message):
     grp_id = message.chat.id
     title = message.chat.title
