@@ -172,7 +172,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🎗️ ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='premium'),
+            InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],
         [
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
@@ -227,7 +227,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🎗️ ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='premium'),
+            InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],
         [
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
@@ -304,7 +304,9 @@ async def start(client:Client, message):
                 file_caption=file.caption
             )
             btn = [[
-                InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f'stream#{file.file_id}')
+                InlineKeyboardButton('🎭 𝗠𝗢𝗩𝗜𝗘 𝗥𝗘𝗤𝗨𝗘𝗦𝗧 𝗚𝗥𝗢𝗨𝗣 🎭', url=f'https://t.me/+PqryZGuwC3w4NTA1')
+             ],[
+                InlineKeyboardButton('🍿 𝗝𝗢𝗜𝗡 𝗡𝗘𝗪 𝗢𝗧𝗧 𝗠𝗢𝗩𝗜𝗘𝗦 🍿', url="https://t.me/+F3aZLBpIyMpmY2Y1")  
             ]]
             toDel = await client.send_cached_media(
                 chat_id=message.from_user.id,
@@ -344,7 +346,9 @@ async def start(client:Client, message):
         file_caption=files.caption
     )
     btn = [[
-        InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f'stream#{file_id}')
+        InlineKeyboardButton('🎭 𝗠𝗢𝗩𝗜𝗘 𝗥𝗘𝗤𝗨𝗘𝗦𝗧 𝗚𝗥𝗢𝗨𝗣 🎭', url=f'https://t.me/+PqryZGuwC3w4NTA1')
+     ],[
+        InlineKeyboardButton('🍿 𝗝𝗢𝗜𝗡 𝗡𝗘𝗪 𝗢𝗧𝗧 𝗠𝗢𝗩𝗜𝗘𝗦 🍿', url="https://t.me/+F3aZLBpIyMpmY2Y1")  
     ]]
     toDel=await client.send_cached_media(
         chat_id=message.from_user.id,
