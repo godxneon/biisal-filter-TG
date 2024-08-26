@@ -1290,12 +1290,8 @@ async def delSticker(sticker):
         await sticker.delete()
     except:
         pass
+
 async def auto_filter(client, msg, spoll=False , pm_mode = False):
-    st = ''
-    try:
-        st = await msg.reply_sticker(sticker=random.choice(STICKERS_IDS))
-    except:
-        pass
     if not spoll:
         message = msg
         search = message.text
@@ -1304,7 +1300,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         files, offset, total_results = await get_search_results(search)
         if not files:
             if settings["spell_check"]:
-                await delSticker(st)
                 ai_sts = await msg.reply_text('<b>Ai is Cheking For Your Spelling. Please Wait.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
@@ -1313,7 +1308,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                     msg.text = is_misspelled
                     await ai_sts.delete()
                     return await auto_filter(client, msg)
-                await delSticker(st)
                 await ai_sts.delete()
                 return await advantage_spell_chok(msg)
             return
