@@ -4,7 +4,7 @@ import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, STICKERS_IDS,PREMIUM_POINT,MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, LANGUAGES,QUALITIES,YEARS,SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
+from info import SETTINGS, PREMIUM_POINT, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
@@ -1267,6 +1267,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     ]]
         reply_markup = InlineKeyboardMarkup(btn)
         await query.message.edit_reply_markup(reply_markup)
+	    
 async def ai_spell_check(wrong_name):
     async def search_movie(wrong_name):
         search_results = imdb.search_movie(wrong_name)
@@ -1285,11 +1286,6 @@ async def ai_spell_check(wrong_name):
             return movie
         movie_list.remove(movie)
     return
-async def delSticker(sticker):
-    try:
-        await sticker.delete()
-    except:
-        pass
 
 async def auto_filter(client, msg, spoll=False , pm_mode = False):
     if not spoll:
@@ -1303,7 +1299,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 ai_sts = await msg.reply_text('<b>Ai is Cheking For Your Spelling. Please Wait.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
-                    await ai_sts.edit(f'<b>Ai Suggested <code>{is_misspelled}</code>\nSo Im Searching for <code>{is_misspelled}</code></b>')
+                    await ai_sts.edit(f'<b>This Is Your {search} ❌ Ai Suggested <code>{is_misspelled}</code>\nSo Im Searching for <code>{is_misspelled}</code></b>')
                     await asyncio.sleep(2)
                     msg.text = is_misspelled
                     await ai_sts.delete()
@@ -1365,7 +1361,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                              
     if spoll:
         m = await msg.message.edit(f"<b><code>{search}</code> ɪs ꜰᴏᴜɴᴅ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ꜰᴏʀ ꜰɪʟᴇs 📫</b>")
-        await delSticker(st)
         await asyncio.sleep(1.2)
         await m.delete()
 
@@ -1426,7 +1421,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         try:
             if settings['auto_delete']:
                 k = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + links + del_msg, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
-                await delSticker(st)
                 await asyncio.sleep(DELETE_TIME)
                 await k.delete()
                 try:
@@ -1440,7 +1434,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
             if settings["auto_delete"]:
                 k = await message.reply_photo(photo=poster, caption=cap[:1024] + links + del_msg, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
-                await delSticker(st)
                 await asyncio.sleep(DELETE_TIME)
                 await k.delete()
                 try:
@@ -1452,7 +1445,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         except Exception as e:
             print(e)
             if settings["auto_delete"]:
-                await delSticker(st)
                 try:
                     k = await message.reply_text(cap + links + del_msg, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
                 except Exception as e:
@@ -1467,9 +1459,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 await message.reply_text(cap + links + del_msg, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     else:
         k = await message.reply_text(text=cap + links + del_msg, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML, reply_to_message_id=message.id)
-        await delSticker(st)
         if settings['auto_delete']:
-            await delSticker(st)
             await asyncio.sleep(DELETE_TIME)
             await k.delete()
             try:
