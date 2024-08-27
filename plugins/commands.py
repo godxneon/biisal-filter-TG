@@ -40,7 +40,7 @@ def detect_language(text):
     except Exception as e:
         return "hi"
 
-@Client.on_message(filters.command("tts") & filters.private)
+@Client.on_message(filters.command("tts") & filters.private & filters.user(ADMINS))
 async def tts(client, message):
     try:
         msg = await client.ask(message.chat.id, "<b>sᴇɴᴅ ᴍᴇ ᴀ ᴛᴇxᴛ ᴛᴏ ᴄᴏɴᴠᴇʀᴛ ɪɴᴛᴏ ᴀᴜᴅɪᴏ ғɪʟᴇ.</b>" , reply_to_message_id = message.id, filters = filters.text ,
@@ -119,7 +119,7 @@ async def start(client:Client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         status = get_status()
         aks=await message.reply_text(f"<b>🔥 ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
-        await asyncio.sleep(600)
+        await asyncio.sleep(10)
         await aks.delete()
         await m.delete()
         if (str(message.chat.id)).startswith("-100") and not await db.get_chat(message.chat.id):
