@@ -965,6 +965,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not await is_check_admin(client, int(grp_id), userid):
             await query.answer(script.ALRT_TXT, show_alert=True)
             return
+        if set_type == 'imdb' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This IMDB Button Only My Owner !", show_alert=True)
+        if set_type == 'auto_filter' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This Auto Filter Button Only My Owner !", show_alert=True)
+        if set_type == 'spell_check' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This Spell Check Button Only My Owner !", show_alert=True)
+        if set_type == 'auto_delete' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This Auto Delete Button Only My Owner !", show_alert=True)
+        if set_type == 'link' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This Link Button Only My Owner !", show_alert=True)
+        if set_type == 'is_verify' and query.from_user.id not in ADMINS:
+            return await query.answer(text=f"Sorry This Verify Button Only My Owner !", show_alert=True)
         if status == "True":
             await save_group_settings(int(grp_id), set_type, False)
             await query.answer("ᴏғғ ❌")
@@ -996,7 +1008,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             d = await query.message.edit_reply_markup(reply_markup)
-            await asyncio.sleep(300)
+            await asyncio.sleep(25)
             await d.delete()
         else:
             await query.message.edit_text("<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>")
