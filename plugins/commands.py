@@ -430,16 +430,15 @@ async def delete_all_index(bot, message):
 
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
-    if message.from_user.id in ADMINS:     
-   # user_id = message.from_user.id if message.from_user else None
-    #if not user_id:
-        #return await message.reply("<b>💔 ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ...</b>")
-    #chat_type = message.chat.type
-    #if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        #return await message.reply_text("<code>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.</code>")
+    user_id = message.from_user.id if message.from_user else None
+    if not user_id:
+        return await message.reply("<b>💔 ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ...</b>")
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text("<code>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.</code>")
     grp_id = message.chat.id
-    #if not await is_check_admin(client, grp_id, message.from_user.id):
-       # return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
     settings = await get_settings(grp_id)
     title = message.chat.title
     if settings is not None:
@@ -464,16 +463,16 @@ async def settings(client, message):
             ],[
                 InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]
-            await message.reply_text(
+            k = await message.reply_text(
                 text=f"ᴄʜᴀɴɢᴇ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs ꜰᴏʀ <b>'{title}'</b> ᴀs ʏᴏᴜʀ ᴡɪsʜ ✨",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.HTML
             )
+            await asyncio.sleep(20)
+            await k.delete()
+            await message.delete()
     else:
-        k = await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🙅</b>')        
-        await asyncio.sleep(10)
-        await k.delete()
-        await message.delete()
+        await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🙅</b>')        
 
 #@Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
