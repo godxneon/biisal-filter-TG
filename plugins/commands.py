@@ -431,7 +431,10 @@ async def delete_all_index(bot, message):
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
     if message.from_user.id not in ADMINS:
-        await message.reply('ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ... 😑')
+        d = await message.reply('ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ..😑')
+        await asyncio.sleep(15) 
+        await d.delete()
+        await message.delete()
         return
     user_id = message.from_user.id if message.from_user else None
     if not user_id:
