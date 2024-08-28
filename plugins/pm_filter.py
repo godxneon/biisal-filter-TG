@@ -1,6 +1,7 @@
 import asyncio
 import re
 import math
+import random
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -794,7 +795,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
         ]]    
         reply_markup = InlineKeyboardMarkup(buttons)
-	await client.edit_message_media(
+        await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
             InputMediaPhoto(random.choice(START_IMG))
@@ -910,7 +911,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
 	)
   
-
     elif query.data == "all_files_delete":
         files = await Media.count_documents()
         await query.answer('Deleting...')
