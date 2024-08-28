@@ -146,6 +146,12 @@ User - {}"""
     FONT_TXT= """<b>ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴍᴏᴅᴇ ᴛᴏ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ꜰᴏɴᴛs sᴛʏʟᴇ, ᴊᴜsᴛ sᴇɴᴅ ᴍᴇ ʟɪᴋᴇ ᴛʜɪs ꜰᴏʀᴍᴀᴛ
 
 <code>/font hi how are you</code></b>"""
+
+    APPROVED_TEXT = """<b>🙋 Hello {mention}
+
+◈ Your Request To Joined In ➤ <u>{title}</u> Successfully.
+
+◈ Thank You For Joiny ❤️ {mention}</b>"""
     
     PREMIUM_TEXT = """<b>👋 Hey There,
     
