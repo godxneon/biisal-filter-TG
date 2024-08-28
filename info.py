@@ -47,7 +47,7 @@ TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "14400"))
 
 LANGUAGES = ["malayalam", "english", "tamil", "hindi", "telugu", "kannada", "bengali", "marathi", "gujarati", "punjabi"]
-QUALITIES = ["HDRip","WEB-DL" ,"BluRay", "WEBRip", "HQ HDRip", "240p", "360p", "480p", "540p", "720p", "960p", "1080p", "1440p", "2K", "2160p", "4k SDR"]
+QUALITIES = ["HDRip","WEB-DL" ,"BluRay", "WEBRip", "240p", "360p", "480p", "540p", "720p", "960p", "1080p", "1440p", "2K", "2160p", "4k SDR"]
 YEARS = [f'{i}' for i in range(2024 , 2002,-1 )]
 SEASONS = [f'season {i}'for i in range (1 , 23)]
 REF_PREMIUM = 30
