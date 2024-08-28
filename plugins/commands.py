@@ -470,9 +470,7 @@ async def settings(client, message):
                 parse_mode=enums.ParseMode.HTML
             )
     else:
-        await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>')
-    else:
-        k = await message.reply_text("<b>Sᴏʀʀʏ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴏɴʟʏ ᴀᴅᴍɪɴꜱ 👀</b>")        
+        k = await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 🙅</b>')        
         await asyncio.sleep(10)
         await k.delete()
         await message.delete()
