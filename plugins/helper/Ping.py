@@ -12,4 +12,4 @@ async def ping(_, message):
     rm = await message.reply_text("...")
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
-    await rm.edit(f"<b><i>Pɪɴɢ :- {time_taken_s:.3f}</i></b>")￼Enter
+    await rm.edit(f"<b><i>Pɪɴɢ :- {time_taken_s:.3f}</i></b>")
