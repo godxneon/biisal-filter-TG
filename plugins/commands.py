@@ -430,6 +430,7 @@ async def delete_all_index(bot, message):
 
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
+    if message.from_user.id in ADMINS:
     user_id = message.from_user.id if message.from_user else None
     if not user_id:
         return await message.reply("<b>💔 ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ...</b>")
@@ -470,6 +471,11 @@ async def settings(client, message):
             )
     else:
         await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>')
+    else:
+        k = await message.reply_text("<b>Sᴏʀʀʏ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴏɴʟʏ ᴀᴅᴍɪɴꜱ 👀</b>")        
+        await asyncio.sleep(10)
+        await k.delete()
+        await message.delete()
 
 #@Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
