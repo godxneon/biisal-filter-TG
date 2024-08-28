@@ -964,19 +964,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         userid = query.from_user.id if query.from_user else None
         if not await is_check_admin(client, int(grp_id), userid):
             await query.answer(script.ALRT_TXT, show_alert=True)
-            return
-        if set_type == 'imdb' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This IMDB Button Only My Owner !", show_alert=True)
-        if set_type == 'auto_filter' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This Auto Filter Button Only My Owner !", show_alert=True)
-        if set_type == 'spell_check' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This Spell Check Button Only My Owner !", show_alert=True)
-        if set_type == 'auto_delete' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This Auto Delete Button Only My Owner !", show_alert=True)
-        if set_type == 'link' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This Link Button Only My Owner !", show_alert=True)
-        if set_type == 'is_verify' and query.from_user.id not in ADMINS:
-            return await query.answer(text=f"Sorry This Verify Button Only My Owner !", show_alert=True)
+            return      
         if status == "True":
             await save_group_settings(int(grp_id), set_type, False)
             await query.answer("ᴏғғ ❌")
@@ -1007,9 +995,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
-            d = await query.message.edit_reply_markup(reply_markup)
-            await asyncio.sleep(25)
-            await d.delete()
+            await query.message.edit_reply_markup(reply_markup)
         else:
             await query.message.edit_text("<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>")
             
