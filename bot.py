@@ -13,6 +13,8 @@ import pytz
 from aiohttp import web
 from plugins import web_server, check_expired_premium
 import time
+import os 
+import sys
 
 class Bot(Client):
     def __init__(self):
