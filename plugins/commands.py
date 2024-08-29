@@ -4,6 +4,7 @@ import random
 import asyncio
 import string
 import pytz
+from os import environ, execle, system
 from datetime import timedelta
 from datetime import datetime as dt
 from Script import script
@@ -620,6 +621,15 @@ async def delete_files(bot, message):
     if not_found_files:
         await message.reply_text(f'<b>Files not found in the database - <code>{", ".join(not_found_files)}</code></b>')
 
+@Client.on_message(filters.command('restart') & filters.user(ADMINS))
+async def restart_bot(client, message):
+    msg = await message.reply_text(
+        text="<b>Bot Restarting ...</b>"
+    )        
+    await msg.edit("<b>Restart Successfully Completed ✅</b>")
+    system("git pull -f && pip3 install --no-cache-dir -r requirements.txt")
+    execle(sys.executable, sys.executable, "bot.py", environ)
+    
 #@Client.on_message(filters.command('set_caption'))
 async def save_caption(client, message):
     grp_id = message.chat.id
