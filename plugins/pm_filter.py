@@ -1242,7 +1242,9 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 ])
 	else:
             btn.insert(0,[
-                InlineKeyboardButton(f"🎗️ {search}", url=f"https://t.me/+BYcim_eiF3swMDhl"),
+                InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
+            ])
+            btn.insert(1,[
                 InlineKeyboardButton("No More Pages", url=f"https://t.me/+BYcim_eiF3swMDhl")
             ])
     else:
