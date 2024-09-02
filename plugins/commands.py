@@ -320,11 +320,12 @@ async def start(client:Client, message):
             )
             files_to_delete.append(toDel)
 
-        delCap = "<b>You File Will Be Deleted After {} To Avoid Copyright Violations! Please Forward This File To Your Saved Messages And Start Download There.</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
+        delCap = "<b>You File Will Be Deleted After {} To Avoid Copyright Violations! Please Forward This File To Your Saved Messages And Start Downloading There.</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minute' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
         replyed = await message.reply(
             delCap
         )
-        await asyncio.sleep(FILE_AUTO_DEL_TIMER)
+        await asyncio.sleep(100)
+        await delCap.delete()
         for file in files_to_delete:
             try:
                 await file.delete()
@@ -357,12 +358,13 @@ async def start(client:Client, message):
         caption=f_caption,
         reply_markup=InlineKeyboardMarkup(btn)
     )
-    delCap = "<b>You File Will Be Deleted After {} To Avoid Copyright Violations! Please Forward This File To Your Saved Messages And Start Download There.</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
+    delCap = "<b>You File Will Be Deleted After {} To Avoid Copyright Violations!. Please Forward This File To Your Saved Messages And Start Downloading There.</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minute' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
-    await asyncio.sleep(FILE_AUTO_DEL_TIMER)
+    await asyncio.sleep(100)
     await toDel.delete()
+    await delCap.delete()
     return 
 
 @Client.on_message(filters.command('delete'))
