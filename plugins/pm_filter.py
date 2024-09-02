@@ -398,7 +398,7 @@ async def quality_search(client: Client, query: CallbackQuery):
         )
     elif n_offset == 0:
         btn.append(
-            [InlineKeyboardButton("⪻ ʙᴀᴄᴋ", callback_data=f"quality_search#{qul}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
+            [InlineKeyboardButton("⪻ ʙᴀᴄᴋ", callback_data=f"qualities#{qul}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
              InlineKeyboardButton(f"{math.ceil(offset / int(MAX_BTN)) + 1}/{math.ceil(total / int(MAX_BTN))}", callback_data="pages",),
             ])
     elif offset==0:
@@ -1226,12 +1226,12 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             ]) 
         else:
             btn.insert(0,[
-                InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
+                InlineKeyboardButton(f"🎗️ {search} 🎗️", url=f"https://t.me/+jya36OloW1VkYzc1")
             ])
     else:
         btn.insert(0,[
-	    InlineKeyboardButton(f"🎗️ {search}", url=f"https://t.me/+BYcim_eiF3swMDhl"),
-            InlineKeyboardButton("No More Pages", url=f"https://t.me/+BYcim_eiF3swMDhl")
+	    InlineKeyboardButton(f"🎗️ {search}", url=f"https://t.me/+jya36OloW1VkYzc1"),
+            InlineKeyboardButton("No More Pages", url=f"https://t.me/+jya36OloW1VkYzc1")
         ])
                              
     if spoll:
