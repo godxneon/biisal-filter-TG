@@ -312,20 +312,18 @@ async def start(client:Client, message):
              ],[
                 InlineKeyboardButton('🍿 𝗝𝗢𝗜𝗡 𝗡𝗘𝗪 𝗢𝗧𝗧 𝗠𝗢𝗩𝗜𝗘𝗦 🍿', url="https://t.me/+F3aZLBpIyMpmY2Y1")  
             ]]
-            toDel = await client.send_cached_media(
+            msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
                 file_id=file.file_id,
                 caption=f_caption,
                 reply_markup=InlineKeyboardMarkup(btn)
             )
-            files_to_delete.append(toDel)
+            files_to_delete.append(msg)
 
-        delCap = "<b>You File Will Be Deleted After {} To Avoid Copyright Violations! Please Forward This File To Your Saved Messages And Start Downloading There.</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minute' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
-        replyed = await message.reply(
-            delCap
-        )
+        k = await msg.reply("<b>ㅤㅤ❗️❗️<u>IMPORTANT❗️️❗️</u>\n\nThis File Will Be Deleted From Here Within <u>10 Minute</u>. Please Forward This File To Your Saved Messages And Start Download There.</b>",quote=True)
         await asyncio.sleep(100)
-        await delCap.delete()
+        await k.delete()
+        await message.delete()
         for file in files_to_delete:
             try:
                 await file.delete()
@@ -362,6 +360,7 @@ async def start(client:Client, message):
     await asyncio.sleep(100)
     await msg.delete()
     await k.delete()
+    await message.delete()
     return 
 
 @Client.on_message(filters.command('delete'))
