@@ -1234,18 +1234,21 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 InlineKeyboardButton("🎭 ᴄʜᴏᴏsᴇ ʟᴀɴɢᴜᴀɢᴇ ✨", callback_data=f"languages#{key}#{offset}#{req}"),
                 ])
             btn.insert(1, [
-	        InlineKeyboardButton("✨ season", callback_data=f"seasons#{key}#{offset}#{req}"),
-                InlineKeyboardButton("ǫᴜᴀʟɪᴛʏ 🤡", callback_data=f"qualities#{key}#{offset}#{req}")
+                InlineKeyboardButton("✨ ǫᴜᴀʟɪᴛʏ 🤡", callback_data=f"qualities#{key}#{offset}#{req}"),
+                InlineKeyboardButton("🚩 ʏᴇᴀʀ ⌛", callback_data=f"years#{key}#{offset}#{req}"),
             ])
-            btn.insert(2,[
+            btn.insert(2, [
+                InlineKeyboardButton("✨ ᴄʜᴏᴏsᴇ season🍿", callback_data=f"seasons#{key}#{offset}#{req}")
+            ])
+            btn.insert(3,[
                 InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
                 ])
-	else:
+        else:
             btn.insert(0,[
                 InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
             ])
             btn.insert(1,[
-                InlineKeyboardButton("No More Pages", url=f"https://t.me/+BYcim_eiF3swMDhl")
+                InlineKeyboardButton("No More Pages", user_id=ADMINS[0])
             ])
     else:
         btn.insert(0,[
