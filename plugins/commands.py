@@ -362,9 +362,10 @@ async def start(client:Client, message):
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
-    await asyncio.sleep(100)
+    await asyncio.sleep(FILE_AUTO_DEL_TIMER)
     await toDel.delete()
     await delCap.delete()
+    await message.delete()
     return 
 
 @Client.on_message(filters.command('delete'))
