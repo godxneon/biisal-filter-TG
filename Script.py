@@ -114,7 +114,7 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    FILE_CAPTION = """<b>@Team_KL ~ {file_name}
+    FILE_CAPTION = """<b>@Team_KL ~ {file_caption}
     
 ➠ @KLxFiles 
 ➠ @KLMovieGroup  
