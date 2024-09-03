@@ -22,27 +22,21 @@ FILES_ID = {}
 CAP = {}
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
-async def pm_search(client, message):
-    if str(message.text).startswith('/'):
-        return 
-    link , ispm = await db.get_set_grp_links(index=0)
-    if ispm:
-        if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
-            return await auto_filter(client, message , pm_mode=False)
-        await auto_filter(client, message , pm_mode=False)
-    else:
-        await message.reply_text(
-        text=f"<b>Nᴀᴍᴀsᴛʜᴇ {message.from_user.mention} Jɪ 😍 ,\n\nɪ ᴄᴀɴᴛ ɢɪᴠᴇ ᴍᴏᴠɪᴇ ʜᴇʀᴇ\nɪ ᴡᴏʀᴋ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs</b>",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ 😊", url=f"https://t.me/+jya36OloW1VkYzc1"
-                    )
-                ]
-            ]
-        ),
-        )
+async def pm_text(bot, message):
+    content = message.text
+    user = message.from_user.first_name
+    user_id = message.from_user.id
+    if content.startswith("/") or content.startswith("#"): return  # ignore♀️ommands and hashtags
+    if user_id in ADMINS: return # ignore admins
+    k = await message.reply_text(
+         text=f"<b><i>Hɪ Bʀᴏ {user},\n\n• Yᴏᴜ Cᴀɴ'ᴛ Gᴇᴛ Mᴏᴠɪᴇs Fʀᴏᴍ Hᴇʀᴇ. Rᴇǫᴜᴇsᴛ Oɴ Oᴜʀ Mᴏᴠɪᴇ Gʀᴏᴜᴘ Oʀ Cʟɪᴄᴋ Rᴇǫᴜᴇsᴛ Hᴇʀᴇ Bᴜᴛᴛᴏɴ Bᴇʟᴏᴡ​\n\n• നിങ്ങൾക്ക് ഇവിടെ നിന്ന് സിനിമകൾ ലഭിക്കില്ല. എന്റെ ഗ്രൂപ്പിൽ ചോദിക്ക്.</i>\n\n• ροωєяє∂ ϐγ :- @Team_KL</b>",   
+         reply_markup=InlineKeyboardMarkup([[
+             InlineKeyboardButton("💝 Kᴇʀᴀʟᴀ Rᴏᴄᴋᴇʀs 𝟹.𝟶​ 💝", url=f"https://t.me/KLMovieGroup")
+             ],[
+             InlineKeyboardButton("🎭 Kᴇʀᴀʟᴀ Rᴏᴄᴋᴇʀs 𝟸.𝟶​ 🎭", url=f"https://t.me/KL_Group2")]]))
+    await asyncio.sleep(45)
+    await k.delete()
+    await message.delete()
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
