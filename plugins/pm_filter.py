@@ -638,6 +638,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.startswith("lang_art"):
         _, lang = query.data.split("#")
         await query.answer(f"ʏᴏᴜ sᴇʟᴇᴄᴛᴇᴅ {lang.title()} ʟᴀɴɢᴜᴀɢᴇ ⚡️", show_alert=True)
+
+    elif query.data == "statx":
+        currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
+        total, used, free = shutil.disk_usage(".")
+        total = humanbytes(total)
+        used = humanbytes(used)
+        free = humanbytes(free)
+        cpu_usage = psutil.cpu_percent()
+        ram_usage = psutil.virtual_memory().percent
+        disk_usage = psutil.disk_usage('/').percent
+        await query.answer(f"🥵 Sʏsᴛᴇᴍ Sᴛᴀᴛᴜs 🥵\n\n❂ Uᴘᴛɪᴍᴇ : {currentTime}\n✇ Cᴘᴜ : {cpu_usage}\n✪ Rᴀᴍ : {ram_usage}\n✼ Tᴏᴛᴀʟ Dɪsᴋ : {total}\n❐ Usᴇᴅ Sᴘᴀᴄᴇ : {used} ({disk_usage}%)\n❦ Fʀᴇᴇ Sᴘᴀᴄᴇ : {free}", show_alert=True)    
   
     elif query.data == "start":
         buttons = [[
