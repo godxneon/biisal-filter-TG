@@ -132,6 +132,10 @@ User - {}"""
 
 /font <code>how are you</code></b>"""
 
+    SOURCE_TXT = """<b>ᴛʜɪꜱ ɴᴏᴛ ᴀɴ ᴏᴘᴇɴ sᴏᴜʀᴄᴇ ᴘʀᴏᴊᴇᴄᴛ
+
+» sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ~ ᴘʀɪᴠᴀᴛᴇ 🤒</b>"""
+
     APPROVED_TEXT = """<b>🙋 Hello {mention}
 
 ◈ Your Request To Joined In ➤ <u>{title}</u> Successfully.
