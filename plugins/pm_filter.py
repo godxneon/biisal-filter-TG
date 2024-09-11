@@ -2,6 +2,9 @@ import asyncio
 import re
 import math
 import random
+import datetime
+import time
+import psutil, shutil, sys
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -20,6 +23,7 @@ from fuzzywuzzy import process
 BUTTONS = {}
 FILES_ID = {}
 CAP = {}
+BOT_START_TIME = time.time()
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
