@@ -758,14 +758,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
 	)
     elif query.data == "about":
         buttons = [[            
-            InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ ', callback_data="group_info"),
+            InlineKeyboardButton('ᴅɪsᴄʟᴀɪᴍᴇʀ', callback_data='discl'),
             InlineKeyboardButton('ʙᴏᴛ sᴛᴀᴛᴜs', callback_data='stats')          
         ],[
             InlineKeyboardButton('sᴇʀᴠᴇʀ ɪɴꜰᴏ', callback_data='statx'),
-            InlineKeyboardButton('ᴅɪsᴄʟᴀɪᴍᴇʀ', callback_data='discl')
-        ],[
-            InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='start'),      
             InlineKeyboardButton('sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='source')
+        ],[
+            InlineKeyboardButton('⪻ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ ⛓️', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -778,14 +777,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
 	)
-    elif query.data == 'about':
-        await query.message.edit_text(
-            script.ABOUT_TEXT.format(query.from_user.mention(),temp.B_LINK),
-            reply_markup = InlineKeyboardMarkup(
-                [[InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]]
-                ),
-            disable_web_page_preview = True
-	)    
     elif query.data == "discl":
         buttons = [[
             InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about')
