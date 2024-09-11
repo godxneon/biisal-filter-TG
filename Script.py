@@ -1,9 +1,7 @@
 class script(object):
    
-    START_TXT = """<b>{} {},
-    
-<blockquote>ɪᴍ ᴛʜᴇ ᴍᴏsᴛ ᴀᴅᴠᴀɴᴄᴇ ᴀɪ ᴘᴏᴡᴇʀᴅ 🤖 ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ʙᴏᴛ..
-sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇ ᴀɴᴅ sᴇᴇ ᴍʏ ᴍᴀɢɪᴄ..✨</blockquote></b>"""
+    START_TXT = """<b>{} {}, ɪᴍ ᴛʜᴇ ᴍᴏsᴛ ᴀᴅᴠᴀɴᴄᴇ ᴀɪ ᴘᴏᴡᴇʀᴅ 🤖 ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ʙᴏᴛ.. 
+sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇ ᴀɴᴅ sᴇᴇ ᴍʏ ᴍᴀɢɪᴄ..✨</b>"""
     
     HELP_TXT = """<b>ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..</b>"""
     
@@ -30,8 +28,7 @@ sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇ ᴀɴᴅ 
 - /invite this command is used to get invite link for chat
 - /set_muc this command is used to set movie updates chat id
 - /del_muc this command is used to delete movie updates chat id
-- /post_mode this command is used to set post mode for Movies Updates Channel
-</b>"""
+- /post_mode this command is used to set post mode for Movies Updates Channel.</b>"""
     
     TTS_TXT="""
 <b>• sᴇɴᴅ /tts ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ</b>"""
@@ -56,20 +53,6 @@ sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇ ᴀɴᴅ 
 ‣ ꜰᴜʟʟ ɴᴀᴍᴇ : HᴀᴄKᴇʀ Jʀ ~ 🦅
 ‣ ᴜꜱᴇʀɴᴀᴍᴇ : @Hacker_Jr
 ‣ ᴄᴏᴜɴᴛʀʏ : ɪɴᴅɪᴀ 🇮🇳</b>"""    
-    
-    REF_LINK = '''🔗 <b>Hᴇʀᴇ ɪs ᴏᴜʀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ: <code>https://telegram.me/{}?start=biisal-{}</code>
-    
-👥 Fᴏʀ ᴇᴠᴇʀʏ ɴᴇᴡ ᴜsᴇʀ ᴡʜᴏ sᴛᴀʀᴛs ᴛʜᴇ ʙᴏᴛ ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ, ʏᴏᴜ ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ 100 ᴘᴏɪɴᴛs. 
-
-🎉 Oɴᴄᴇ ʏᴏᴜ ʀᴇᴀᴄʜ {} ᴘᴏɪɴᴛs, ʏᴏᴜ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss.</b>'''
-    
-    REF_PREMEUM = '''<b>ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴs!\n\nYᴏᴜ'ᴠᴇ ʀᴇᴀᴄʜᴇᴅ {} ᴘᴏɪɴᴛs, ɴᴏᴡ ʏᴏᴜ ᴀʀᴇ ᴇʟɪɢɪʙʟᴇ ғᴏʀ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss. Yᴏᴜʀ ᴘᴏɪɴᴛs ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇsᴇᴛ. Rᴇғᴇʀ ᴍᴏʀᴇ ᴛᴏ ᴇxᴛᴇɴᴅ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ғᴜʀᴛʜᴇʀ.\n\nᴜsᴇ /myplan ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴ</b>'''
-    
-    REF_START = '''<b>{} ,sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴜsɪɴɢ ʏᴏᴜʀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ
-ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ᴘᴏɪɴᴛ ɪs : {}</b>'''
-    
-    REF_POINT = '''<b>ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ᴘᴏɪɴᴛ ɪs : {},
-ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ ↓↓</b>'''
     
     STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
 
@@ -111,8 +94,7 @@ User - {}"""
 🎭 ɢᴇɴʀᴇs - {genres}
 🎖 ʀᴀᴛɪɴɢ - <a href={url}/ratings>{rating}</a> / 10 (ʙᴀsᴇᴅ ᴏɴ {votes} ᴜsᴇʀ ʀᴀᴛɪɴɢ.)
 📆 ʏᴇᴀʀ - {release_date}
-❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
-"""
+❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>"""
 
     FILE_CAPTION = """<b>@Team_KL ~ {file_caption}
     
@@ -125,7 +107,8 @@ User - {}"""
 ⏰ Tɪᴍᴇ : <code>{}</code>
 🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>Asia/Kolkata</code></b>"""
 
-    ALRT_TXT = """ᴊᴀʟᴅɪ ʏᴇʜᴀ sᴇ ʜᴀᴛᴏ !"""
+    ALRT_TXT = """• This Is Not Your Movie Request.     
+• Don't Click Others Results 🥴."""
 
     COMUNITY_TEXT = """♦️ KERALA ROCKERS COMMUNITY ♦️"""
 
@@ -147,13 +130,21 @@ User - {}"""
     
     FONT_TXT= """<b>ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴍᴏᴅᴇ ᴛᴏ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ꜰᴏɴᴛs sᴛʏʟᴇ, ᴊᴜsᴛ sᴇɴᴅ ᴍᴇ ʟɪᴋᴇ ᴛʜɪs ꜰᴏʀᴍᴀᴛ
 
-<code>/font hi how are you</code></b>"""
+/font <code>how are you</code></b>"""
 
     APPROVED_TEXT = """<b>🙋 Hello {mention}
 
 ◈ Your Request To Joined In ➤ <u>{title}</u> Successfully.
 
 ◈ Thank You For Joiny ❤️ {mention}</b>"""
+
+    DISCL_TXT = """<b><u>𝗗𝗜𝗦𝗖𝗟𝗔𝗜𝗠𝗘𝗥 :</u>
+    
+<blockquote>𝖠𝗅𝗅 𝗍𝗁𝖾 𝖿𝗂𝗅𝖾𝗌 𝗂𝗇 𝗍𝗁𝗂𝗌 𝖻𝗈𝗍 𝖺𝗋𝖾 𝖿𝗋𝖾𝖾𝗅𝗒 𝖺𝗏𝖺𝗂𝗅𝖺𝖻𝗅𝖾 𝗈𝗇 𝗍𝗁𝖾 𝗂𝗇𝗍𝖾𝗋𝗇𝖾𝗍 𝗈𝗋 𝗉𝗈𝗌𝗍𝖾𝖽 𝖻𝗒 𝗌𝗈𝗆𝖾𝖻𝗈𝖽𝗒 𝖾𝗅𝗌𝖾.
+𝖳𝗁𝗂𝗌 𝖻𝗈𝗍 𝗂𝗌 𝗂𝗇𝖽𝖾𝗑𝗂𝗇𝗀 𝖿𝗂𝗅𝖾𝗌 𝗐𝗁𝗂𝖼𝗁 𝖺𝗋𝖾 𝖺𝗅𝗋𝖾𝖺𝖽𝗒 𝗎𝗉𝗅𝗈𝖺𝖽𝖾𝖽 𝗈𝗇 𝖳𝖾𝗅𝖾𝗀𝗋𝖺𝗆 𝖿𝗈𝗋 𝖾𝖺𝗌𝖾 𝗈𝖿 𝗌𝖾𝖺𝗋𝖼𝗁𝗂𝗇𝗀,
+𝖶𝖾 𝗋𝖾𝗌𝗉𝖾𝖼𝗍 𝖺𝗅𝗅 𝗍𝗁𝖾 𝖼𝗈𝗉𝗒𝗋𝗂𝗀𝗁𝗍 𝗅𝖺𝗐𝗌 𝖺𝗇𝖽 𝗐𝗈𝗋𝗄𝗌 𝗂𝗇 𝖼𝗈𝗆𝗉𝗅𝗂𝖺𝗇𝖼𝖾 𝗐𝗂𝗍𝗁 𝖣𝖬𝖢𝖠 𝖺𝗇𝖽 𝖤𝖴𝖢𝖣.</blockquote>
+
+𝖨𝖿 𝖺𝗇𝗒𝗍𝗁𝗂𝗇𝗀 𝗂𝗌 𝖺𝗀𝖺𝗂𝗇𝗌𝗍 𝗅𝖺𝗐 𝗉𝗅𝖾𝖺𝗌𝖾 𝖼𝗈𝗇𝗍𝖺𝖼𝗍 𝗎𝗌 𝗌𝗈 𝗍𝗁𝖺𝗍 𝗂𝗍 𝖼𝖺𝗇 𝖻𝖾 𝗋𝖾𝗆𝗈𝗏𝖾𝖽 𝖺𝗌𝖺𝗉.</b>"""
     
     PREMIUM_TEXT = """<b>👋 Hey There,
     
@@ -271,5 +262,4 @@ Genre: {genres}
 
 Description: {description}
 
-{file_name}
-</b>"""
+{file_name}</b>"""
