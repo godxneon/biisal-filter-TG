@@ -756,6 +756,28 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
 	)
+    elif query.data == "about":
+        buttons = [[            
+            InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ ', callback_data="group_info"),
+            InlineKeyboardButton('ʙᴏᴛ sᴛᴀᴛᴜs', callback_data='stats')          
+        ],[
+            InlineKeyboardButton('sᴇʀᴠᴇʀ ɪɴꜰᴏ', callback_data='statx'),
+            InlineKeyboardButton('ᴅɪsᴄʟᴀɪᴍᴇʀ', callback_data='discl')
+        ],[
+            InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='start'),      
+            InlineKeyboardButton('sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='source')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
+        await query.message.edit_text(
+            text=script.ABOUT_TEXT.format(query.from_user.mention(),temp.B_LINK),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+	)
     elif query.data == 'about':
         await query.message.edit_text(
             script.ABOUT_TEXT.format(query.from_user.mention(),temp.B_LINK),
@@ -763,6 +785,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 [[InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]]
                 ),
             disable_web_page_preview = True
+	)    
+    elif query.data == "discl":
+        buttons = [[
+            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.DISCL_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "earn":
         buttons = [[
