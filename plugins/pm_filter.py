@@ -748,15 +748,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info'),
-        ],
-        [
+        ],[
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{query.from_user.id}')
-        ],
-        [
-            InlineKeyboardButton('🎭 ʏᴏᴜʀ ᴘᴏɪɴᴛs ✨', callback_data=f'point#{query.from_user.id}'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data=f'about')
-        ],
-        [
+        ],[
+            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
+            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+        ],[
             InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
         ]]    
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -774,11 +771,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('📸 ᴛ-ɢʀᴀᴘʜ', callback_data='telegraph'),
             InlineKeyboardButton('🆎️ ғᴏɴᴛ', callback_data='font')    
-        ],
-        [
-          InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
-          InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')],[
-        InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd'),
+        ],[
+            InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
+            InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')
+	],[
+            InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd'),
 	    InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -824,6 +821,32 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⇚ ʙᴀᴄᴋ​', callback_data='start'),    
             InlineKeyboardButton('ᴘʀᴇᴍɪᴜᴍ ʟᴏɢᴏ ᴘʀᴏ', url='https://t.me/PremiumLogoPro')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://telegra.ph/file/d12cbba3daed5330005aa.jpg")
+        )
+        await query.message.edit_text(
+            text=script.OWNER_INFO,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+	)
+    elif query.data == "comunity_link":
+        buttons = [[
+            InlineKeyboardButton('👥 Request Group #1', url='https://t.me/KLMovieGroup'),    
+            InlineKeyboardButton('🎭 Request Group #2', url='https://t.me/KeralaRockers_Group')
+	],[ 
+	    InlineKeyboardButton('👥 Request Group #3', url='https://t.me/KL_Group2'),    
+            InlineKeyboardButton('🎬 Main Channel', url='https://t.me/Team_KL')
+	],[
+	    InlineKeyboardButton('🎗️[New Group] Opening soon🎗️', url='https://t.me/+PqryZGuwC3w4NTA1'),    
+	],[
+            InlineKeyboardButton('🎥 OTT Files #1', url='https://t.me/KLxFiles'),    
+            InlineKeyboardButton('🎬 OTT Files #2', url='https://t.me/+SGl8g0cQgOQ0ZDE1')
+	],[    
+            InlineKeyboardButton('⪻ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ ⛓️', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
