@@ -787,6 +787,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+    elif query.data == "source":
+        buttons = [[           
+            InlineKeyboardButton('⇍ ʙᴀᴄᴋ ᴛᴏ ᴀʙᴏᴜᴛ ⇏', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto("https://telegra.ph/file/b5ed133cd9e59999fa57f.jpg")
+        )
+        await query.message.edit_text(
+            text=script.SOURCE_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )	    
     elif query.data == "earn":
         buttons = [[
             InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start'),
