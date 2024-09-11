@@ -147,15 +147,12 @@ async def start(client:Client, message):
                             ],[
                             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
                             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
-                            ],
-                            [
+                            ],[
                             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-                            ],
-                            [
-                            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data=f'point#{message.from_user.id}'),
+                            ],[                            
+                            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
                             InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
-                            ],
-                            [
+                            ],[                            
                             InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
                             ]]
                         reply_markup = InlineKeyboardMarkup(buttons)
@@ -177,15 +174,12 @@ async def start(client:Client, message):
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
-        ],
-        [
+        ],[
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-        ],
-        [
-            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data=f'point#{message.from_user.id}'),
+        ],[
+            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
             InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
-        ],
-        [
+        ],[
             InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -232,15 +226,12 @@ async def start(client:Client, message):
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
-        ],
-        [
+        ],[
             InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-        ],
-        [
-            InlineKeyboardButton('🎭 ʏᴏᴜʀ ᴘᴏɪɴᴛs ✨', callback_data=f'point#{message.from_user.id}'),
+        ],[
+            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
             InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
-        ],
-        [
+        ],[
             InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
