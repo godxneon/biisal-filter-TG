@@ -539,44 +539,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
-    elif query.data.startswith('free_premium'):
-        clicker = int(query.data.split("#")[1])
-        if clicker not in [query.from_user.id, 0]:
-            return await query.answer(
-            f"Hey {query.from_user.first_name}, Jaldi Yeha Se Hato", show_alert=True
-            )
-        return await query.message.edit(script.REF_LINK.format(temp.U_NAME , clicker , PREMIUM_POINT) , reply_markup=InlineKeyboardMarkup([
-	    [InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]
-        ]))
-    elif query.data.startswith('point'):
-        clicker = int(query.data.split("#")[1])
-        if clicker not in [query.from_user.id, 0]:
-            return await query.answer(
-            f"Hey {query.from_user.first_name}, Jaldi Yeha Se Hato", show_alert=True
-            )
-        newPoint = await db.get_point(clicker)
-        
-        return await query.message.edit(script.REF_POINT.format(newPoint) , reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton('🎁 ɢᴇᴛ ʏᴏᴜʀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ 🎁', callback_data=f'free_premium#{query.from_user.id}')],   
-                [InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')],]))
-        
-    elif query.data == "premium":
-        userid = query.from_user.id
-        await query.message.edit(script.PREMIUM_TEXT , reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton('🤞🏻 ʟᴏᴡ ᴘʀɪᴄᴇ ᴘʟᴀɴs 🍿', callback_data='plans')],
-        [InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]
-        ]))
-    elif query.data == "plans":
-        userid = query.from_user.id
-        await query.message.edit(script.PLAN_TEXT  , reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton('🤞🏻 ʙᴜʏ ᴘʟᴀɴ 🍿', callback_data='buy_plan')],
-        [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='premium')]
-        ]))
-    elif query.data == "buy_plan":
-        userid = query.from_user.id
-        await query.message.edit(script.BUY_PLAN  , reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='plans')]
-        ]))
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -652,7 +614,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         cpu_usage = psutil.cpu_percent()
         ram_usage = psutil.virtual_memory().percent
         disk_usage = psutil.disk_usage('/').percent
-        await query.answer(f"🥵 Sʏsᴛᴇᴍ Sᴛᴀᴛᴜs 🥵\n\n❂ Uᴘᴛɪᴍᴇ : {currentTime}\n✇ Cᴘᴜ : {cpu_usage}\n✪ Rᴀᴍ : {ram_usage}\n✼ Tᴏᴛᴀʟ Dɪsᴋ : {total}\n❐ Usᴇᴅ Sᴘᴀᴄᴇ : {used} ({disk_usage}%)\n❦ Fʀᴇᴇ Sᴘᴀᴄᴇ : {free}", show_alert=True)    
+        await query.answer(f"⚡️𝖫𝗂𝗏𝖾 𝖲𝗒𝗌𝗍𝖾𝗆 𝖲𝗍𝖺𝗍𝗎𝗌⚡️\n\n🕔 𝖴𝗉𝗍𝗂𝗆𝖾: {currentTime}\n🛠 𝖢𝖯𝖴 𝖴𝗌𝖺𝗀𝖾: {cpu_usage}\n🗜 𝖱𝖠𝖬 𝖴𝗌𝖺𝗀𝖾: {ram_usage}\n🗂 𝖳𝗈𝗍𝖺𝗅 𝖣𝗂𝗌𝗄 𝖲𝗉𝖺𝖼𝖾: {total}\n🗳 𝖴𝗌𝖾𝖽 𝖲𝗉𝖺𝖼𝖾: {used} ({disk_usage}%)\n📝 𝖥𝗋𝖾𝖾 𝖲𝗉𝖺𝖼𝖾: {free}", show_alert=True)    
   
     elif query.data == "start":
         buttons = [[
@@ -685,8 +647,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
             InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')
 	],[
-            InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd'),
-	    InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')
+            InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start'),
+            InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd')	    
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(                     
@@ -708,7 +670,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML,
         )
     elif query.data == "fsub":
-        #add back button
+        #if user isnt admin then return
+        if not query.from_user.id in ADMINS:
+            return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [[
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')],
             [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')]]
@@ -793,7 +757,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "discl":
         buttons = [[
             InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about'),
-            InlineKeyboardButton('👨🏻‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ', user_id = ADMINS[0])
+            InlineKeyboardButton('👨🏻‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ', url='https://t.me/KLAdmin1Bot')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
