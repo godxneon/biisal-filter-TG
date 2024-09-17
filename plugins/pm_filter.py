@@ -661,12 +661,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info'),
         ],[
-            InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{query.from_user.id}')
-        ],[
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
-            InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]    
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -794,7 +792,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 	)
     elif query.data == "discl":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about')
+            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about'),
+            InlineKeyboardButton('👨🏻‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ', user_id = ADMINS[0])
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -820,7 +819,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "earn":
         buttons = [[
             InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start'),
-            InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', user_id = ADMINS[0] ),
+            InlineKeyboardButton('🎭 ɢʀᴏᴜᴘ ʟɪɴᴋ', callback_data='comunity_link')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
