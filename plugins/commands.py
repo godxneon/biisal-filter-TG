@@ -148,12 +148,10 @@ async def start(client:Client, message):
                             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
                             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
                             ],[
-                            InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-                            ],[                            
                             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-                            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+                            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ', callback_data='about')
                             ],[                            
-                            InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
+                            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
                             ]]
                         reply_markup = InlineKeyboardMarkup(buttons)
                         await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -175,12 +173,10 @@ async def start(client:Client, message):
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],[
-            InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-        ],[
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
             InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
         ],[
-            InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
@@ -226,13 +222,11 @@ async def start(client:Client, message):
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
-        ],[
-            InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
-        ],[
+        ],[            
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
             InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
         ],[
-            InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
