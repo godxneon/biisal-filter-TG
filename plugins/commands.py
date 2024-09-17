@@ -174,7 +174,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],[
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]
@@ -224,7 +224,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],[            
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]
