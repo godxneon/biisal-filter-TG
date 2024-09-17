@@ -823,7 +823,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
-             text=script.EARN_TEXT.format(temp.B_LINK),
+             text=script.RULES_TEXT,
              reply_markup=reply_markup,
              parse_mode=enums.ParseMode.HTML
          )
