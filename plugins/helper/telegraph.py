@@ -1,43 +1,35 @@
 import os
-import asyncio
+import requests
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
-from telegraph import upload_file
-from utils import get_file_id
+from pyrogram.types import Message
 
-@Client.on_message(filters.command("telegraph") & filters.private)
-async def telegraph(bot, message):
-    replied = message.reply_to_message
-    if not replied:
-        await message.reply_text("⚠️ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ 5 ᴍʙ")
-        return
-    file_info = get_file_id(replied)
-    if not file_info:
-        await message.reply_text("ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ 😑")
-        return
-    msg = await message.reply_text(text="<code>ᴘʀᴏᴄᴇssɪɴɢ....</code>", disable_web_page_preview=True)   
-    media = await message.reply_to_message.download()   
-    await msg.edit_text("<code>ᴅᴏɴᴇ :)</code>", disable_web_page_preview=True) 
+@Client.on_message(filters.command(["img", "cup", "telegraph"], prefixes="/") & filters.reply)
+async def c_upload(client, message: Message):
+    reply = message.reply_to_message
+
+    if not reply.media:
+        return await message.reply_text("Reply to a media to upload it to Cloud.")
+
+    if reply.document and reply.document.file_size > 512 * 1024 * 1024:  # 512 MB
+        return await message.reply_text("File size limit is 512 MB.")
+
+    msg = await message.reply_text("Processing...")
+
     try:
-        response = upload_file(media)
-    except Exception as error:
-        print(error)
-        await msg.edit_text(text=f"Error :- {error}", disable_web_page_preview=True)  
-        await asyncio.sleep(3)
-        return await msg.delete()   
-    try:
-        os.remove(media)
-    except Exception as error:
-        print(error)
-        return   
-    await msg.delete()
-    await message.reply_photo(
-        photo=f'https://graph.org{response[0]}',
-        caption=f"<b>ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ᴄᴏᴍᴘʟᴇᴛᴇᴅ 👇</b>\n\n<code>https://graph.org{response[0]}</code>",       
-        reply_markup=InlineKeyboardMarkup( [[
-            InlineKeyboardButton(text="✓ ᴏᴘᴇɴ ʟɪɴᴋ ✓", url=f"https://graph.org{response[0]}"),
-            InlineKeyboardButton(text="📱 sʜᴀʀᴇ ʟɪɴᴋ", url=f"https://telegram.me/share/url?url=https://graph.org{response[0]}")
-            ],[
-            InlineKeyboardButton(text="❌ ᴄʟᴏsᴇ ❌", callback_data="close_data")
-            ]])
-    )
+        downloaded_media = await reply.download()
+
+        if not downloaded_media:
+            return await msg.edit_text("Something went wrong during download.")
+
+        with open(downloaded_media, "rb") as f:
+            data = f.read()
+            resp = requests.post("https://envs.sh", files={"file": data})
+            if resp.status_code == 200:
+                await msg.edit_text(f"{resp.text}")
+            else:
+                await msg.edit_text("Something went wrong. Please try again later.")
+
+        os.remove(downloaded_media)
+
+    except Exception as e:
+        await msg.edit_text(f"Error: {str(e)}")
