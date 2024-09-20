@@ -64,9 +64,9 @@ async def get_search_results(query, max_results=MAX_BTN, offset=0, lang=None):
     if not query:
         raw_pattern = '.'
     elif ' ' not in query:
-        raw_pattern = r'(\b|[\.\+\-_])' + query + r'(\b|[\.\+\-_])'
+        raw_pattern = r'(\b|[\.\+\-_]|\s|&)' + query + r'(\b|[\.\+\-_]|\s|&)'
     else:
-        raw_pattern = query.replace(' ', r'.*[\s\.\+\-_()]') 
+        raw_pattern = query.replace(' ', r'.*[&\s\.\+\-_()\[\]]') 
     try:
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
     except:
