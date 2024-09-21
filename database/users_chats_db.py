@@ -1,7 +1,7 @@
 import datetime
 import pytz
 from motor.motor_asyncio import AsyncIOMotorClient
-from info import SETTINGS, DATABASE_NAME, DATABASE_URI, DEFAULT_POST_MODE
+from info import SETTINGS, PREMIUM_POINT, REF_PREMIUM, DATABASE_NAME, DATABASE_URI, DEFAULT_POST_MODE
 # from utils import get_seconds
 client = AsyncIOMotorClient(DATABASE_URI)
 mydb = client[DATABASE_NAME]
@@ -63,7 +63,25 @@ class Database:
     async def add_user(self, id, name):
         user = self.new_user(id, name)
         await self.col.insert_one(user)
-               
+        
+    async def update_point(self ,id):
+        await self.col.update_one({'id' : id} , {'$inc':{'point' : 100}})
+        point = (await self.col.find_one({'id' : id}))['point']
+        if point >= PREMIUM_POINT :
+            seconds = (REF_PREMIUM * 24 * 60 * 60)
+            oldEx =(await self.users.find_one({'id' : id}))
+            if oldEx :
+                expiry_time = oldEx['expiry_time'] + datetime.timedelta(seconds=seconds)
+            else: 
+                expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
+            user_data = {"id": id, "expiry_time": expiry_time}
+            await db.update_user(user_data)
+            await self.col.update_one({'id' : id} , {'$set':{'point' : 0}})
+            
+    async def get_point(self , id):
+        newPoint = await self.col.find_one({'id' : id})
+        return newPoint['point'] if newPoint else None
+        
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id':int(id)})
         return bool(user)
@@ -201,7 +219,7 @@ class Database:
                 second_time = user["third_time_verified"].astimezone(ist_timezone)
                 return second_time < pastDate
         return False
-
+   
     async def create_verify_id(self, user_id: int, hash):
         res = {"user_id": user_id, "hash":hash, "verified":False}
         return await self.verify_id.insert_one(res)
@@ -221,6 +239,38 @@ class Database:
     async def update_user(self, user_data):
         await self.users.update_one({"id": user_data["id"]}, {"$set": user_data}, upsert=True)
 
+    async def has_premium_access(self, user_id):
+        user_data = await self.get_user(user_id)
+        if user_data:
+            expiry_time = user_data.get("expiry_time")
+            if expiry_time is None:
+                return False
+            elif isinstance(expiry_time, datetime.datetime) and datetime.datetime.now() <= expiry_time:
+                return True
+            else:
+                await self.users.update_one({"id": user_id}, {"$set": {"expiry_time": None}})
+        return False
+        
+    async def update_one(self, filter_query, update_data):
+        try:
+            result = await self.users.update_one(filter_query, update_data)
+            return result.matched_count == 1
+        except Exception as e:
+            print(f"Error updating document: {e}")
+            return False
+
+    async def get_expired(self, current_time):
+        expired_users = []
+        if data := self.users.find({"expiry_time": {"$lt": current_time}}):
+            async for user in data:
+                expired_users.append(user)
+        return expired_users
+
+    async def remove_premium_access(self, user_id):
+        return await self.update_one(
+            {"id": user_id}, {"$set": {"expiry_time": None}}
+        )
+        
     async def get_set_grp_links(self , links=None , ispm = None, index = 0):
         try:
             if (links and ispm) is not None :
@@ -237,7 +287,7 @@ class Database:
                     if index == 0:
                         return "https://t.me/KLMovieGroup" , False
                     else :
-                        return "https://t.me/keralaRockers_Group"
+                        return "https://t.me/KeralaRockers_Group"
         except Exception as e:
             print(f"got err in db set : {e}")
             
@@ -263,7 +313,7 @@ class Database:
             return False
 
     async def setFsub(self , grpID , fsubID):
-        return await self.grp_and_ids.update_one({'grpID': grpID} , {'$set': {'grpID': grpID , "fsubID": fsubID}}, upsert=True)   
+        return await self.grp_and_ids.update_one({'grpID': grpID} , {'$set': {'grpID': grpID , "fsubID": fsubID}}, upsert=True)    
         
     async def getFsub(self , grpID):
         link = await self.grp_and_ids.find_one({"grpID": grpID})
