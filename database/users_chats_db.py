@@ -12,6 +12,7 @@ class Database:
         self.col = mydb.users
         self.grp = mydb.groups
         self.misc = mydb.misc
+        self.verify_id = mydb.verify_id
         self.users = mydb.uersz
         self.req = mydb.requests
         self.mGrp = mydb.mGrp
@@ -107,6 +108,111 @@ class Database:
 
     async def get_db_size(self):
         return (await mydb.command("dbstats"))['dataSize'] 
+
+    async def get_notcopy_user(self, user_id):
+        user_id = int(user_id)
+        user = await self.misc.find_one({"user_id": user_id})
+        ist_timezone = pytz.timezone('Asia/Kolkata')
+        if not user:
+            res = {
+                "user_id": user_id,
+                "last_verified": datetime.datetime(2020, 5, 17, 0, 0, 0, tzinfo=ist_timezone),
+                "second_time_verified": datetime.datetime(2019, 5, 17, 0, 0, 0, tzinfo=ist_timezone),
+            }
+            user = await self.misc.insert_one(res)
+        return user
+
+    async def update_notcopy_user(self, user_id, value:dict):
+        user_id = int(user_id)
+        myquery = {"user_id": user_id}
+        newvalues = {"$set": value}
+        return await self.misc.update_one(myquery, newvalues)
+
+    async def is_user_verified(self, user_id):
+        user = await self.get_notcopy_user(user_id)
+        try:
+            pastDate = user["last_verified"]
+        except Exception:
+            user = await self.get_notcopy_user(user_id)
+            pastDate = user["last_verified"]
+        ist_timezone = pytz.timezone('Asia/Kolkata')
+        pastDate = pastDate.astimezone(ist_timezone)
+        current_time = datetime.datetime.now(tz=ist_timezone)
+        seconds_since_midnight = (current_time - datetime.datetime(current_time.year, current_time.month, current_time.day, 0, 0, 0, tzinfo=ist_timezone)).total_seconds()
+        time_diff = current_time - pastDate
+        total_seconds = time_diff.total_seconds()
+        return total_seconds <= seconds_since_midnight
+
+    async def user_verified(self, user_id):
+        user = await self.get_notcopy_user(user_id)
+        try:
+            pastDate = user["second_time_verified"]
+        except Exception:
+            user = await self.get_notcopy_user(user_id)
+            pastDate = user["second_time_verified"]
+        ist_timezone = pytz.timezone('Asia/Kolkata')
+        pastDate = pastDate.astimezone(ist_timezone)
+        current_time = datetime.datetime.now(tz=ist_timezone)
+        seconds_since_midnight = (current_time - datetime.datetime(current_time.year, current_time.month, current_time.day, 0, 0, 0, tzinfo=ist_timezone)).total_seconds()
+        time_diff = current_time - pastDate
+        total_seconds = time_diff.total_seconds()
+        return total_seconds <= seconds_since_midnight
+
+    async def use_second_shortener(self, user_id, time):
+        user = await self.get_notcopy_user(user_id)
+        if not user.get("second_time_verified"):
+            ist_timezone = pytz.timezone('Asia/Kolkata')
+            await self.update_notcopy_user(user_id, {"second_time_verified":datetime.datetime(2019, 5, 17, 0, 0, 0, tzinfo=ist_timezone)})
+            user = await self.get_notcopy_user(user_id)
+        if await self.is_user_verified(user_id):
+            try:
+                pastDate = user["last_verified"]
+            except Exception:
+                user = await self.get_notcopy_user(user_id)
+                pastDate = user["last_verified"]
+            ist_timezone = pytz.timezone('Asia/Kolkata')
+            pastDate = pastDate.astimezone(ist_timezone)
+            current_time = datetime.datetime.now(tz=ist_timezone)
+            time_difference = current_time - pastDate
+            if time_difference > datetime.timedelta(seconds=time):
+                pastDate = user["last_verified"].astimezone(ist_timezone)
+                second_time = user["second_time_verified"].astimezone(ist_timezone)
+                return second_time < pastDate
+        return False
+
+    async def use_third_shortener(self, user_id, time):
+        user = await self.get_notcopy_user(user_id)
+        if not user.get("third_time_verified"):
+            ist_timezone = pytz.timezone('Asia/Kolkata')
+            await self.update_notcopy_user(user_id, {"third_time_verified":datetime.datetime(2018, 5, 17, 0, 0, 0, tzinfo=ist_timezone)})
+            user = await self.get_notcopy_user(user_id)
+        if await self.user_verified(user_id):
+            try:
+                pastDate = user["second_time_verified"]
+            except Exception:
+                user = await self.get_notcopy_user(user_id)
+                pastDate = user["second_time_verified"]
+            ist_timezone = pytz.timezone('Asia/Kolkata')
+            pastDate = pastDate.astimezone(ist_timezone)
+            current_time = datetime.datetime.now(tz=ist_timezone)
+            time_difference = current_time - pastDate
+            if time_difference > datetime.timedelta(seconds=time):
+                pastDate = user["second_time_verified"].astimezone(ist_timezone)
+                second_time = user["third_time_verified"].astimezone(ist_timezone)
+                return second_time < pastDate
+        return False
+
+    async def create_verify_id(self, user_id: int, hash):
+        res = {"user_id": user_id, "hash":hash, "verified":False}
+        return await self.verify_id.insert_one(res)
+
+    async def get_verify_id_info(self, user_id: int, hash):
+        return await self.verify_id.find_one({"user_id": user_id, "hash": hash})
+
+    async def update_verify_id_info(self, user_id, hash, value: dict):
+        myquery = {"user_id": user_id, "hash": hash}
+        newvalues = { "$set": value }
+        return await self.verify_id.update_one(myquery, newvalues)
 
     async def get_user(self, user_id):
         user_data = await self.users.find_one({"id": user_id})
