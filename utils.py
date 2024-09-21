@@ -11,7 +11,6 @@ from datetime import datetime
 from typing import Any
 from database.users_chats_db import db
 
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -30,9 +29,11 @@ class temp(object):
     USERS_CANCEL = False
     GROUPS_CANCEL = False    
     CHAT = {}
+
 def formate_file_name(file_name):
     file_name = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file_name.split()))
     return file_name
+
 async def is_req_subscribed(bot, query):
     if await db.find_join_req(query.from_user.id):
         return True
@@ -198,7 +199,6 @@ def list_to_str(k):
         return str(k[0])
     else:
         return ', '.join(str(item) for item in k)
-
 
 async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False , pm_mode=False):
     if not pm_mode:
