@@ -620,7 +620,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         cpu_usage = psutil.cpu_percent()
         ram_usage = psutil.virtual_memory().percent
         disk_usage = psutil.disk_usage('/').percent
-        await query.answer(f"⚡️𝖫𝗂𝗏𝖾 𝖲𝗒𝗌𝗍𝖾𝗆 𝖲𝗍𝖺𝗍𝗎𝗌⚡️\n\n🕔 𝖴𝗉𝗍𝗂𝗆𝖾: {currentTime}\n🛠 𝖢𝖯𝖴 𝖴𝗌𝖺𝗀𝖾: {cpu_usage}\n🗜 𝖱𝖠𝖬 𝖴𝗌𝖺𝗀𝖾: {ram_usage}\n🗂 𝖳𝗈𝗍𝖺𝗅 𝖣𝗂𝗌𝗄 𝖲𝗉𝖺𝖼𝖾: {total}\n🗳 𝖴𝗌𝖾𝖽 𝖲𝗉𝖺𝖼𝖾: {used} ({disk_usage}%)\n📝 𝖥𝗋𝖾𝖾 𝖲𝗉𝖺𝖼𝖾: {free}", disable_web_page_preview=False)    
+        await query.answer(f"⚡️𝖫𝗂𝗏𝖾 𝖲𝗒𝗌𝗍𝖾𝗆 𝖲𝗍𝖺𝗍𝗎𝗌⚡️\n\n🕔 𝖴𝗉𝗍𝗂𝗆𝖾: {currentTime}\n🛠 𝖢𝖯𝖴 𝖴𝗌𝖺𝗀𝖾: {cpu_usage}\n🗜 𝖱𝖠𝖬 𝖴𝗌𝖺𝗀𝖾: {ram_usage}\n🗂 𝖳𝗈𝗍𝖺𝗅 𝖣𝗂𝗌𝗄 𝖲𝗉𝖺𝖼𝖾: {total}\n🗳 𝖴𝗌𝖾𝖽 𝖲𝗉𝖺𝖼𝖾: {used} ({disk_usage}%)\n📝 𝖥𝗋𝖾𝖾 𝖲𝗉𝖺𝖼𝖾: {free}", show_alert=True)    
   
     elif query.data == "start":
         buttons = [[
