@@ -478,11 +478,8 @@ async def lang_search(client: Client, query: CallbackQuery):
                 for file in files
 	      ]        
     btn.insert(0,[
-        InlineKeyboardButton("🎭 ᴄʜᴏᴏsᴇ ǫᴜᴀʟɪᴛʏ ✨", callback_data=f"qualities#{key}#{offset}#{req}"),
-        ])
-    btn.insert(1, [
-        InlineKeyboardButton("🚩 ʏᴇᴀʀ ⌛", callback_data=f"years#{key}#{offset}#{req}"),
-        InlineKeyboardButton("✨ season🍿", callback_data=f"seasons#{key}#{offset}#{req}")
+        InlineKeyboardButton("🎭 ǫᴜᴀʟɪᴛʏ", callback_data=f"qualities#{key}#{offset}#{req}"),
+        InlineKeyboardButton("{search}", url=f"https://t.me/+jya36OloW1VkYzc1") 
     ])
     if n_offset== '':
         btn.append(
@@ -1242,10 +1239,8 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         if total_results >= MAX_BTN:
             btn.insert(0,[
                 InlineKeyboardButton("🎭 ʟᴀɴɢᴜᴀɢᴇ", callback_data=f"languages#{key}#{offset}#{req}"),
-		InlineKeyboardButton("🍿 ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}")
-                ])
-            btn.insert(1, [
-                InlineKeyboardButton("✨ ǫᴜᴀʟɪᴛʏ 🤡", callback_data=f"qualities#{key}#{offset}#{req}")
+		InlineKeyboardButton("🍿 ꜱᴇᴀꜱᴏɴ", callback_data=f"seasons#{key}#{offset}#{req}"),
+                InlineKeyboardButton("✨ ǫᴜᴀʟɪᴛʏ", callback_data=f"qualities#{key}#{offset}#{req}")           
             ]) 
         else:
             btn.insert(0,[
