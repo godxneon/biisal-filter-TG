@@ -646,7 +646,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "features":
         buttons = [[
             InlineKeyboardButton('📸 ᴛ-ɢʀᴀᴘʜ', callback_data='telegraph'),
-            InlineKeyboardButton('🌐 ɢ-ғɪʟᴛᴇʀ', callback_data='font')    
+            InlineKeyboardButton('🌐 ɢ-ғɪʟᴛᴇʀ', callback_data='gfilter')    
         ],[
             InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
             InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')
@@ -805,16 +805,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "font":
-        buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons) 
+    elif query.data == "gfilter":
+        #if user isnt admin then return
+        if not query.from_user.id in ADMINS:
+            return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
+        buttons = [
+            [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')],
+        ]
+        reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
-            text=script.FONT_TXT,
+            text=script.GLOBE_TXT,
             reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-	)
+            parse_mode=enums.ParseMode.HTML,
+        )	    
   
     elif query.data == "all_files_delete":
         files = await Media.count_documents()
