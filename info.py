@@ -22,9 +22,6 @@ USERNAME = environ.get('USERNAME', "https://telegram.me/hacker_jr")
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-10019494867581'))
 MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+4RB2-U2o9yE4ZmQ9')
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001234567898').split()]
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://username:password@cluster0.jhvfd.mongodb.net/?retryWrites=true&w=majority")
-DATABASE_NAME = environ.get('DATABASE_NAME', "LuffyBot")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001949498981'))
 QR_CODE = environ.get('QR_CODE', 'https://graph.org/file/ccb9db43e62a2e524928e.jpg')
 PICS = (environ.get('PICS', 'https://telegra.ph/file/84e783f76428bc2abbfdd.jpg https://telegra.ph/file/c3d08e78e8a8f3127f669.jpg')).split()
@@ -46,6 +43,12 @@ SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'shortslink3.online')
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "14400"))
 
+# MongoDB information
+SECONDDB_URI = environ.get('SECONDDB_URI', None)
+DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_NAME = environ.get('DATABASE_NAME', "LuffyBot")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+
 LANGUAGES = ["malayalam", "english", "tamil", "hindi", "telugu", "kannada", "bengali", "marathi", "gujarati", "punjabi"]
 QUALITIES = ["HDRip","WEB DL" ,"BluRay", "WEBRip", "240p", "360p", "480p", "540p", "720p", "960p", "1080p", "1440p", "2K", "2160p", "4k"]
 YEARS = [f'{i}' for i in range(2024 , 2002,-1 )]
@@ -53,7 +56,7 @@ SEASONS = [f'season {i}'for i in range (1 , 23)]
 REF_PREMIUM = 30
 PREMIUM_POINT = 1500
 auth_channel = environ.get('AUTH_CHANNEL')
-AUTH_CHANNEL = [int(auth_channel) for auth_channel in environ.get('AUTH_CHANNEL', '').split() if id_pattern.search(auth_channel)]
+AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001728602477'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1002079370592')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
