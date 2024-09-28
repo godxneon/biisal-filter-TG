@@ -34,19 +34,27 @@ def formate_file_name(file_name):
     file_name = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file_name.split()))
     return file_name
 
-async def is_req_subscribed(bot, query):
+async def is_req_subscribed(bot, query=None, userid=None):
+    invite_links = []
     if await db.find_join_req(query.from_user.id):
         return True
     try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        if userid == None and query != None:
+            chat = await bot.get_chat(AUTH_CHANNEL)
+            user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        else:
+            chat = await bot.get_chat(AUTH_CHANNEL)
+            user = await bot.get_chat_member(AUTH_CHANNEL, int(userid))
     except UserNotParticipant:
-        pass
+        invite_links.append(chat.invite_link)
     except Exception as e:
         logger.exception(e)
+        continue
     else:
         if user.status != enums.ChatMemberStatus.BANNED:
-            return True
-    return False
+            continue
+
+    return invite_links
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
