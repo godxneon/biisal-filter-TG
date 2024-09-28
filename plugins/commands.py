@@ -72,52 +72,6 @@ async def tts(client, message):
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client:Client, message): 
-    pm_mode = False
-    try:
-         data = message.command[1]
-         if data.startswith('pm_mode_'):
-             pm_mode = True
-    except:
-        pass
-    m = message
-    user_id = m.from_user.id
-    if len(m.command) == 2 and m.command[1].startswith('notcopy'):
-        _, userid, verify_id, file_id = m.command[1].split("_", 3)
-        user_id = int(userid)
-        grp_id = temp.CHAT.get(user_id, 0)
-        settings = await get_settings(grp_id)         
-        verify_id_info = await db.get_verify_id_info(user_id, verify_id)
-        if not verify_id_info or verify_id_info["verified"]:
-            await message.reply("<b>ʟɪɴᴋ ᴇxᴘɪʀᴇᴅ ᴛʀʏ ᴀɢᴀɪɴ...</b>")
-            return  
-        ist_timezone = pytz.timezone('Asia/Kolkata')
-        if await db.user_verified(user_id):
-            key = "third_time_verified"
-        else:
-            key = "second_time_verified" if await db.is_user_verified(user_id) else "last_verified"
-        current_time = dt.now(tz=ist_timezone)
-        result = await db.update_notcopy_user(user_id, {key:current_time})
-        await db.update_verify_id_info(user_id, verify_id, {"verified":True})
-        if key == "third_time_verified": 
-            num = 3 
-        else: 
-            num =  2 if key == "second_time_verified" else 1 
-        if key == "third_time_verified":
-            msg = script.THIRDT_VERIFY_COMPLETE_TEXT
-        else:
-            msg = script.SECOND_VERIFY_COMPLETE_TEXT if key == "second_time_verified" else script.VERIFY_COMPLETE_TEXT
-        await client.send_message(settings['log'], script.VERIFIED_LOG_TEXT.format(m.from_user.mention, user_id, dt.now(pytz.timezone('Asia/Kolkata')).strftime('%d %B %Y'), num))
-        btn = [[
-            InlineKeyboardButton("‼️ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ‼️", url=f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"),
-        ]]
-        reply_markup=InlineKeyboardMarkup(btn)
-        await m.reply_photo(
-            photo=(VERIFY_IMG),
-            caption=msg.format(message.from_user.mention, get_readable_time(TWO_VERIFY_GAP)),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        return 
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         status = get_status()
         aks=await message.reply_text(f"<b>🔥 ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
@@ -184,25 +138,15 @@ async def start(client:Client, message):
             parse_mode=enums.ParseMode.HTML
         )
         return
-    if AUTH_CHANNEL and not await is_req_subscribed(client, query=message):
+    if AUTH_CHANNEL and not await is_req_subscribed(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL), creates_join_request=True)
         except ChatAdminRequired:
             logger.error("Make Sure Bot Is Admin In Forcesub Channel")
             return
-        btn = []
-        for chnl_num, link in enumerate(invite_links, start=1):
-            if chnl_num == 1:
-                channel_num = "1sᴛ"
-            elif chnl_num == 2:
-                channel_num = "2ɴᴅ"
-            elif chnl_num == 3:
-                channel_num = "3ʀᴅ"
-            else:
-                channel_num = str(chnl_num)+"ᴛʜ"
-            btn.append([
-                InlineKeyboardButton(f"❆ Jᴏɪɴ {channel_num} Cʜᴀɴɴᴇʟ ❆", url=link)
-            ])
+        btn = [[
+            InlineKeyboardButton("🎗️ ᴊᴏɪɴ ɴᴏᴡ 🎗️", url=invite_link.invite_link)
+        ]]
 
         if message.command[1] != "subscribe":
             
