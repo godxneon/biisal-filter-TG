@@ -49,12 +49,10 @@ async def is_req_subscribed(bot, query=None, userid=None):
         invite_links.append(chat.invite_link)
     except Exception as e:
         logger.exception(e)
-        continue
     else:
         if user.status != enums.ChatMemberStatus.BANNED:
-            continue
-
-    return invite_links
+            return True
+    return False
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
