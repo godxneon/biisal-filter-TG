@@ -32,12 +32,12 @@ class script(object):
     TTS_TXT="""
 <b>• sᴇɴᴅ /tts ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ</b>"""
 
-    ABOUT_TEXT = """<b>🤖 ɪ'ᴍ <a href=https://t.me/{}</a> 
-⚙️ ᴄʜɪʟʟɪɴɢ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
-🍿 ʙʀᴀɪɴ ғᴜᴇʟᴇᴅ : <a href="https://www.mongodb.com/">ᴍᴏɴɢᴏ ᴅʙ</a>
-🐍 ᴄᴏᴅɪɴɢ ᴍᴜsᴄʟᴇs : <a href="https://www.python.org/">ᴘʏᴛʜᴏɴ 3</a>
-😚 ᴍʏ ᴛʀᴜsᴛʏ sᴛᴇᴇᴅ: <a href="https://github.com/Mayuri-Chan/pyrofork">ᴘʏʀᴏғᴏʀᴋ</a>
-🤡 ᴍʏ ᴍᴀɴᴀɢᴇʀ : <a href="https://telegram.me/hacker_jr">Hacker_Jr</a></b>"""
+    ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/{}</a> 
+‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a
+‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href="https://www.mongodb.com/">ᴍᴏɴɢᴏ ᴅʙ</a
+‣ ʟᴀɴɢᴜᴀɢᴇ : <a href="https://www.python.org/">ᴘʏᴛʜᴏɴ 𝟹</a>
+‣ ʟɪʙʀᴀʀʏ : <a href="https://github.com/Mayuri-Chan/pyrofork">ᴘʏʀᴏғᴏʀᴋ</a>
+‣ ᴍʏ ᴍᴀɴᴀɢᴇʀ : <a href="https://telegram.me/HacKerJr_Bot">Hacker Jr</a></b>"""
    
     SUPPORT_GRP_MOVIE_TEXT = '''<b>ʜᴇʏ {}
 
@@ -49,7 +49,7 @@ class script(object):
 <b>⍟───[ <u>ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ</u> ]───⍟
     
 ‣ ꜰᴜʟʟ ɴᴀᴍᴇ : HᴀᴄKᴇʀ Jʀ ~ 🦅
-‣ ᴜꜱᴇʀɴᴀᴍᴇ : @Hacker_Jr
+‣ ᴜꜱᴇʀɴᴀᴍᴇ : <a href="https://telegram.me/HacKerJr_Bot">Hacker Jr</a>
 ‣ ᴄᴏᴜɴᴛʀʏ : ɪɴᴅɪᴀ 🇮🇳</b>"""    
     
     STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
