@@ -32,7 +32,7 @@ class script(object):
     TTS_TXT="""
 <b>• sᴇɴᴅ /tts ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ</b>"""
 
-    ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/{}</a> 
+    ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
 ‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href="https://www.mongodb.com/">ᴍᴏɴɢᴏ ᴅʙ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href="https://www.python.org/">ᴘʏᴛʜᴏɴ 𝟹</a>
