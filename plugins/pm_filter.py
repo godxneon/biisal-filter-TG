@@ -160,18 +160,15 @@ async def next_page(bot, query):
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
     else:
-        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)}≽ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
+        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)} ⊳ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
                 for file in files
               ]
     btn.insert(0,[
-	InlineKeyboardButton(f'⇓ {search} ⇓', url=f"https://t.me/+jya36OloW1VkYzc1"),
         InlineKeyboardButton("⇓ 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾", callback_data=f"languages#{key}#{offset}#{req}"),
+        InlineKeyboardButton("𝖲𝖾𝖺𝗌𝗈𝗇", callback_data=f"seasons#{key}#{offset}#{req}"),
+        InlineKeyboardButton("𝖰𝗎𝖺𝗅𝗂𝗍𝗒 ⇓", callback_data=f"qualities#{key}#{offset}#{req}"),
         ])
-    btn.insert(1, [
-	InlineKeyboardButton("𝖲𝖾𝖺𝗌𝗈𝗇", callback_data=f"seasons#{key}#{offset}#{req}"),
-        InlineKeyboardButton("𝖥𝗂𝗅𝖾𝗌 𝖰𝗎𝖺𝗅𝗂𝗍𝗒 ⇓", callback_data=f"qualities#{key}#{offset}#{req}"),
-        ])
-
+	
     if 0 < offset <= int(MAX_BTN):
         off_set = 0
     elif offset == 0:
@@ -285,7 +282,7 @@ async def season_search(client: Client, query: CallbackQuery):
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
     else:
-        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)}≽ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
+        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)} ⊳ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
                 for file in files
 	      ]   
     btn.insert(0,[
@@ -378,7 +375,7 @@ async def quality_search(client: Client, query: CallbackQuery):
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
     else:
-        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)}≽ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
+        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)} ⊳ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
                 for file in files
 	      ]        
     btn.insert(0,[
@@ -475,12 +472,12 @@ async def lang_search(client: Client, query: CallbackQuery):
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
     else:
-        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)}≽ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
+        btn = [[InlineKeyboardButton(text=f"📁 {get_size(file.file_size)} ⊳ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}'),]
                 for file in files
 	      ]        
     btn.insert(0,[
-        InlineKeyboardButton(f'⇓ {search} ⇓', url=f"https://t.me/+jya36OloW1VkYzc1"),
-        InlineKeyboardButton("𝖥𝗂𝗅𝖾𝗌 𝖰𝗎𝖺𝗅𝗂𝗍𝗒", callback_data=f"qualities#{key}#{offset}#{req}"),
+        InlineKeyboardButton(f'⇓ {search}', url=f"https://t.me/+8jqKylneHvg1NzQ9"),
+        InlineKeyboardButton("𝖥𝗂𝗅𝖾𝗌 𝖰𝗎𝖺𝗅𝗂𝗍𝗒 ⇓", callback_data=f"qualities#{key}#{offset}#{req}"),
     ])
     if n_offset== '':
         btn.append(
@@ -1236,7 +1233,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         for file_num, file in enumerate(files, start=1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start={"pm_mode_" if pm_mode else ''}file_{ADMINS[0] if pm_mode else message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {formate_file_name(file.file_name)} ({file_num})</a></b>"""
     else:
-        btn = [[InlineKeyboardButton(text=f"🔗 {get_size(file.file_size)}≽ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{message.chat.id}_{file.file_id}'),]
+        btn = [[InlineKeyboardButton(text=f"➲ {get_size(file.file_size)} ⊳ {formate_file_name(file.file_name)}", url=f'https://telegram.dog/{temp.U_NAME}?start=file_{message.chat.id}_{file.file_id}'),]
                for file in files
               ]
     if offset != "":
