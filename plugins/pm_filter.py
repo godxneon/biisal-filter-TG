@@ -622,10 +622,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
             InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🎗️ ᴏᴡɴᴇʀ', callback_data='owner_info'),
+            InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info'),
         ],[
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
         ]]    
@@ -648,7 +648,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
             InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')
 	],[
-            InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start'),
+            InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd')	    
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -662,7 +662,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [
-            [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')],
+            [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -676,7 +676,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [[
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')],
-            [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')]]
+            [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FSUB_TXT,
@@ -685,7 +685,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "tts":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features'),
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features'),
         ]]
         await query.message.edit_text(
             text=script.TTS_TXT,
@@ -721,7 +721,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🎥 OTT Files #1', url='https://t.me/KLxFiles'),    
             InlineKeyboardButton('🎬 OTT Files #2', url='https://t.me/+SGl8g0cQgOQ0ZDE1')
 	],[    
-            InlineKeyboardButton('⪻ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ ⛓️', callback_data='start')
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ 📄', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -742,7 +742,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('sᴇʀᴠᴇʀ ɪɴꜰᴏ', callback_data='statx'),
             InlineKeyboardButton('sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='source')
         ],[
-            InlineKeyboardButton('⪻ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ ⛓️', callback_data='start')
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ ⛓️', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -757,7 +757,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 	)
     elif query.data == "discl":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about'),
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='about'),
             InlineKeyboardButton('👨🏻‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ', url='https://t.me/KLAdmin1Bot')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -768,7 +768,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "source":
         buttons = [[           
-            InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='about'),
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='about'),
 	    InlineKeyboardButton('🧑‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ', callback_data='owner_info')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -784,7 +784,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )	    
     elif query.data == "earn":
         buttons = [[
-            InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start'),
+            InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('🎭 ɢʀᴏᴜᴘs ʟɪɴᴋs', callback_data='comunity_link')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -795,7 +795,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
          )
     elif query.data == "telegraph":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)  
         await query.message.edit_text(
@@ -808,7 +808,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [
-            [InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')],
+            [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
