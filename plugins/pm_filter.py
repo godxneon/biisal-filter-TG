@@ -1209,7 +1209,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         message = msg
         search = message.text
         chat_id = message.chat.id
-	find = search.split(" ")
         search = ""
         removes = ["in","upload", "series", "full", "horror", "thriller", "mystery", "print", "file"]
         for x in find:
