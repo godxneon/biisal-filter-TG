@@ -1216,7 +1216,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 ai_sts = await msg.reply_text('<b>Ai is Cheking For Your Spelling. Please Wait.</b>')
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
-                    await ai_sts.edit(f'<b>Your Spelling <code><s>{search}</s></code>\n\n ❌ Ai Suggested <code>{is_misspelled}</code> ✅\nSo Im Searching for <code>{is_misspelled}</code></b>')
+                    await ai_sts.edit(f'<b>Your Spelling <s>{search}</s>❌\n\nAi Suggested {is_misspelled}✅</b>')
                     await asyncio.sleep(2)
                     msg.text = is_misspelled
                     await ai_sts.delete()
