@@ -1207,8 +1207,13 @@ async def ai_spell_check(wrong_name):
 async def auto_filter(client, msg, spoll=False , pm_mode = False):
     if not spoll:
         message = msg
+        if message.text.startswith("/"): return  # ignore commands
+        if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
+            return
+        if len(message.text) < 100:
         search = message.text
         chat_id = message.chat.id
+        find = search.split(" ")
         search = ""
         removes = ["in","upload", "series", "full", "horror", "thriller", "mystery", "print", "file"]
         for x in find:
