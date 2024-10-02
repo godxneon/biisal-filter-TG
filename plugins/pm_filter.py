@@ -1212,16 +1212,11 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
         settings = await get_settings(chat_id , pm_mode=pm_mode)
         files, offset, total_results = await get_search_results(search)
         if not files:
-            if settings["spell_check"]:
-                ai_sts = await msg.reply_text('<b>Ai is Cheking For Your Spelling. Please Wait.</b>')
+            if settings["spell_check"]: 
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
-                    await ai_sts.edit(f'<b>Your Spelling <s>{search}</s>❌\n\nAi Suggested {is_misspelled}✅</b>')
-                    await asyncio.sleep(2)
                     msg.text = is_misspelled
-                    await ai_sts.delete()
                     return await auto_filter(client, msg)
-                await ai_sts.delete()
                 return await advantage_spell_chok(msg)
             return
     else:
