@@ -1382,7 +1382,8 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 await message.delete()
             except:
                 pass
-    return            
+    return    
+	
 async def advantage_spell_chok(message):
     mv_id = message.id
     search = message.text
@@ -1416,19 +1417,3 @@ async def advantage_spell_chok(message):
         except:
             pass
         return
-    user = message.from_user.id if message.from_user else 0
-    buttons = [[
-        InlineKeyboardButton(text=movie.get('title'), callback_data=f"spol#{movie.movieID}#{user}")
-    ]
-        for movie in movies
-    ]
-    buttons.append(
-        [InlineKeyboardButton(text="🚫 ᴄʟᴏsᴇ 🚫", callback_data='close_data')]
-    )
-    d = await message.reply_text(text=script.CUDNT_FND.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id=message.id)
-    await asyncio.sleep(120)
-    await d.delete()
-    try:
-        await message.delete()
-    except:
-        pass
