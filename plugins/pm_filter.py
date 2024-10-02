@@ -1384,36 +1384,31 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 pass
     return    
 	
-async def advantage_spell_chok(message):
-    mv_id = message.id
-    search = message.text
-    chat_id = message.chat.id
-    settings = await get_settings(chat_id)
-    query = re.sub(
-        r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
-        "", message.text, flags=re.IGNORECASE)
-    query = query.strip() + " movie"
-    try:
-        movies = await get_poster(search, bulk=True)
-    except:
-        k = await message.reply(script.I_CUDNT.format(message.from_user.mention))
-        await asyncio.sleep(60)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
-        return
-    if not movies:
-        google = search.replace(" ", "+")
-        button = [[
-            InlineKeyboardButton("🔍 ᴄʜᴇᴄᴋ sᴘᴇʟʟɪɴɢ ᴏɴ ɢᴏᴏɢʟᴇ 🔍", url=f"https://www.google.com/search?q={google}")
-        ]]
-        k = await message.reply_text(text=script.I_CUDNT.format(search), reply_markup=InlineKeyboardMarkup(button))
-        await asyncio.sleep(120)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
-        return
+async def advantage_spell_chok(msg):
+    spl = f"<b>❝ 𝖧𝖾𝗒 : {msg.from_user.mention} 𝗌𝗈𝗆𝖾𝗍𝗁𝗂𝗇𝗀 𝖨𝗌 𝖶𝗋𝗈𝗇𝗀 ❞ \n\n➪ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 𝖮𝖿 𝖬𝗈𝗏𝗂𝖾 <u>𝖢𝗁𝖾𝖼𝗄 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 (𝗀𝗈𝗈𝗀𝗅𝖾)</u> 𝖡𝗎𝗍𝗍𝗈𝗇 𝖡𝖾𝗅𝗈𝗐 𝖶𝗂𝗅𝗅 𝖧𝖾𝗅𝗉 𝖸𝗈𝗎..𓁉\n\n➪ 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝖺𝗎𝗀𝖾 𝖥𝗋𝗈𝗆 𝖳𝗁𝖾 𝖫𝗂𝗌𝗍 𝖡𝖾𝗅𝗈𝗐 𝖳𝗈 𝖬𝗈𝗋𝖾 𝖧𝖾𝗅𝗉..☃︎</b>"        
+    message = msg
+    mv_rqst = msg.text
+    search = msg.text.replace(" ", "+")      
+    btn = [[
+        InlineKeyboardButton('𝗠𝘂𝘀𝘁 𝗥𝗲𝗮𝗱', 'mstd'),
+        InlineKeyboardButton('Rules', callback_data=f'rules#{search}'),
+        InlineKeyboardButton('Format', 'formt')
+        ],[
+        InlineKeyboardButton('ᴇɴɢ', callback_data=f'eng#{search}'),
+        InlineKeyboardButton('ᴍᴀʟ', callback_data=f'mal#{search}'),
+        InlineKeyboardButton('ʜɪɴ', callback_data=f'hin#{search}'),
+        InlineKeyboardButton('ᴛᴀᴍ', callback_data=f'tam#{search}'),
+        InlineKeyboardButton('ᴛᴇʟ', callback_data=f'tel#{search}')
+        ],[
+        InlineKeyboardButton(
+            text="📢 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗦𝗽𝗲𝗹𝗹𝗶𝗻𝗴 (𝗚𝗼𝗼𝗴𝗹𝗲) 📢",
+            url=f"https://google.com/search?q={search}"
+        )
+            
+    ]]
+    await msg.reply_photo(
+            photo="https://envs.sh/018.jpg", 
+            caption=spl.format(mv_rqst),
+            reply_markup=InlineKeyboardMarkup(btn))            
+    #await msg.delete()
+    return   
