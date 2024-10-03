@@ -421,18 +421,19 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
     _, key, offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)
-    btn  = []
-    for i in range(0, len(LANGUAGES)-1, 2):
-        btn.append([
-            InlineKeyboardButton(
-                text=LANGUAGES[i].title(),
-                callback_data=f"lang_search#{LANGUAGES[i].lower()}#{key}#0#{offset}#{req}"
-            ),
-            InlineKeyboardButton(
-                text=LANGUAGES[i+1].title(),
-                callback_data=f"lang_search#{LANGUAGES[i+1].lower()}#{key}#0#{offset}#{req}"
-            ),
-                    ])
+    btn  = [[
+	InlineKeyboardButton("ᴍᴀʟᴀʏᴀʟᴀᴍ", callback_data=f"fl#mal#{key}#0#{offset}#{req}"),
+        InlineKeyboardButton("ᴛᴀᴍɪʟ", callback_data=f"fl#tam#{key}#0#{offset}#{req}")
+    ],[        
+        InlineKeyboardButton("ᴛᴇʟᴜɢᴜ", callback_data=f"fl#tel#{key}#0#{offset}#{req}"),
+        InlineKeyboardButton("ʜɪɴᴅɪ", callback_data=f"fl#hin#{key}#0#{offset}#{req}")
+    ],[
+        InlineKeyboardButton("ᴇɴɢʟɪsʜ", callback_data=f"fl#eng#{key}#0#{offset}#{req}"),
+        InlineKeyboardButton("ᴋᴀɴɴᴀᴅᴀ", callback_data=f"fl#kan#{key}#0#{offset}#{req}")       
+    ],[
+        InlineKeyboardButton("ᴍᴜʟᴛɪ ᴀᴜᴅɪᴏ", callback_data=f"fl#multi#{key}#0#{offset}#{req}"),
+        InlineKeyboardButton("ᴅᴜᴀʟ ᴀᴜᴅɪᴏ", callback_data=f"fl#dual#{key}#0#{offset}#{req}")
+    ]]       	
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
     await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ʟᴀɴɢᴜᴀɢᴇ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
     return
