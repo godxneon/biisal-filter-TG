@@ -322,7 +322,7 @@ async def season_search(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^qualities#"))
 async def quality_cb_handler(client: Client, query: CallbackQuery):
-    _, key, offset, req = query.data.split("#")
+    _, key, offset, orginal_offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)
     btn= []
