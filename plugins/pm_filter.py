@@ -1,3 +1,5 @@
+
+
 import asyncio
 import re
 import math
@@ -233,7 +235,7 @@ async def seasons_cb_handler(client: Client, query: CallbackQuery):
         ])
 
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ sᴇᴀsᴏɴ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
+    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^season_search#"))
@@ -342,7 +344,7 @@ async def quality_cb_handler(client: Client, query: CallbackQuery):
             ),
         ])
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ǫᴜᴀʟɪᴛʏ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
+    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^quality_search#"))
@@ -434,7 +436,7 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
             ),
                     ])
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ʟᴀɴɢᴜᴀɢᴇ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
+    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^lang_search#"))
