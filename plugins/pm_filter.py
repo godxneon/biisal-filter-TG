@@ -1,5 +1,3 @@
-
-
 import asyncio
 import re
 import math
@@ -205,7 +203,7 @@ async def next_page(bot, query):
         await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
         return        
     try:
-        await query.edit_message_reply_markup(
+        await query.message.edit_text(cap
             reply_markup=InlineKeyboardMarkup(btn)
         )
     except MessageNotModified:
@@ -235,7 +233,7 @@ async def seasons_cb_handler(client: Client, query: CallbackQuery):
         ])
 
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ sᴇᴀsᴏɴ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^season_search#"))
@@ -344,7 +342,7 @@ async def quality_cb_handler(client: Client, query: CallbackQuery):
             ),
         ])
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ǫᴜᴀʟɪᴛʏ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^quality_search#"))
@@ -436,7 +434,7 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
             ),
                     ])
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ʟᴀɴɢᴜᴀɢᴇ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^lang_search#"))
