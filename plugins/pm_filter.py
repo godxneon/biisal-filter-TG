@@ -570,6 +570,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)    
 
+    elif query.data.startswith("langback"):
+        _, search = query.data.split("#")  
+        spl = f"<b>❝ 𝖧𝖾𝗒 : {query.from_user.mention} 𝗌𝗈𝗆𝖾𝗍𝗁𝗂𝗇𝗀 𝖨𝗌 𝖶𝗋𝗈𝗇𝗀 ❞ \n\n➪ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 𝖮𝖿 𝖬𝗈𝗏𝗂𝖾 <u>𝖢𝗁𝖾𝖼𝗄 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 (𝗀𝗈𝗈𝗀𝗅𝖾)</u> 𝖡𝗎𝗍𝗍𝗈𝗇 𝖡𝖾𝗅𝗈𝗐 𝖶𝗂𝗅𝗅 𝖧𝖾𝗅𝗉 𝖸𝗈𝗎..𓁉\n\n➪ 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝖺𝗎𝗀𝖾 𝖥𝗋𝗈𝗆 𝖳𝗁𝖾 𝖫𝗂𝗌𝗍 𝖡𝖾𝗅𝗈𝗐 𝖳𝗈 𝖬𝗈𝗋𝖾 𝖧𝖾𝗅𝗉..☃︎</b>"                    
+        btn = [[
+           InlineKeyboardButton('𝗠𝘂𝘀𝘁 𝗥𝗲𝗮𝗱', 'mstd'),
+           InlineKeyboardButton('Rules', callback_data=f'rules#{search}'),
+           InlineKeyboardButton('Format', 'formt')
+        ],[
+           InlineKeyboardButton('ᴇɴɢ', callback_data=f'eng#{search}'),
+           InlineKeyboardButton('ᴍᴀʟ', callback_data=f'mal#{search}'),
+           InlineKeyboardButton('ʜɪɴ', callback_data=f'hin#{search}'),
+           InlineKeyboardButton('ᴛᴀᴍ', callback_data=f'tam#{search}'),
+           InlineKeyboardButton('ᴛᴇʟ', callback_data=f'tel#{search}')
+        ],[
+           InlineKeyboardButton(text="📢 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗦𝗽𝗲𝗹𝗹𝗶𝗻𝗴 (𝗚𝗼𝗼𝗴𝗹𝗲) 📢", url=f"https://google.com/search?q={search}")            
+        ]]
+        await query.message.edit_text(spl, reply_markup=InlineKeyboardMarkup(btn))
+        
     elif query.data.startswith("checksub"):
         ident, file_id , grp_id = query.data.split("#")
         if grp_id != 'None' or grp_id != '':
