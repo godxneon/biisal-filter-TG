@@ -230,7 +230,9 @@ async def seasons_cb_handler(client: Client, query: CallbackQuery):
                 callback_data=f"season_search#{SEASONS[i+2].lower()}#{key}#0#{offset}#{req}"
             ),
         ])
-
+    btn.insert(0,[
+        InlineKeyboardButton("↓Select Your Season 🤭↓", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+        ])
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
     await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
@@ -339,6 +341,9 @@ async def quality_cb_handler(client: Client, query: CallbackQuery):
                 callback_data=f"quality_search#{QUALITIES[i+2].lower()}#{key}#0#{offset}#{req}"
             ),
         ])
+    btn.insert(0,[
+        InlineKeyboardButton("↓Select Your File Quality 🥳↓", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+        ])    
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
     await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
@@ -429,7 +434,10 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
                 text=LANGUAGES[i+1].title(),
                 callback_data=f"lang_search#{LANGUAGES[i+1].lower()}#{key}#0#{offset}#{req}"
             ),
-                    ])
+        ])
+    btn.insert(0,[
+        InlineKeyboardButton("↓Select Your Languages 🥰↓", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+        ])    
     btn.append([InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
     await query.edit_message_reply_markup( reply_markup=InlineKeyboardMarkup(btn))
     return
