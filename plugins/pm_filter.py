@@ -427,11 +427,11 @@ async def languages_cb_handler(client: Client, query: CallbackQuery):
     for i in range(0, len(LANGUAGES)-1, 2):
         btn.append([
             InlineKeyboardButton(
-                text=◈ LANGUAGES[i].title(),
+                text=LANGUAGES[i].title(),
                 callback_data=f"lang_search#{LANGUAGES[i].lower()}#{key}#0#{offset}#{req}"
             ),
             InlineKeyboardButton(
-                text=◈ LANGUAGES[i+1].title(),
+                text=LANGUAGES[i+1].title(),
                 callback_data=f"lang_search#{LANGUAGES[i+1].lower()}#{key}#0#{offset}#{req}"
             ),
         ])
