@@ -1157,27 +1157,28 @@ async def cb_handler(client: Client, query: CallbackQuery):
         link = f"https://telegram.me/{temp.U_NAME}?start=allfiles_{group_id}-{message_id}"
         await query.answer(url=link)
         return
+
     elif query.data.startswith("update_post_mode"):
         await query.answer('Please Choose From The Given Options.', show_alert=True)
+	    
     elif query.data.startswith("change_update_post_mode"):
         post_mode = await db.update_post_mode_handle(index=1)
         btn = [[
         InlineKeyboardButton("ᴘᴏsᴛ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
         InlineKeyboardButton(f"{'sɪɴɢʟᴇ' if post_mode.get('singel_post_mode', True) else 'ᴍᴜʟᴛɪ'} ᴍᴏᴅᴇ", callback_data="change_update_post_mode"),
-    ],
-    [
+    ],[
         InlineKeyboardButton("ᴜᴘʟᴏᴀᴅ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
         InlineKeyboardButton(f"{'ᴀʟʟ' if post_mode.get('all_files_post_mode', True) else 'ɴᴇᴡ'} ғɪʟᴇs", callback_data="all_files_post_mode"),
     ]]
         reply_markup = InlineKeyboardMarkup(btn)
         await query.message.edit_reply_markup(reply_markup)
+	    
     elif query.data.startswith("all_files_post_mode"):
         post_mode = await db.update_post_mode_handle(index=2)
         btn = [[
         InlineKeyboardButton("ᴘᴏsᴛ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
         InlineKeyboardButton(f"{'sɪɴɢʟᴇ' if post_mode.get('singel_post_mode', True) else 'ᴍᴜʟᴛɪ'} ᴍᴏᴅᴇ", callback_data="change_update_post_mode"),
-    ],
-    [
+    ],[
         InlineKeyboardButton("ᴜᴘʟᴏᴀᴅ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
         InlineKeyboardButton(f"{'ᴀʟʟ' if post_mode.get('all_files_post_mode', True) else 'ɴᴇᴡ'} ғɪʟᴇs", callback_data="all_files_post_mode"),
     ]]
@@ -1328,7 +1329,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {len(files)} Files.\n\n```✍️ Note: This File & Message Will Deleted within 4 Mins..!```</b>"
+        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {len(files)} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
