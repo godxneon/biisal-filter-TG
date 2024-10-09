@@ -25,17 +25,23 @@ FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
 
-@Client.on_message(filters.private & filters.text)
-async def pm_search(client, message):
-    if PM_SEARCH:
+@Client.on_message(filters.group | filters.private) 
+async def give_filter(client, message):
+    k = await global_filters(client, message)
+    if k == False:
         await auto_filter(client, message)
-    else:
-        files, n_offset, total = await get_search_results(message.text)
-        if int(total) != 0:
-            btn = [[
-                InlineKeyboardButton("Here", url=f"https://t.me/+8jqKylneHvg1NzQ9")
-            ]]
-            await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
+
+#@Client.on_message(filters.private & filters.text)
+#async def pm_search(client, message):
+    #if PM_SEARCH:
+        #await auto_filter(client, message)
+    #else:
+        #files, n_offset, total = await get_search_results(message.text)
+        #if int(total) != 0:
+            #btn = [[
+                #InlineKeyboardButton("Here", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+            #]]
+            #await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
@@ -1341,7 +1347,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {len(files)} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {total} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
