@@ -1345,7 +1345,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {total} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {total_results} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
