@@ -8,7 +8,7 @@ import psutil, shutil, sys
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, PREMIUM_POINT, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
+from info import SETTINGS, PREMIUM_POINT, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, PM_SEARCH, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
@@ -24,6 +24,18 @@ BUTTONS = {}
 FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
+
+@Client.on_message(filters.private & filters.text)
+async def pm_search(client, message):
+    if PM_SEARCH:
+        await auto_filter(client, message)
+    else:
+        files, n_offset, total = await get_search_results(message.text)
+        if int(total) != 0:
+            btn = [[
+                InlineKeyboardButton("Here", url=FILMS_LINK)
+            ]]
+            await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
