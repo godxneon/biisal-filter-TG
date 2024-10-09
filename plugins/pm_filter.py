@@ -27,8 +27,6 @@ BOT_START_TIME = time.time()
 
 @Client.on_message(filters.group | filters.private) 
 async def give_filter(client, message):
-    k = await global_filters(client, message)
-    if k == False:
         await auto_filter(client, message)
 
 #@Client.on_message(filters.private & filters.text)
