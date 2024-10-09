@@ -24,29 +24,6 @@ BUTTONS = {}
 FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
-
-@Client.on_message(filters.private & filters.text & filters.incoming)
-async def pm_search(client, message):
-    if str(message.text).startswith('/'):
-        return 
-    link , ispm = await db.get_set_grp_links(index=0)
-    if ispm:
-        if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
-            return await auto_filter(client, message , pm_mode=True)
-        await auto_filter(client, message , pm_mode=True)
-    else:
-        await message.reply_text(
-        text=f"<b>Nᴀᴍᴀsᴛʜᴇ {message.from_user.mention} Jɪ 😍 ,\n\nɪ ᴄᴀɴᴛ ɢɪᴠᴇ ᴍᴏᴠɪᴇ ʜᴇʀᴇ\nɪ ᴡᴏʀᴋ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘs</b>",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ 😊", url=link
-                    )
-                ]
-            ]
-        ),
-        )
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
@@ -1351,7 +1328,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 Here is What I Found In My Database For Your Query : {search} Have {len(files)} Files.</b>\n\n<blockquote><b>✍️ Note: This File & Message Will Deleted within 4 Mins..!</b></blockquote>"
+        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {len(files)} Files.\n\n```✍️ Note: This File & Message Will Deleted within 4 Mins..!```</b>"
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
