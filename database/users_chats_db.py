@@ -1,7 +1,7 @@
 import datetime
 import pytz
 from motor.motor_asyncio import AsyncIOMotorClient
-from info import SETTINGS, PREMIUM_POINT, REF_PREMIUM, DATABASE_NAME, DATABASE_URI, DEFAULT_POST_MODE
+from info import SETTINGS, IS_PM_SEARCH, PREMIUM_POINT, REF_PREMIUM, DATABASE_NAME, DATABASE_URI, DEFAULT_POST_MODE
 # from utils import get_seconds
 client = AsyncIOMotorClient(DATABASE_URI)
 mydb = client[DATABASE_NAME]
@@ -329,6 +329,20 @@ class Database:
         else:
             return False
 
+    async def get_pm_search_status(self, bot_id):
+        bot = await self.botcol.find_one({'id': bot_id})
+        if bot and bot.get('bot_pm_search'):
+            return bot['bot_pm_search']
+        else:
+            return IS_PM_SEARCH
+
+    async def update_pm_search_status(self, bot_id, enable):
+        bot = await self.botcol.find_one({'id': int(bot_id)})
+        if bot:
+            await self.botcol.update_one({'id': int(bot_id)}, {'$set': {'bot_pm_search': enable}})
+        else:
+            await self.botcol.insert_one({'id': int(bot_id), 'bot_pm_search': enable})
+            
     async def movies_update_channel_id(self , id=None):
         if id is None:
             myLinks = await self.movies_update_channel.find_one({})
