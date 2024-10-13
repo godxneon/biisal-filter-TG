@@ -25,22 +25,22 @@ FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
 
-@Client.on_message(filters.group | filters.private) 
-async def give_filter(client, message):
+@Client.on_message(filters.private & filters.text & filters.incoming)
+async def pm_search(client, message):
+    await mdb.update_top_messages(message.from_user.id, message.text)
+    bot_id = client.me.id
+    user_id = message.from_user.id    
+ #   if user_id in ADMINS: return
+    if str(message.text).startswith('/'):
+        return
+    if await db.get_pm_search_status(bot_id):
+        if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
+            return await auto_filter(client, message)
         await auto_filter(client, message)
-
-#@Client.on_message(filters.private & filters.text)
-#async def pm_search(client, message):
-    #if PM_SEARCH:
-        #await auto_filter(client, message)
-    #else:
-        #files, n_offset, total = await get_search_results(message.text)
-        #if int(total) != 0:
-            #btn = [[
-                #InlineKeyboardButton("Here", url=f"https://t.me/+8jqKylneHvg1NzQ9")
-            #]]
-            #await message.reply_text(f'Total {total} results found in this group', reply_markup=InlineKeyboardMarkup(btn))
-    
+    else:
+        await message.reply_text("<b><i>ɪ ᴀᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ʜᴇʀᴇ. ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇꜱ ɪɴ ᴏᴜʀ ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ.</i></b>",
+                                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ", url=f'https://t.me/JisshuMovieZone')]]))
+        
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
     user_id = message.from_user.id if message.from_user else None
