@@ -21,7 +21,7 @@ class Database:
         self.grp_and_ids = fsubs.grp_and_ids
         self.movies_update_channel = mydb.movies_update_channel
         self.update_post_mode = mydb.update_post_mode
-        
+        self.botcol = mydb.botcol
     def new_user(self, id, name):
         return dict(
             id = id,
