@@ -69,7 +69,6 @@ CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id f
 TEXT = environ.get("APPROVED_WELCOME_TEXT", f"{script.APPROVED_TEXT}")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 IS_PM_SEARCH = is_enabled('IS_PM_SEARCH', False)
-PM_SEARCH = is_enabled('PM_SEARCH', False)
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
 PORT = os.environ.get('PORT', '8080')
 MAX_BTN = int(environ.get('MAX_BTN', '7'))
