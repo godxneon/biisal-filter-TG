@@ -683,7 +683,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "admincmd":
         #if user isnt admin then return
-        await query.message.reply_voice("https://envs.sh/TnI.oga") 
+        kd = await query.message.reply_voice("https://envs.sh/TnI.oga") 
+        await asyncio.sleep(15)
+        await kd.delete()
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [
