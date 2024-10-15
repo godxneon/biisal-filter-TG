@@ -685,8 +685,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "admincmd":
-        #if user isnt admin then return
-        kd = await query.message.reply_voice("https://envs.sh/TnI.oga")       
+        button_data = f"{query.message.id}-{query.data}"
+        await query.message.reply_voice("https://envs.sh/TnI.oga")       
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         else:
@@ -702,8 +702,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
         )
-        await asyncio.sleep(20)
-        await kd.delete()
+      #  await asyncio.sleep(20)
+     #   await kd.delete()
     elif query.data == "fsub":
         #if user isnt admin then return
         if not query.from_user.id in ADMINS:
