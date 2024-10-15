@@ -862,8 +862,6 @@ async def set_shortner_3(c, m):
 
 @Client.on_message(filters.command("latest") & filters.incoming)
 async def latest(client, message):
-    xd = await message.reply_text("{text}")      
-    
     text_data = infile.find_one({"_id": "file_text"})
     if not text_data:
         return
@@ -871,7 +869,7 @@ async def latest(client, message):
     if text == "off":
         return
     else:
-        mc = await xd.edit_text(f"{text}")
+        mc = await message.reply_text(f"{text}")
         await asyncio.sleep(59)
         await mc.delete()
 
