@@ -862,20 +862,22 @@ async def set_shortner_3(c, m):
 
 @Client.on_message(filters.command("latest") & filters.incoming)
 async def latest(client, message):
+    await message.react("😍")
     text_data = infile.find_one({"_id": "file_text"})
     if not text_data:
         return
     text = text_data.get(f"text")
     if text == "off":
+        await message.reply("⚙ Latest Update Soon...")
         return
     else:
         mc = await message.reply_text(f"{text}")
-        await asyncio.sleep(59)
+        await asyncio.sleep(70)
         await mc.delete()
+        await message.delete()
 
 @Client.on_message(filters.command('file_text') & filters.user(ADMINS))
 async def set_file_text_command(client, message):
-    await message.react("😍")
     text_data = infile.find_one({"_id": "file_text"})    
     if len(message.command) == 1:        
         if not text_data:
