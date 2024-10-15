@@ -22,6 +22,8 @@ from info import *
 import traceback
 logger = logging.getLogger(__name__)
 
+import pymongo
+
 inclient = pymongo.MongoClient(DATABASE_URI)
 indb = inclient[DATABASE_NAME]
 
