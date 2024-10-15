@@ -675,15 +675,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd')	    
         ]] 
-        reply_markup = InlineKeyboardMarkup(buttons)
-	await query.message.reply_chat_action("typing")
-        m=await query.message.reply_text("◈◇◇")
-        await asyncio.sleep(2)
-        n=await m.edit("◈◈◇")
-        await asyncio.sleep(2)
-        o=await n.edit("◈◈◈")
-        await asyncio.sleep(2)
-        await o.delete()
+        reply_markup = InlineKeyboardMarkup(buttons)	
         await query.message.edit_text(                     
             text=script.HELP_TXT,
             reply_markup=reply_markup,
