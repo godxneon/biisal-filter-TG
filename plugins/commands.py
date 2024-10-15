@@ -22,6 +22,11 @@ from info import *
 import traceback
 logger = logging.getLogger(__name__)
 
+inclient = pymongo.MongoClient(DATABASE_URI)
+indb = inclient[DATABASE_NAME]
+
+infile = indb['file_reply_text']
+
 # CHECK COMPONENTS FOLDER FOR MORE COMMANDS
 @Client.on_message(filters.command("invite") & filters.private & filters.user(ADMINS))
 async def invite(client, message):
@@ -853,6 +858,56 @@ async def set_shortner_3(c, m):
         await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
         await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/bisal_files>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
 
+@Client.on_message(filters.command("latest") & filters.incoming)
+async def latest(client, message):
+    xd = await message.reply_text("{text}")      
+    
+    text_data = infile.find_one({"_id": "file_text"})
+    if not text_data:
+        return
+    text = text_data.get(f"text")
+    if text == "off":
+        return
+    else:
+        mc = await xd.edit_text(f"{text}")
+        await asyncio.sleep(59)
+        await mc.delete()
+
+@Client.on_message(filters.command('file_text') & filters.user(ADMINS))
+async def set_file_text_command(client, message):
+    await message.react("😍")
+    text_data = infile.find_one({"_id": "file_text"})    
+    if len(message.command) == 1:        
+        if not text_data:
+            await message.reply("You don't have any text")
+            return
+        text = text_data.get("text")
+        if text == "off":
+            await message.reply("You don't have any text")
+            return
+        else:
+            await message.reply(f"current text is\n\n {text}")
+            return 
+    else:
+        text = message.text.split(" ", 1)[1]
+        if text == "off":
+            if not text_data:                    
+                await message.reply(f"Text have Deleted.")
+            else:
+                infile.update_one(
+                    {"_id": "file_text"},
+                    {"$set": {"text": "off"}},
+                    upsert=True
+                )
+                await message.reply("Text have Deleted.")
+        else:
+            infile.update_one(
+                    {"_id": "file_text"},
+                    {"$set": {"text": text}},
+                    upsert=True
+            )
+            await message.reply("Saved buddy 😁.")
+            
 @Client.on_message(filters.command('set_time_2'))
 async def set_time_2(client, message):
     userid = message.from_user.id if message.from_user else None
