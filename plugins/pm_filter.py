@@ -25,6 +25,9 @@ BUTTONS = {}
 FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
+CLICK = {}
+max_clicks = 1
+
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_search(client, message):
@@ -683,9 +686,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "admincmd":
         #if user isnt admin then return
-        kd = await query.message.reply_voice("https://envs.sh/TnI.oga")         
+        kd = await query.message.reply_voice("https://envs.sh/TnI.oga")       
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
+        else:
+            if button_data in CLICK and CLICK[button_data] >= max_clicks:
+                await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)
+                return
         buttons = [
             [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
