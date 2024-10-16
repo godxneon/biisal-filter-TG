@@ -685,17 +685,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "admincmd":
-        button_data = f"{query.message.id}-{query.data}" 
-        CLICK[button_data] = CLICK.get(button_data, 0) + 1   
+        button_data = f"{query.message.id}-{query.data}" 	    
         await query.message.reply_voice("https://envs.sh/TnI.oga")  
         if button_data in CLICK and CLICK[button_data] >= max_clicks:
             return await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)                                   
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
-        buttons = [
+        button_data = [
             [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
-        reply_markup = InlineKeyboardMarkup(buttons)	        
+        reply_markup = InlineKeyboardMarkup(button_data)
+        CLICK[button_data] = CLICK.get(button_data, 0) + 1   	        
         await query.message.edit_text(
             text=script.ADMIN_CMD_TXT,
             reply_markup=reply_markup,
