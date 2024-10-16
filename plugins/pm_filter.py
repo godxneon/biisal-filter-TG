@@ -687,10 +687,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "admincmd":
         button_data = f"{query.message.id}-{query.data}"        
         await query.message.reply_voice("https://envs.sh/TnI.oga")    
-        if button_data in CLICK and CLICK[button_data] >= max_clicks:
+        if not query.from_user.id in ADMINS button_data in CLICK and CLICK[button_data] >= max_clicks:
             await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)
         return
-        if not query.from_user.id in ADMINS:
         buttons = [
             [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
