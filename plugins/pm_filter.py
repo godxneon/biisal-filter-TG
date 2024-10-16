@@ -691,7 +691,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)
         return
         if not query.from_user.id in ADMINS:
-            return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [
             [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
