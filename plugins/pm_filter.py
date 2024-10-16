@@ -700,6 +700,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
         )
+        CLICK[button_data] = CLICK.get(button_data, 0) + 1
       #  await asyncio.sleep(20)
      #   await kd.delete()
     elif query.data == "fsub":
