@@ -633,6 +633,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         _, lang = query.data.split("#")
         await query.answer(f"ʏᴏᴜ sᴇʟᴇᴄᴛᴇᴅ {lang.title()} ʟᴀɴɢᴜᴀɢᴇ ⚡️", show_alert=True)
 
+	     #   button_data = f"{query.message.id}-{query.data}" 
+	#await query.message.reply_voice("https://envs.sh/TnI.oga")  
+       # if button_data in CLICK and CLICK[button_data] >= max_clicks:
+            #return await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)                                   	    
+      
     elif query.data == "statx":
         currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
         total, used, free = shutil.disk_usage(".")
@@ -685,22 +690,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "admincmd":
-        button_data = f"{query.message.id}-{query.data}" 
-	await query.message.reply_voice("https://envs.sh/TnI.oga")  
-        if button_data in CLICK and CLICK[button_data] >= max_clicks:
-            return await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)                                   	    
+	if not query.from_user.id in ADMINS:
+            return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [
             [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')],
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
-        CLICK[button_data] = CLICK.get(button_data, 0) + 1   	        
         await query.message.edit_text(
             text=script.ADMIN_CMD_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
 	)        
-	#  await asyncio.sleep(20)
-     #   await kd.delete()
     elif query.data == "fsub":
         #if user isnt admin then return
         if not query.from_user.id in ADMINS:
