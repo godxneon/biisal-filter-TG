@@ -47,6 +47,7 @@ async def get_imdb(file_name):
             genres=imdb.get('genres'),
             description=imdb.get('plot'),
             file_name=file_name,
+            movie_name=movie_name
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None 
@@ -59,7 +60,8 @@ async def check_qualities(text, qualities: list):
     quality = ", ".join(quality)
     return quality[:-2] if quality.endswith(", ") else quality
 
-async def send_movie_updates(bot, file_name, caption, file_id): 
+async def send_movie_updates(bot, file_name, caption, file_id):
+    caption = await get_imdb(file_name)
     try:
         year_match = re.search(r"\b(19|20)\d{2}\b", caption)
         year = year_match.group(0) if year_match else None      
