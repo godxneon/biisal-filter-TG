@@ -94,6 +94,7 @@ User - {}"""
 🎭 ɢᴇɴʀᴇs - {genres}
 🎖 ʀᴀᴛɪɴɢ - <a href={url}/ratings>{rating}</a> / 10 (ʙᴀsᴇᴅ ᴏɴ {votes} ᴜsᴇʀ ʀᴀᴛɪɴɢ.)
 📆 ʏᴇᴀʀ - {release_date}
+🌟 runtime - {runtime}
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>"""
 
     FILE_CAPTION = """<b>@Team_KL ~ {file_name}
