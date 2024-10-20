@@ -62,7 +62,7 @@ request_channel = environ.get('REQUEST_CHANNEL', '-1002079370592')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
 UPI_PAY_LOGS = int(environ.get('UPI_PAY_LOGS', '-1008000054678'))
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001845390899'))
-
+IS_SEND_MOVIE_UPDATE = is_enabled('IS_SEND_MOVIE_UPDATE', False)
 #Auto Approve 
 APICS = (environ.get('APICS', 'https://telegra.ph/file/251b7e8892f3d6fca2536.jpg https://telegra.ph/file/4fc1332714da789d5d960.jpg')).split()
 CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id for app_chat_id in environ.get('CHAT_ID', '-1001890281934 -1001814422524').split()]
