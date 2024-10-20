@@ -7,6 +7,17 @@ import re
 from Script import script
 from database.users_chats_db import db
 
+MOVIES_UPDATE_TXT = """<b>#New_File_Added
+
+📻 Title: {movie_name}
+🔊 Language: English
+🌟 Rating: {rating} / 10
+📀 RunTime: {duration}
+🎥 Quality: Proper HDRip
+
+<blockquote>🎭 Genres: {genres}</blockquote>
+<blockquote>{description}</blockquote></b>"""
+
 processed_movies = set()
 media_filter = filters.document | filters.video
 
@@ -30,12 +41,13 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        caption = script.MOVIES_UPDATE_TXT.format(
+        caption = MOVIES_UPDATE_TXT.format(
             title=imdb.get('title'),
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
             description=imdb.get('plot'),
             file_name=file_name
+            movie_name=movie_name
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None 
@@ -77,7 +89,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
+        #caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
             [InlineKeyboardButton('Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}')]
