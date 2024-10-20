@@ -10,7 +10,7 @@ from database.users_chats_db import db
 MOVIES_UPDATE_TXT = """<b>#New_File_Added
 
 📻 Title: {movie_name}
-🔊 Language: English
+🔊 Language: {language} 
 🌟 Rating: {rating} / 10
 📀 RunTime: {duration}
 🎥 Quality: Proper HDRip
@@ -46,8 +46,9 @@ async def get_imdb(file_name):
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
             description=imdb.get('plot'),
-            file_name=file_name
-            movie_name=movie_name
+            file_name=file_name,
+            movie_name=movie_name,
+            language=language
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None 
@@ -97,11 +98,11 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
             await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=poster_url, caption=caption_message, reply_markup=reply_markup)
+                                 photo=poster_url, caption=caption, reply_markup=reply_markup)
         else:
             no_poster = "https://envs.sh/pTu.jpg"
             await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
+                                 photo=no_poster, caption=caption, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
