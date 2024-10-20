@@ -30,12 +30,14 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        title=imdb.get('title'),
-        rating=imdb.get('rating'),
-        genres=imdb.get('genres'),
-        description=imdb.get('plot'),
-        return imdb.get('poster')
-    return None
+        caption = (
+            title=imdb.get('title'),
+            rating=imdb.get('rating'),
+            genres=imdb.get('genres'),
+            description=imdb.get('plot')
+        )
+    return imdb.get('title'), imdb.get('poster'), caption
+    return None, None, None 
     
 async def movie_name_format(file_name):
   filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
@@ -49,7 +51,7 @@ async def check_qualities(text, qualities: list):
     quality = ", ".join(quality)
     return quality[:-2] if quality.endswith(", ") else quality
 
-async def send_movie_updates(bot, file_name, caption, file_id):
+async def send_movie_updates(bot, file_name, caption, file_id): 
     try:
         year_match = re.search(r"\b(19|20)\d{2}\b", caption)
         year = year_match.group(0) if year_match else None      
@@ -68,7 +70,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
         quality = await check_qualities(caption.lower(), qualities) or "HDRip"
         language = ""
-        nb_languages = ["Hindi", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Malayalam", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual", "Multi"]    
+        nb_languages = ["Malayalam", "Hindi", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual", "Multi"]    
         for lang in nb_languages:
             if lang.lower() in caption.lower():
                 language += f"{lang}, "
@@ -78,6 +80,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
+        caption = await get_imdb(file_name)
         caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
