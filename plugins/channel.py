@@ -40,6 +40,7 @@ async def get_imdb(file_name , post_mode):
             title=imdb.get('title'),
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
+            runtime=imdb.get('runtime'),
             description=imdb.get('plot'),
             file_name=file_name
         )
