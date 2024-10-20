@@ -60,7 +60,6 @@ async def check_qualities(text, qualities: list):
     return quality[:-2] if quality.endswith(", ") else quality
 
 async def send_movie_updates(bot, file_name, caption, file_id):
-    caption = await get_imdb(file_name)
     try:
         year_match = re.search(r"\b(19|20)\d{2}\b", caption)
         year = year_match.group(0) if year_match else None      
@@ -88,7 +87,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         if movie_name in processed_movies:
             return 
         processed_movies.add(movie_name)    
-        poster_url = await get_imdb(movie_name, caption)
+        poster_url = await get_imdb(movie_name)
         caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
