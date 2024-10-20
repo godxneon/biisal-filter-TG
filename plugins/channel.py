@@ -35,7 +35,6 @@ async def get_imdb(file_name):
             genres=imdb.get('genres'),
             duration=imdb.get('runtimes'),
             description=imdb.get('plot')
-        )
         return imdb.get('poster'), caption_message
     return None
 
