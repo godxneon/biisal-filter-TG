@@ -3,9 +3,9 @@ class script(object):
     START_TXT = """<b>{} {},
 I Am A Powerful AutoFilter Bot You Can Use Me In Your Group I Will Give Movies Or Series In Your Group And PM.
 
-➪ Latest New Releases /list</b>"""
+<spoiler>➪ Latest New Releases /list</spoiler></b>"""
     
-    HELP_TXT = """<b>ʜᴇʀᴇ ɪs ᴀ ʙʀɪᴇғ ᴅᴇᴛᴀɪʟs ᴀʙᴏᴜᴛ sᴏᴍᴇ ᴏғ ᴛʜᴇ ғᴇᴀᴛᴜʀᴇs ᴏғ ᴍɪɴᴇ...</b>"""
+    HELP_TXT = """<b>Here Is A Brief Details About Some Of The Features Of Mine.</b>"""
     
     TELE_TXT = """<b>/telegraph - sᴇɴᴅ ᴍᴇ ᴘɪᴄᴛᴜʀᴇ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ (5ᴍʙ)
 
