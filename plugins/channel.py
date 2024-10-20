@@ -26,17 +26,20 @@ async def movie_name_format(file_name):
   filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
   return filename
 
-async def get_imdb(file_name):
-    imdb_file_name = await movie_name_format(file_name)
+async def get_imdb(file_name , post_mode):
+    imdb_file_name = name_format(file_name)
     imdb = await get_poster(imdb_file_name)
+    file_name = f'File Name : <code>{formate_file_name(file_name)}</code>' if post_mode.get('singel_post_mode' , True) else ''
     if imdb:
+        caption = script.MOVIES_UPDATE_TXT.format(
             title=imdb.get('title'),
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
-            duration=imdb.get('runtimes'),
-            description=imdb.get('plot')
-        return imdb.get('poster')
-    return None
+            description=imdb.get('plot'),
+            file_name=file_name
+        )
+        return imdb.get('poster'), caption
+    return None, None, None
 
 async def check_qualities(text, qualities: list):
     quality = []
@@ -75,7 +78,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\nRating: {rating}\n\nGenre: {genres}\n{description}"    
+       # caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\nRating: {rating}\n\nGenre: {genres}\n{description}"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
             [InlineKeyboardButton('Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}')]
@@ -83,11 +86,11 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
             await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=poster_url, caption=caption_message, reply_markup=reply_markup)
+                                 photo=poster_url, caption=caption, reply_markup=reply_markup)
         else:
             no_poster = "https://telegra.ph/file/88d845b4f8a024a71465d.jpg"
             await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
+                                 photo=no_poster, caption=caption, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
