@@ -263,10 +263,12 @@ User - {}"""
 
     MOVIES_UPDATE_TXT = """<b>#New_File_Added
 
-Title: {title}
-Rating: {rating}
-Genre: {genres}
+📻 Title: {title}
+🔊 Language: English
+🎖 Rating: {rating} / 10
+🎥 Quality: Proper HDRip
 
-Description: {description}
+<blockquote>🎭 Genres: #{genres}</blockquote>
+<blockquote>{description}</blockquote>
 
 {file_name}</b>"""
