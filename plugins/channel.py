@@ -24,24 +24,14 @@ async def media(bot, message):
 
 async def movie_name_format(file_name):
   filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
-  return filename
-
+  return filename 
+    
 async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        caption = (
-            title=imdb.get('title'),
-            rating=imdb.get('rating'),
-            genres=imdb.get('genres'),
-            description=imdb.get('plot')
-        )
-    return imdb.get('title'), imdb.get('poster'), caption
-    return None, None, None 
-    
-async def movie_name_format(file_name):
-  filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
-  return filename
+        return imdb.get('poster'), rating=imdb.get('rating'), genres=imdb.get('genres'), description=imdb.get('plot')
+    return None
 
 async def check_qualities(text, qualities: list):
     quality = []
@@ -80,7 +70,6 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption = await get_imdb(file_name)
         caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
