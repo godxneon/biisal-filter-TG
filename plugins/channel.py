@@ -53,9 +53,11 @@ async def get_imdb(file_name, caption):
 
 async def send_movie_updates(bot, file_name, caption, file_id):
     imdb_title, poster_url, caption = await get_imdb(file_name) 
+   # if not post_mode.get('singel_post_mode' , True):
         if imdb_title in processed_movies:
-            return 
-        processed_movies.add(imdb_title)    
+            return
+        processed_movies.add(imdb_title) 
+        #processed_movies.add(imdb_title)    
         poster_url = await get_imdb(imdb_title)
       #  caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}\n{rating}"    
         movie_update_channel = await db.movies_update_channel_id()    
