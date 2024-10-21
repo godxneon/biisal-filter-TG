@@ -55,7 +55,7 @@ async def get_imdb(file_name, caption):
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
             description=imdb.get('plot'),
-            Language=language
+            language=language
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None 
