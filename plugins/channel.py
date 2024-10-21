@@ -10,7 +10,7 @@ from database.users_chats_db import db
 MOVIES_UPDATE_TXT = """<b>#New_File_Added
 
 📻 Title: {movie_name}
-🔊 Language: {language} 
+🔊 Language: {languages} 
 🌟 Rating: {rating} / 10
 📀 RunTime: {duration}
 🎥 Quality: Proper HDRip
@@ -40,33 +40,16 @@ async def movie_name_format(file_name):
 async def get_imdb(file_name, caption):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
-    language = ""
-        nb_languages = ["Hindi", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Malayalam", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual", "Multi"]    
-        for lang in nb_languages:
-            if lang.lower() in caption.lower():
-                language += f"{lang}, "
-        language = language.strip(", ") or "Not Idea"
-        movie_name = await movie_name_format(file_name)    
-        if movie_name in processed_movies:
-            return
     if imdb:
-        caption = script.MOVIES_UPDATE_TXT.format(
+        caption = MOVIES_UPDATE_TXT.format(
             title=imdb.get('title'),
             rating=imdb.get('rating'),
             genres=imdb.get('genres'),
             description=imdb.get('plot'),
-            language=language
+            languages=imdb.get('languages')
         )
         return imdb.get('title'), imdb.get('poster'), caption
     return None, None, None 
-
-async def check_qualities(text, qualities: list):
-    quality = []
-    for q in qualities:
-        if q in text:
-            quality.append(q)
-    quality = ", ".join(quality)
-    return quality[:-2] if quality.endswith(", ") else quality
 
 async def send_movie_updates(bot, file_name, caption, file_id):
     imdb_title, poster_url, caption = await get_imdb(file_name)
