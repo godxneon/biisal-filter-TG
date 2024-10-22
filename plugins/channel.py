@@ -33,9 +33,14 @@ async def media(bot, message):
             file_id, file_ref = unpack_new_file_id(media.file_id)
             await send_movie_updates(bot, file_name=media.file_name, file_id=file_id)
 
-async def name_format(file_name):
-  filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
-  return filename 
+def name_format(file_name: str):
+    file_name = file_name.lower()
+    file_name = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '')).strip()
+    file_name = re.split(r's\d+|season\s*\d+|chapter\s*\d+', file_name, flags=re.IGNORECASE)[0]
+    file_name = file_name.strip()
+    words = file_name.split()[:4]
+    imdb_file_name = ' '.join(words)
+    return imdb_file_name 
     
 async def get_imdb(file_name):
     imdb_file_name = name_format(file_name)
