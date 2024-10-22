@@ -66,7 +66,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             if season:
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
-        qualities = ["ORG", "org", "hdcam", "HDCAM", "HQ", "hq", "HDRip", "hdrip", 
+        qualities = ["ORG", "1080p", "720p", "1440p", "HQ", "hq", "HDRip", "hdrip", 
                      "camrip", "WEB-DL" "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
         quality = await check_qualities(caption.lower(), qualities) or "HDRip"
@@ -81,7 +81,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}"    
+        caption_message = f"<b>📻 Title:- {movie_name}\n🔊 Language: {language}\n🎥 Quality: {quality}</b>"    
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [
             [InlineKeyboardButton('Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}')]
