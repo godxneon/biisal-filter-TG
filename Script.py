@@ -266,7 +266,6 @@ User - {}"""
 📻 Title: {title}
 🔊 Language: English
 🌟 Rating: {rating} / 10
-📀 RunTime: {duration}
 🎥 Quality: Proper HDRip
 
 <blockquote>🎭 Genres: {genres}</blockquote>
