@@ -34,6 +34,7 @@ async def pm_search(client, message):
     await mdb.update_top_messages(message.from_user.id, message.text)
     bot_id = client.me.id
     user_id = message.from_user.id    
+    user = message.from_user.first_name
  #   if user_id in ADMINS: return
     if str(message.text).startswith('/'):
         return
@@ -42,8 +43,12 @@ async def pm_search(client, message):
             return await auto_filter(client, message)
         await auto_filter(client, message)
     else:
-        await message.reply_text("<b><i>ɪ ᴀᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ʜᴇʀᴇ. ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇꜱ ɪɴ ᴏᴜʀ ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ.</i></b>",
-                                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ", url=f'https://t.me/JisshuMovieZone')]]))
+	await message.reply_text(
+         text=f"<b>{user} I Am Not Working Here. Search Movies In Oru Movie Search Group. 👇</b>",   
+         reply_markup=InlineKeyboardMarkup([[
+             InlineKeyboardButton("📝 Movie Search Group 1️⃣", url=f"https://t.me/KLMovieGroup")
+             ],[
+             InlineKeyboardButton("📝 Movie Search Group 2️⃣", url=f"https://t.me/KeralaRockers_Group")]]))
         
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def group_search(client, message):
