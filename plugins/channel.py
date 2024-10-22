@@ -53,7 +53,7 @@ async def get_imdb(file_name):
     return None, None, None 
 
 async def send_movie_updates(bot, file_name, file_id):
-    imdb_title, poster_url, caption = await get_imdb(file_name , post_mode)
+    imdb_title, poster_url, caption = await get_imdb(file_name)
     #if not post_mode.get('singel_post_mode' , True):
     if imdb_title in processed_movies:
         return
