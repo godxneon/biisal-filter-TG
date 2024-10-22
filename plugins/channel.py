@@ -33,7 +33,7 @@ async def media(bot, message):
             file_id, file_ref = unpack_new_file_id(media.file_id)
             await send_movie_updates(bot, file_name=media.file_name, file_id=file_id)
 
-async def movie_name_format(file_name):
+async def name_format(file_name):
   filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
   return filename 
     
