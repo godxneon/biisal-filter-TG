@@ -84,9 +84,12 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         poster_url = await get_imdb(movie_name)
         caption_message = f"<b>#New_File_Added\n\n📻 Title: {movie_name}\n\🔊 Language: {language}\n\🎥 Quality: Proper {quality}</b>"    
         movie_update_channel = await db.movies_update_channel_id()    
-        btn = [
-            [InlineKeyboardButton('✅ Get File ⚠️', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}')]
-        ]
+        btn = [[
+            InlineKeyboardButton('✅ Get File ⚠️', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}'),
+            InlineKeyboardButton('Get All Files 📂', url=f'https://telegram.me/{temp.U_NAME}?start=getfile-{search_movie}')
+        ],[
+            InlineKeyboardButton('🔔 OTT Files Channel ✅', url='https://t.me/KLxFiles')
+        ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
             await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
