@@ -1,11 +1,10 @@
 class script(object):
    
-    START_TXT = """<b>{} {},
-I Am A Powerful AutoFilter Bot You Can Use Me In Your Group I Will Give Movies Or Series In Your Group And PM.
+    START_TXT = """<b>{} {}, ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ ᴀᴜᴛᴏғɪʟᴛᴇʀ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ.
 
-<spoiler>➪ Latest New Releases /list</spoiler></b>"""
+<spoiler>➪ ʟᴀᴛᴇsᴛ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs /list</spoiler></b>"""
     
-    HELP_TXT = """<b>Here Is A Brief Details About Some Of The Features Of Mine.</b>"""
+    HELP_TXT = """<b>ʜᴇʀᴇ ɪs ᴀ ʙʀɪᴇғ ᴅᴇᴛᴀɪʟs ᴀʙᴏᴜᴛ sᴏᴍᴇ ᴏғ ᴛʜᴇ ғᴇᴀᴛᴜʀᴇs ᴏғ ᴍɪɴᴇ</b>"""
     
     TELE_TXT = """<b>/telegraph - sᴇɴᴅ ᴍᴇ ᴘɪᴄᴛᴜʀᴇ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ (5ᴍʙ)
 
