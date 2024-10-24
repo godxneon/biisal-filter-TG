@@ -43,7 +43,7 @@ async def pm_search(client, message):
             return await auto_filter(client, message)
         await auto_filter(client, message)
     else:
-        await message.reply_text("<b>{user} I Am Not Working Here. Search Movies In Oru Movie Search Group. 👇</b>",
+        await message.reply_text("<b>I Am Not Working Here. Search Movies In Oru Movie Search Group. 👇</b>",
                                  reply_markup=InlineKeyboardMarkup([[
 		                     InlineKeyboardButton("📝 Movie Search Group 1️⃣ ", url=f'https://t.me/KLMovieGroup')
 				     ],[
