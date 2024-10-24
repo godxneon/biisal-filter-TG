@@ -32,7 +32,7 @@ async def pm_search(client, message):
     bot_id = client.me.id
     user_id = message.from_user.id    
     user = message.from_user.first_name
-    if user_id in ADMINS: return
+  #  if user_id in ADMINS: return
     if str(message.text).startswith('/'):
         return
     if await db.get_pm_search_status(bot_id):
