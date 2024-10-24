@@ -8,7 +8,7 @@ import psutil, shutil, sys
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, PREMIUM_POINT, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
+from info import SETTINGS, PREMIUM_POINT, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, NOR_IMG, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
@@ -32,7 +32,7 @@ async def pm_search(client, message):
     bot_id = client.me.id
     user_id = message.from_user.id    
     user = message.from_user.first_name
- #   if user_id in ADMINS: return
+    if user_id in ADMINS: return
     if str(message.text).startswith('/'):
         return
     if await db.get_pm_search_status(bot_id):
@@ -152,6 +152,7 @@ async def next_page(bot, query):
     settings = await get_settings(query.message.chat.id)
     reqnxt  = query.from_user.id if query.from_user else 0
     temp.CHAT[query.from_user.id] = query.message.chat.id    
+    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     links = ""
     if settings["link"]:
         btn = []
@@ -198,7 +199,7 @@ async def next_page(bot, query):
         links = ""
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
-        await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+        await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
         return        
     try:
         await query.edit_message_reply_markup(
@@ -278,6 +279,7 @@ async def season_search(client: Client, query: CallbackQuery):
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
     temp.CHAT[query.from_user.id] = query.message.chat.id
+    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     links = ""
     if settings["link"]:
         btn = []
@@ -316,7 +318,7 @@ async def season_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^qualities#"))
@@ -376,6 +378,7 @@ async def quality_search(client: Client, query: CallbackQuery):
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
     temp.CHAT[query.from_user.id] = query.message.chat.id
+    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     links = ""
     if settings["link"]:
         btn = []
@@ -413,7 +416,7 @@ async def quality_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
@@ -478,6 +481,7 @@ async def lang_search(client: Client, query: CallbackQuery):
     settings = await get_settings(query.message.chat.id)
     group_id = query.message.chat.id
     temp.CHAT[query.from_user.id] = query.message.chat.id
+    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     links = ""
     if settings["link"]:
         btn = []
@@ -511,7 +515,7 @@ async def lang_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
@@ -756,7 +760,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto("https://envs.sh/waU.jpg")
+            InputMediaPhoto("https://envs.sh/waU.jpg"), has_spoiler=True)
         )
         await query.message.edit_text(
             text=script.COMUNITY_TEXT,
@@ -1355,7 +1359,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             print(e)
             if settings["auto_delete"]:
                 try:
-                    k = await message.reply_text(cap + links, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
+                    k = await message.photo(photo=NOR_IMG, cap + links, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
                 except Exception as e:
                     print("error", e)
                 await asyncio.sleep(DELETE_TIME)
@@ -1365,9 +1369,9 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 except:
                     pass
             else:
-                await message.reply_text(cap + links, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
+                await message.photo(photo=NOR_IMG, cap + links, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     else:
-        k = await message.reply_text(text=cap + links, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML, reply_to_message_id=message.id)
+        k = await message.photo(photo=NOR_IMG, cap + links, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML, reply_to_message_id=message.id)
         if settings['auto_delete']:
             await asyncio.sleep(DELETE_TIME)
             await k.delete()
