@@ -151,8 +151,7 @@ async def next_page(bot, query):
 
     settings = await get_settings(query.message.chat.id)
     reqnxt  = query.from_user.id if query.from_user else 0
-    temp.CHAT[query.from_user.id] = query.message.chat.id    
-    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+    temp.CHAT[query.from_user.id] = query.message.chat.id    	
     links = ""
     if settings["link"]:
         btn = []
@@ -199,7 +198,7 @@ async def next_page(bot, query):
         links = ""
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n♻️ <a href=https://t.me/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))} ({file_num})</a></b>"""
-        await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+        await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
         return        
     try:
         await query.edit_message_reply_markup(
@@ -278,8 +277,7 @@ async def season_search(client: Client, query: CallbackQuery):
     batch_link = f"batchfiles#{query.message.chat.id}#{query.id}#{query.from_user.id}"
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
-    temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+    temp.CHAT[query.from_user.id] = query.message.chat.id    
     links = ""
     if settings["link"]:
         btn = []
@@ -318,7 +316,7 @@ async def season_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^qualities#"))
@@ -377,8 +375,7 @@ async def quality_search(client: Client, query: CallbackQuery):
 
     reqnxt = query.from_user.id if query.from_user else 0
     settings = await get_settings(query.message.chat.id)
-    temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+    temp.CHAT[query.from_user.id] = query.message.chat.id    
     links = ""
     if settings["link"]:
         btn = []
@@ -416,7 +413,7 @@ async def quality_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
@@ -481,7 +478,6 @@ async def lang_search(client: Client, query: CallbackQuery):
     settings = await get_settings(query.message.chat.id)
     group_id = query.message.chat.id
     temp.CHAT[query.from_user.id] = query.message.chat.id
-    del_msg = f"\n\n<b><blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
     links = ""
     if settings["link"]:
         btn = []
@@ -515,7 +511,7 @@ async def lang_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⇚ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links + del_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
