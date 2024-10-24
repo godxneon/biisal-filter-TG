@@ -25,9 +25,6 @@ BUTTONS = {}
 FILES_ID = {}
 CAP = {}
 BOT_START_TIME = time.time()
-CLICK = {}
-max_clicks = 1
-
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_search(client, message):
@@ -638,11 +635,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         _, lang = query.data.split("#")
         await query.answer(f"ʏᴏᴜ sᴇʟᴇᴄᴛᴇᴅ {lang.title()} ʟᴀɴɢᴜᴀɢᴇ ⚡️", show_alert=True)
 
-	     #   button_data = f"{query.message.id}-{query.data}" 
-	#await query.message.reply_voice("https://envs.sh/TnI.oga")  
-       # if button_data in CLICK and CLICK[button_data] >= max_clicks:
-            #return await query.answer("ϐяο ϲℓιϲκ οи τнє ϐοττοм яιgнτ мєиτιοи ϐυττοи 💕\n\nതാഴെ വലതുഭാഗത് ഒരു മെൻഷൻ ലിങ്ക് ഉണ്ട് അതിൽ ക്ലിക്ക് ചെയ്യുക 💕", show_alert=True)                                   	    
-      
     elif query.data == "statx":
         currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
         total, used, free = shutil.disk_usage(".")
@@ -748,15 +740,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "comunity_link":
         buttons = [[
             InlineKeyboardButton('👥 Request Group #1', url='https://t.me/KLMovieGroup'),    
-            InlineKeyboardButton('🎭 Request Group #2', url='https://t.me/KeralaRockers_Group')
+            InlineKeyboardButton('👥 Request Group #2', url='https://t.me/KeralaRockers_Group')
 	],[ 
-	    InlineKeyboardButton('👥 Request Group #3', url='https://t.me/KL_Group2'),    
-            InlineKeyboardButton('🎬 Main Channel', url='https://t.me/Team_KL')
+	    InlineKeyboardButton('👥 Request Group #3', url='https://t.me/KLMovieGroupTG'),    
+            InlineKeyboardButton('👥 Request Group #4', url='https://t.me/KL_Group2')
 	],[
 	    InlineKeyboardButton('🎗️[New Group] Opening soon🎗️', url='https://t.me/+PqryZGuwC3w4NTA1'),    
 	],[
             InlineKeyboardButton('🎥 OTT Files #1', url='https://t.me/KLxFiles'),    
-            InlineKeyboardButton('🎬 OTT Files #2', url='https://t.me/+SGl8g0cQgOQ0ZDE1')
+            InlineKeyboardButton('🎬 OTT Files #2', url='https://t.me/+RT65irsepVkyOWI1')
 	],[    
             InlineKeyboardButton('⇚ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ 📄', callback_data='start')
         ]]
@@ -1187,33 +1179,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         link = f"https://telegram.me/{temp.U_NAME}?start=allfiles_{group_id}-{message_id}"
         await query.answer(url=link)
         return
-
-    elif query.data.startswith("update_post_mode"):
-        await query.answer('Please Choose From The Given Options.', show_alert=True)
-	    
-    elif query.data.startswith("change_update_post_mode"):
-        post_mode = await db.update_post_mode_handle(index=1)
-        btn = [[
-        InlineKeyboardButton("ᴘᴏsᴛ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
-        InlineKeyboardButton(f"{'sɪɴɢʟᴇ' if post_mode.get('singel_post_mode', True) else 'ᴍᴜʟᴛɪ'} ᴍᴏᴅᴇ", callback_data="change_update_post_mode"),
-    ],[
-        InlineKeyboardButton("ᴜᴘʟᴏᴀᴅ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
-        InlineKeyboardButton(f"{'ᴀʟʟ' if post_mode.get('all_files_post_mode', True) else 'ɴᴇᴡ'} ғɪʟᴇs", callback_data="all_files_post_mode"),
-    ]]
-        reply_markup = InlineKeyboardMarkup(btn)
-        await query.message.edit_reply_markup(reply_markup)
-	    
-    elif query.data.startswith("all_files_post_mode"):
-        post_mode = await db.update_post_mode_handle(index=2)
-        btn = [[
-        InlineKeyboardButton("ᴘᴏsᴛ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
-        InlineKeyboardButton(f"{'sɪɴɢʟᴇ' if post_mode.get('singel_post_mode', True) else 'ᴍᴜʟᴛɪ'} ᴍᴏᴅᴇ", callback_data="change_update_post_mode"),
-    ],[
-        InlineKeyboardButton("ᴜᴘʟᴏᴀᴅ ᴍᴏᴅᴇ ➜", callback_data="update_post_mode"),
-        InlineKeyboardButton(f"{'ᴀʟʟ' if post_mode.get('all_files_post_mode', True) else 'ɴᴇᴡ'} ғɪʟᴇs", callback_data="all_files_post_mode"),
-    ]]
-        reply_markup = InlineKeyboardMarkup(btn)
-        await query.message.edit_reply_markup(reply_markup)
 	    
 async def ai_spell_check(wrong_name):
     async def search_movie(wrong_name):
@@ -1359,7 +1324,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             **locals()
         )
     else:
-        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {total_results} Files.\n\n<blockquote>✍️ Note: This File & Message Will Deleted within 4 Mins..!</blockquote></b>"
+        cap = f"<b>📂 Here is What I Found In My Database For Your Query : <u>{search}</u> Have {total_results} Files.</b>"
     CAP[key] = cap
     if imdb and imdb.get('poster'):
         try:
@@ -1441,56 +1406,3 @@ async def advantage_spell_chok(msg):
     #await msg.delete()
     return   
 
-async def global_filters(client, message, text=False):
-    settings = await get_settings(message.chat.id)
-    group_id = message.chat.id
-    name = text or message.text
-    reply_id = message.reply_to_message.id if message.reply_to_message else message.id
-    keywords = await get_gfilters('gfilters')
-    for keyword in reversed(sorted(keywords, key=len)):
-        pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
-        if re.search(pattern, name, flags=re.IGNORECASE):
-            reply_text, btn, alert, fileid = await find_gfilter('gfilters', keyword)
-
-            if reply_text:
-                reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
-
-            if btn is not None:
-                try:
-                    if fileid == "None":
-                        if btn == "[]":
-                            return await client.send_message(
-                                group_id, 
-                                reply_text, 
-                                disable_web_page_preview=True,
-                                reply_to_message_id=reply_id
-                            )
-                        else:
-                            button = eval(btn)
-                            return await client.send_message(
-                                group_id,
-                                reply_text,
-                                disable_web_page_preview=True,
-                                reply_markup=InlineKeyboardMarkup(button),
-                                reply_to_message_id=reply_id
-                            )
-                    elif btn == "[]":
-                        return await client.send_cached_media(
-                            group_id,
-                            fileid,
-                            caption=reply_text or "",
-                            reply_to_message_id=reply_id
-                        )
-                    else:
-                        button = eval(btn)
-                        return await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or "",
-                            reply_markup=InlineKeyboardMarkup(button),
-                            reply_to_message_id=reply_id
-                        )
-                except Exception as e:
-                    logger.exception(e)
-                break
-    else:
-        return False
