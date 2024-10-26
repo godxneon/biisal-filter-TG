@@ -39,13 +39,12 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        title = imdb.get('title', 'N/A')
-        rating = imdb.get('rating', 'N/A')
-        genre = imdb.get('genres', 'N/A')
-        description = imdb.get('plot', 'N/A')
-        poster_url = imdb.get('poster', None)
-        year = imdb.get('year', 'N/A')
-    return None
+        title=imdb.get('title'),
+        rating=imdb.get('rating'),
+        genres=imdb.get('genres'),
+        description=imdb.get('plot')        
+        return imdb.get('poster')
+    return None, None, None
     
 async def movie_name_format(file_name):
   filename = re.sub(r'http\S+', '', re.sub(r'@\w+|#\w+', '', file_name).replace('_', ' ').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('{', '').replace('}', '').replace('.', ' ').replace('@', '').replace(':', '').replace(';', '').replace("'", '').replace('-', '').replace('!', '')).strip()
@@ -73,7 +72,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             if season:
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
-        qualities = ["ORG", "NF", "AMZN", "HDCAM", "HQ", "HDRip", "hdrip", 
+        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "HDCAM", "HQ", "HDRip", "hdrip", 
                      "camrip", "WEB-DL" "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
         quality = await check_qualities(caption, qualities) or "HDRip"
