@@ -71,7 +71,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         qualities = ["ORG", "NF", "AMZN", "HDCAM", "HQ", "HDRip", "hdrip", 
                      "camrip", "WEB-DL" "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
-        quality = await check_qualities(caption.lower(), qualities) or "Proper HDRip"
+        quality = await check_qualities(caption, qualities) or "HDRip"
         language = ""
         nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual Audio", "Multi Audio"]    
         for lang in nb_languages:
