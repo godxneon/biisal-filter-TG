@@ -84,9 +84,9 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
         if get_imdb:
-                rating = get_imdb('rating'),
-                genre = get_imdb('genres'),
-                description = get_imdb('plot')
+                rating=imdb.get('rating'),
+                genres=imdb.get('genres'),
+                description=imdb.get('plot')
         caption_message = f"<b>📻 Title : {movie_name}\n🔊 Language : {language}\n🌟 Rating: {rating}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
