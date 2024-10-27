@@ -69,9 +69,9 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
         qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "HDCAM", "HQ", "HDRip", "hdrip", 
-                     "camrip", "WEB-DL" "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
+                     "camrip", "WEB-DL" "BluRay", "hdtc", "predvd", "DVDscr", "dvdscr", 
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
-        quality = await check_qualities(caption, qualities) or "HDRip"
+        quality = await check_qualities(caption, qualities) or "Proper HDRip"
         language = ""
         nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual Audio", "Multi Audio"]    
         for lang in nb_languages:
