@@ -68,9 +68,9 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             if season:
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
-        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "HDCAM", "HQ", "HDRip", "hdrip", 
-                     "camrip", "WEB-DL" "BluRay", "hdtc", "predvd", "DVDscr", "dvdscr", 
-                     "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
+        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "BR-Rip", "DVDRip", "HDRip", "HQ HDRip", 
+                     "WEBRip", "WEB-DL" "BluRay", "SAINA WEB-DL", "HS WEB-DL", "HDTVRip", "dvdscr", 
+                     "SDTVRip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
         quality = await check_qualities(caption, qualities) or "Proper HDRip"
         language = ""
         nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Dual Audio", "Multi Audio"]    
@@ -83,7 +83,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"<b>📻 Title : {movie_name}\n🔊 Language : {language}\n🌟 Rating: {rating} / 10\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
+        caption_message = f"<b>📻 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
