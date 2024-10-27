@@ -55,25 +55,24 @@ async def check_qualities(text, qualities: list):
     return quality[:-2] if quality.endswith(", ") else quality
 
 async def send_movie_updates(bot, file_name, caption, file_id):
-    try:
-        if imdb_info is None:
-                    try:
-                        movie_name = caption.split('|')[0].strip()
-                        logging.info(f"Searching IMDb for: {movie_name}")
-                        imdb_info = await get_poster(movie_name)
-                        if not imdb_info:
-                            logging.error(f"IMDb information not found for: {movie_name}")
-                            return
-                    except Exception as e:
-                        logging.error(f"Error while fetching IMDb info: {str(e)}")
-                        return
+    if imdb_info is None:
+        try:
+            movie_name = caption.split('|')[0].strip()
+            logging.info(f"Searching IMDb for: {movie_name}")
+            imdb_info = await get_poster(movie_name)
+            if not imdb_info:
+                    logging.error(f"IMDb information not found for: {movie_name}")
+                    return
+        except Exception as e:
+            logging.error(f"Error while fetching IMDb info: {str(e)}")
+            return
 
-            if imdb_info:
-                title = imdb_info.get('title', 'N/A')
-                rating = imdb_info.get('rating', 'N/A')
-                genre = imdb_info.get('genres', 'N/A')
-                description = imdb_info.get('plot', 'N/A')
-                
+        if imdb_info:
+            title = imdb_info.get('title', 'N/A')
+            rating = imdb_info.get('rating', 'N/A')
+            genre = imdb_info.get('genres', 'N/A')
+            description = imdb_info.get('plot', 'N/A') 
+    try:                        
         year_match = re.search(r"\b(19|20)\d{2}\b", caption)
         year = year_match.group(0) if year_match else None      
         pattern = r"(?i)(?:s|season)0*(\d{1,2})"
