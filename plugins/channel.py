@@ -68,12 +68,12 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             if season:
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
-        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "BR-Rip", "DVDRip", "HDRip", "HQ HDRip", 
+        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "BR-Rip", "DVDRip", "DSNP WEB-DL", "HQ HDRip", 
                      "WEBRip", "WEB-DL" "BluRay", "SAINA WEB-DL", "HS WEB-DL", "HDTVRip", "dvdscr", 
-                     "SDTVRip", "HDTC", "dvdscreen", "HDTS", "TVRip"]
+                     "SDTVRip", "HDTC", "dvdscreen", "JC WEB-DL", "JIO WEB-DL"]
         quality = await check_qualities(caption, qualities) or "Proper HDRip"
         language = ""
-        nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Chinese", "French", "Dual Audio", "Multi Audio"]    
+        nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Chinese", "French", "Spanish", "Korean", "Thailand", "Dual Audio", "Multi Audio"]    
         for lang in nb_languages:
             if lang.lower() in caption.lower():
                 language += f"{lang}, "
@@ -83,7 +83,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"<b><blockquote><spoiler>🔮 𝗡𝗲𝘄 𝗛𝗗 𝗥𝗲𝗹𝗲𝗮𝘀𝗲 🎐</spoiler></blockquote>\n📻 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
+        caption_message = f"<b>📻 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
