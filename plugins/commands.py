@@ -169,8 +169,6 @@ async def start(client:Client, message):
         pre, grp_id, file_id = data.split('_', 2)
     except:
         pre, grp_id, file_id = "", 0, data
-
-    user_id = m.from_user.id
             
     if data and data.startswith("allfiles"):
         _, key = data.split("_", 1)
