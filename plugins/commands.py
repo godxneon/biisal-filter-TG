@@ -16,7 +16,7 @@ from database.ia_filterdb import Media, get_file_details, get_bad_files, unpack_
 from database.users_chats_db import db
 from database.config_db import mdb
 from plugins.pm_filter import auto_filter
-from utils import formate_file_name, get_settings, save_group_settings, is_req_subscribed, get_size, get_shortlink, is_check_admin, get_status, temp, get_readable_time
+from utils import formate_file_name, get_settings, save_group_settings, is_req_subscribed, get_size, is_check_admin, get_status, temp, get_readable_time
 import re
 import base64
 from info import *
@@ -39,45 +39,7 @@ async def start(client:Client, message):
              pm_mode = True
     except:
         pass
-    m = message
-    user_id = m.from_user.id
-    if len(m.command) == 2 and m.command[1].startswith('notcopy'):
-        _, userid, verify_id, file_id = m.command[1].split("_", 3)
-        user_id = int(userid)
-        grp_id = temp.CHAT.get(user_id, 0)
-        settings = await get_settings(grp_id)         
-        verify_id_info = await db.get_verify_id_info(user_id, verify_id)
-        if not verify_id_info or verify_id_info["verified"]:
-            await message.reply("<b>ʟɪɴᴋ ᴇxᴘɪʀᴇᴅ ᴛʀʏ ᴀɢᴀɪɴ...</b>")
-            return  
-        ist_timezone = pytz.timezone('Asia/Kolkata')
-        if await db.user_verified(user_id):
-            key = "third_time_verified"
-        else:
-            key = "second_time_verified" if await db.is_user_verified(user_id) else "last_verified"
-        current_time = dt.now(tz=ist_timezone)
-        result = await db.update_notcopy_user(user_id, {key:current_time})
-        await db.update_verify_id_info(user_id, verify_id, {"verified":True})
-        if key == "third_time_verified": 
-            num = 3 
-        else: 
-            num =  2 if key == "second_time_verified" else 1 
-        if key == "third_time_verified":
-            msg = script.THIRDT_VERIFY_COMPLETE_TEXT
-        else:
-            msg = script.SECOND_VERIFY_COMPLETE_TEXT if key == "second_time_verified" else script.VERIFY_COMPLETE_TEXT
-        await client.send_message(settings['log'], script.VERIFIED_LOG_TEXT.format(m.from_user.mention, user_id, dt.now(pytz.timezone('Asia/Kolkata')).strftime('%d %B %Y'), num))
-        btn = [[
-            InlineKeyboardButton("‼️ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ‼️", url=f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"),
-        ]]
-        reply_markup=InlineKeyboardMarkup(btn)
-        await m.reply_photo(
-            photo=(VERIFY_IMG),
-            caption=msg.format(message.from_user.mention, get_readable_time(TWO_VERIFY_GAP)),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        return    
+    
     if len(message.command) == 2 and message.command[1].startswith('getfile'):
         searches = message.command[1].split("-", 1)[1] 
         search = searches.replace('-',' ')
@@ -86,7 +48,7 @@ async def start(client:Client, message):
         return
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         status = get_status()
-        aks=await message.reply_text(f"<b>🔥 ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
+        aks=await message.reply_text(f"<b> ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
         await asyncio.sleep(10)
         await aks.delete()
         await m.delete()
@@ -209,37 +171,6 @@ async def start(client:Client, message):
         pre, grp_id, file_id = "", 0, data
 
     user_id = m.from_user.id
-    if not await db.has_premium_access(user_id):
-        grp_id = int(grp_id)
-        user_verified = await db.is_user_verified(user_id)
-        settings = await get_settings(grp_id , pm_mode=pm_mode)
-        is_second_shortener = await db.use_second_shortener(user_id, settings.get('verify_time', TWO_VERIFY_GAP)) 
-        is_third_shortener = await db.use_third_shortener(user_id, settings.get('third_verify_time', THREE_VERIFY_GAP))
-        if settings.get("is_verify", IS_VERIFY) and not user_verified or is_second_shortener or is_third_shortener:
-            verify_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
-            await db.create_verify_id(user_id, verify_id)
-            temp.CHAT[user_id] = grp_id
-            verify = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=notcopy_{user_id}_{verify_id}_{file_id}", grp_id, is_second_shortener, is_third_shortener , pm_mode=pm_mode)
-            buttons = [[
-                InlineKeyboardButton(text="♻️ ᴠᴇʀɪғʏ 🎭", url=verify)
-            ],[
-                InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ ❓", url=settings['tutorial']),
-            ]]
-            reply_markup=InlineKeyboardMarkup(buttons)
-            if await db.user_verified(user_id): 
-                msg = script.THIRDT_VERIFICATION_TEXT
-            else:            
-                msg = script.SECOND_VERIFICATION_TEXT if is_second_shortener else script.VERIFICATION_TEXT
-            d = await m.reply_text(
-                text=msg.format(message.from_user.mention, get_status()),
-                protect_content = False,
-                reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML
-            )
-            await asyncio.sleep(300) 
-            await d.delete()
-            await m.delete()
-            return
             
     if data and data.startswith("allfiles"):
         _, key = data.split("_", 1)
