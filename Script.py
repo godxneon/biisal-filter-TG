@@ -20,15 +20,14 @@ class script(object):
 
 ᴛᴏ ᴄʜᴇᴄᴋ ɪғ ғsᴜʙ ɪs ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴏʀ ɴᴏᴛ, ᴜsᴇ <code>/show_fsub</code></b>"""
     
-    ADMIN_CMD_TXT = """<b>- /m_grp this command is used to set grp link of movies and pm grp
-- /stream this command is used to set stream link For bot
-- /premium this command is used to add premium
-- /remove_premium this command is used to remove premium
-- /del_stream this command is used to delete stream link
-- /invite this command is used to get invite link for chat
-- /set_muc this command is used to set movie updates chat id
-- /del_muc this command is used to delete movie updates chat id
-- /post_mode this command is used to set post mode for Movies Updates Channel.</b>"""
+    ADMIN_CMD_TXT = """<b>• /stream - Set Stream Link For Bot
+• /del_stream - Delete Stream Link
+• /set_muc - Set Movie Updates Chat Id
+• /del_muc - Delete Movie Updates Chat Id
+• /movie_update_on - Enable Movie Updates
+• /movie_update_off - Disable Movie Updates
+• /pm_search_on - Enable PM Search
+• /pm_search_off - Disable PM Search</b>"""
     
     TTS_TXT="""
 <b>• sᴇɴᴅ /tts ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ</b>"""
