@@ -83,7 +83,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)            
-        caption_message = f"<b>📻 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
+        caption_message = f"<b>🎬 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>"    
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
@@ -98,8 +98,8 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                                  photo=poster_url, caption=caption_message, reply_markup=reply_markup)
         else:
             no_poster = "https://envs.sh/pTu.jpg"
-            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
+            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 caption=caption_message, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
