@@ -61,38 +61,6 @@ async def start(client:Client, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(temp.B_LINK, message.from_user.id, message.from_user.mention))
-        try: 
-         #   refData = message.command[1]
-         #   if refData and refData.split("-", 1)[0] == "Jisshu":
-         #       Fullref = refData.split("-", 1)
-         #       refUserId = int(Fullref[1])
-         #       await db.update_point(refUserId)
-         #       newPoint = await db.get_point(refUserId)
-                if AUTH_CHANNEL and await is_req_subscribed(client, message):
-                        buttons = [[
-                            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
-                            ],[
-                            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-                            InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info')
-                            ],[
-                            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-                            InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
-                            ],[                            
-                            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
-                            ]]
-                        reply_markup = InlineKeyboardMarkup(buttons)
-                        await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
-                            reply_markup=reply_markup,
-                            parse_mode=enums.ParseMode.HTML)
-          #      try: 
-          #          if newPoint == 0:
-          #              await client.send_message(refUserId , script.REF_PREMEUM.format(PREMIUM_POINT))
-          #          else: 
-          #              await client.send_message(refUserId , script.REF_START.format(message.from_user.mention() , newPoint))
-          #      except : pass
-        except Exception as e:
-            traceback.print_exc()
-            pass
     if len(message.command) != 2:
         buttons = [[
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
@@ -339,9 +307,6 @@ async def settings(client, message):
                 InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴍᴏᴅᴇ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}'),
                 InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["link"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('ᴠᴇʀɪғʏ', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["is_verify"] else 'ᴏғғ ✗', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}')
-            ],[
                 InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]
             await message.reply_text(
@@ -560,16 +525,3 @@ async def set_file_text_command(client, message):
                     upsert=True
             )
             await message.reply("Saved buddy 😁.")
-
-@Client.on_message(filters.command("invite") & filters.private & filters.user(ADMINS))
-async def invite(client, message):
-    toGenInvLink = message.command[1]
-    if len(toGenInvLink) != 14:
-        return await message.reply("Invalid chat id\nAdd -100 before chat id if You did not add any yet.") 
-    try:
-        link = await client.export_chat_invite_link(toGenInvLink)
-        await message.reply(link)
-    except Exception as e:
-        print(f'Error while generating invite link : {e}\nFor chat:{toGenInvLink}')
-        await message.reply(f'Error while generating invite link : {e}\nFor chat:{toGenInvLink}')
-
