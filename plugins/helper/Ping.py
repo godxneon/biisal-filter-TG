@@ -24,4 +24,4 @@ async def ping(_, message):
     uptime = await get_bot_uptime()
     cpu_usage = psutil.cpu_percent()
     ram_usage = psutil.virtual_memory().percent
-    await rm.edit(f"🏓 ᴘɪɴɢ: <code>{time_taken_s:.3f} ms</code>\n\n⏰ ᴜᴘᴛɪᴍᴇ: <code>{uptime}</code>\n\n🤖 ᴄᴘᴜ ᴜꜱᴀɢᴇ: <code>{cpu_usage} %</code>\n\n📥 ʀᴀᴍ ᴜꜱᴀɢᴇ: <code>{ram_usage} %</code>")
+    await rm.edit(f"<b>🌐 Ping : <code>{time_taken_s:.3f} ms</code>\n\n⏰ Uptime : <code>{uptime}</code>\n\n🤖 CPU Usage : <code>{cpu_usage} %</code>\n\n📥 RAM Usage : <code>{ram_usage} %</code></b>")
