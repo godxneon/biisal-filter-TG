@@ -39,7 +39,7 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        return imdb.get('poster'), imdb.get('rating')
+        return imdb.get('poster')
     return None
     
 async def movie_name_format(file_name):
@@ -87,10 +87,8 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
-            InlineKeyboardButton('✅ Get File ⚠️', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}'),
+            InlineKeyboardButton('⚠️ Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}'),
             InlineKeyboardButton('𝖢𝗅𝗂𝖼𝗄 𝖳𝗈 𝖲𝖾𝖺𝗋𝖼𝗁 📂', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
-        ],[
-            InlineKeyboardButton('🔔 OTT Files Channel ✅', url='https://t.me/KLxFiles')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
@@ -98,8 +96,8 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                                  photo=poster_url, caption=caption_message, reply_markup=reply_markup)
         else:
             no_poster = "https://envs.sh/pTu.jpg"
-            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 caption=caption_message, reply_markup=reply_markup)  
+            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
