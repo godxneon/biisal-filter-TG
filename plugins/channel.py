@@ -39,12 +39,6 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        caption_message = script.MOVIES_UPDATE_TXT.format(
-            title=imdb.get('title'),
-            rating=imdb.get('rating'),
-            genres=imdb.get('genres'),
-            description=imdb.get('plot')
-        )
         return imdb.get('rating'), imdb.get('poster')
     return None
     
