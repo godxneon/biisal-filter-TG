@@ -12,7 +12,7 @@ async def get_bot_uptime():
     uptime_days = uptime_hours // 24
     uptime_weeks = uptime_days // 7
     ###############################
-    uptime_string = f"{uptime_days % 7} D : {uptime_hours % 24} H : {uptime_minutes % 60} M : {uptime_seconds % 60} S"
+    uptime_string = f"{uptime_days % 7}D {uptime_hours % 24}H {uptime_minutes % 60}M {uptime_seconds % 60}S"
     return uptime_string
 
 @Client.on_message(filters.command("ping")) 
@@ -24,4 +24,4 @@ async def ping(_, message):
     uptime = await get_bot_uptime()
     cpu_usage = psutil.cpu_percent()
     ram_usage = psutil.virtual_memory().percent
-    await rm.edit(f"<b>🌐 Ping : <code>{time_taken_s:.3f} ms</code>\n\n⏰ Uptime : <code>{uptime}</code>\n\n🤖 CPU Usage : <code>{cpu_usage} %</code>\n\n📥 RAM Usage : <code>{ram_usage} %</code></b>")
+    await rm.edit(f"<b>🌐 Ping : <code>{time_taken_s:.3f}ms</code>\n\n⏰ Uptime : <code>{uptime}</code>\n🤖 CPU Usage : <code>{cpu_usage} %</code>\n📥 RAM Usage : <code>{ram_usage} %</code></b>")
