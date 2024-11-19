@@ -88,16 +88,16 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
             InlineKeyboardButton('⚠️ Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}'),
-            InlineKeyboardButton(' More Files 📂', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
+            InlineKeyboardButton(' Get All Files 📂', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
-            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=poster_url, caption=caption_message, reply_markup=reply_markup)
+            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 text=f"<b>🎬 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)
         else:
             no_poster = "https://envs.sh/pTu.jpg"
-            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
+            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 text=f"<b>🎬 Title : {movie_name}\n🔊 Language : {language}\n💿 Quality : {quality}\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
