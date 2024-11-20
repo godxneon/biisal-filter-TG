@@ -93,11 +93,11 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
             await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 text=f"<b>🎬 Title : {movie_name}\n🌟 Rating: {rating} / 10\n🎭 Genres: {genres}\n💿 Quality : {quality}\n\n<blockquote>🔊 Audio : {language}</blockquote>\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)
+                                 text=f"<b>🎬 Title : {movie_name}\n🌟 Rating : {rating} / 10\n🎭 Genres : {genres}\n💿 Quality : {quality}\n\n<blockquote>🔊 Audio : {language}</blockquote>\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)
         else:
             no_poster = "https://envs.sh/pTu.jpg"
             await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 text=f"<b>🎬 Title : {movie_name}\n🌟 Rating: {rating} / 10\n🎭 Genres: {genres}\n💿 Quality : {quality}\n\n<blockquote>🔊 Audio : {language}</blockquote>\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)  
+                                 text=f"<b>🎬 Title : {movie_name}\n🌟 Rating : {rating} / 10\n🎭 Genres : {genres}\n💿 Quality : {quality}\n\n<blockquote>🔊 Audio : {language}</blockquote>\n\n➠ Uploaded By : @Team_KL</b>", reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
