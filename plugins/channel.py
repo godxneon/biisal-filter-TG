@@ -7,17 +7,6 @@ import re
 from Script import script
 from database.users_chats_db import db
 
-MOVIES_UPDATE_TXT = """<b>#New_File_Added
-
-📻 Title: {movie_name}
-🔊 Language: {languages} 
-🌟 Rating: {rating} / 10
-📀 RunTime: {duration}
-🎥 Quality: Proper HDRip
-
-<blockquote>🎭 Genres: {genres}</blockquote>
-<blockquote>{description}</blockquote></b>"""
-
 processed_movies = set()
 media_filter = filters.document | filters.video
 
@@ -68,7 +57,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             if season:
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
-        qualities = ["ORG", "NF WEB-DL", "AMZN WEB-DL", "BR-Rip", "DVDRip", "DSNP WEB-DL", "HQ HDRip", 
+        qualities = ["YT WEB-DL", "NF WEB-DL", "AMZN WEB-DL", "BR-Rip", "DVDRip", "DSNP WEB-DL", "HQ HDRip", 
                      "WEBRip", "WEB-DL" "BluRay", "SAINA WEB-DL", "HS WEB-DL", "HDTVRip", "SS WEB-DL", 
                      "SDTVRip", "HDTC", "ZEE5 WEB-DL", "JC WEB-DL", "JIO WEB-DL"]
         quality = await check_qualities(caption, qualities) or "Proper HDRip"
