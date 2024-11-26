@@ -48,9 +48,10 @@ async def start(client:Client, message):
         return
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         status = get_status()
-        aks=await message.reply_text(f"<b> ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
+        aks=await message.reply_text(f"<b>✨ ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
         await asyncio.sleep(10)
         await aks.delete()
+        await message.delete()
         if (str(message.chat.id)).startswith("-100") and not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)
             group_link = await message.chat.export_invite_link()
