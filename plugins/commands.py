@@ -48,8 +48,12 @@ async def start(client:Client, message):
         return
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         status = get_status()
-        aks=await message.reply_text(f"<b>✨ ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
-        await asyncio.sleep(10)
+        buttons = [[                   
+           InlineKeyboardButton('• ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ •', url=f't.me/{temp.U_NAME}?start=help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        aks=await message.send_message(text=f"<b>✨ ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>", reply_markup=reply_markup)
+        await asyncio.sleep(15)
         await aks.delete()
         await message.delete()
         if (str(message.chat.id)).startswith("-100") and not await db.get_chat(message.chat.id):
