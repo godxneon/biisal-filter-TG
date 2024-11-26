@@ -62,7 +62,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                      "SDTVRip", "HDTC", "ZEE5 WEB-DL", "JC WEB-DL", "JIO WEB-DL"]
         quality = await check_qualities(caption, qualities) or "Proper HDRip"
         language = ""
-        nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Chinese", "French", "Spanish", "Korean", "Thailand", "Dual Audio", "Multi Audio"]    
+        nb_languages = ["Malayalam", "Bengali", "English", "Marathi", "Tamil", "Telugu", "Hindi", "Kannada", "Punjabi", "Gujrati", "Korean", "Japanese", "Bhojpuri", "Chinese", "French", "Spanish", "Norwegian", "Thailand", "Dual Audio", "Multi Audio"]    
         for lang in nb_languages:
             if lang.lower() in caption.lower():
                 language += f"{lang}, "
