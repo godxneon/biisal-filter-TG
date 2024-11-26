@@ -52,7 +52,7 @@ async def start(client:Client, message):
            InlineKeyboardButton('• ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ •', url=f't.me/{temp.U_NAME}?start=help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        aks=await message.send_message(text=f"<b>✨ ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>", reply_markup=reply_markup)
+        aks=await message.reply_text(text=f"<b>✨ ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>", reply_markup=reply_markup)
         await asyncio.sleep(15)
         await aks.delete()
         await message.delete()
