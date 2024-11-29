@@ -971,7 +971,11 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 if is_misspelled:
                     msg.text = is_misspelled
                     return await auto_filter(client, msg)
-                return await advantage_spell_chok(msg)
+                google = search.replace(' ', "+")
+                button = [[InlineKeyboardButton("🔍 𝗖𝗛𝗘𝗖𝗞 𝗦𝗣𝗘𝗟𝗟𝗜𝗡𝗚 🔎", url=f"https://google.com/search?q={google}")]]
+                k = await message.reply(f'<b>Hᴇʏ 👋{message.from_user.mention}\n\n ✰ നിങ്ങൾ ചോദിച്ച മൂവി OTT റിലീസ് ആയിട്ടുണ്ടോ എന്ന് ചെക്ക് ചെയ്യുക @MM_OTT_UPDATE \n\n✰ സിനിമ റിക്വസ്റ്റ് ചെയ്യുമ്പോൾ Undo , movie ,kittumo എന്നിവ ഉപയോഗിക്കരുത്.\n\n✰ മൂവിയുടെ സ്പെല്ലിങ് കറക്റ്റ് ആണെന്ന് ഉറപ്പ് വരുത്തുക.</b>', reply_markup=InlineKeyboardMarkup(button))
+                return
+        else:
             return
     else:
         settings = await get_settings(msg.message.chat.id , pm_mode=pm_mode)
