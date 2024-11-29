@@ -1136,11 +1136,7 @@ async def advantage_spell_chok(msg):
         InlineKeyboardButton('ᴛᴀᴍ', callback_data=f'tam#{search}'),
         InlineKeyboardButton('ᴛᴇʟ', callback_data=f'tel#{search}')
         ],[
-        InlineKeyboardButton(
-            text="📢 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗦𝗽𝗲𝗹𝗹𝗶𝗻𝗴 (𝗚𝗼𝗼𝗴𝗹𝗲) 📢",
-            url=f"https://google.com/search?q={search}"
-        )
-            
+        InlineKeyboardButton("📢 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗦𝗽𝗲𝗹𝗹𝗶𝗻𝗴 (𝗚𝗼𝗼𝗴𝗹𝗲) 📢", url=f"https://google.com/search?q={search}")                   
     ]]
     await msg.reply_photo(
             photo="https://envs.sh/018.jpg", 
