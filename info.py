@@ -30,7 +30,6 @@ DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-1001834934471'))
 URL = environ.get('URL', 'mytestbot-jvdfhbj.com')
 FILE_AUTO_DEL_TIMER = int(environ.get('FILE_AUTO_DEL_TIMER', '150'))
 
-
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "LuffyBot")
@@ -47,7 +46,6 @@ request_channel = environ.get('REQUEST_CHANNEL', '-1002079370592')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001845390899'))
 IS_SEND_MOVIE_UPDATE = is_enabled('IS_SEND_MOVIE_UPDATE', False)
-
 
 #Auto Approve 
 APICS = (environ.get('APICS', 'https://telegra.ph/file/251b7e8892f3d6fca2536.jpg https://telegra.ph/file/4fc1332714da789d5d960.jpg')).split()
