@@ -668,10 +668,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )      
     elif query.data == "features":
         buttons = [[
-            InlineKeyboardButton('📸 Req-FSUB', callback_data='telegraph'),
-            InlineKeyboardButton('🌐 ɢ-ғɪʟᴛᴇʀ', callback_data='gfilter')    
+            InlineKeyboardButton('🧩 Req-FSub', callback_data='telegraph'),
+            InlineKeyboardButton('🔖 G-Filter', callback_data='gfilter')    
         ],[
-            InlineKeyboardButton('🔐 FSUB', callback_data='fsub'),
+            InlineKeyboardButton('🔐 Force Sub', callback_data='fsub'),
             InlineKeyboardButton('🗣️ ', callback_data='tts')
 	],[
             InlineKeyboardButton('⇚ Home', callback_data='start'),
