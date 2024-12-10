@@ -28,7 +28,7 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        return imdb.get('rating'), imdb.get('genres'), imdb.get('url'), imdb.get('poster')
+        return imdb.get('rating'), imdb.get('genres'), imdb.get('poster')
     return None
     
 async def movie_name_format(file_name):
