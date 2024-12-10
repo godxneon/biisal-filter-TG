@@ -645,15 +645,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
   
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+            InlineKeyboardButton('⇆ Add Me To Your Groups ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info'),
+            InlineKeyboardButton('🗽 Features', callback_data='features'),
+            InlineKeyboardButton('🧑‍💻 Owner', callback_data='owner_info'),
         ],[
-            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
-            InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton('🎭 Community', callback_data='comunity_link'),
+            InlineKeyboardButton('🏷 About', callback_data='about')
         ],[
-            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇꜱᴛ ᴍᴏᴠɪᴇꜱ 🤷‍♂', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ How To Request Movies 🤷‍♂', callback_data='earn')
         ]]    
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -668,14 +668,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )      
     elif query.data == "features":
         buttons = [[
-            InlineKeyboardButton('📸 ᴛ-ɢʀᴀᴘʜ', callback_data='telegraph'),
+            InlineKeyboardButton('📸 Req-FSUB', callback_data='telegraph'),
             InlineKeyboardButton('🌐 ɢ-ғɪʟᴛᴇʀ', callback_data='gfilter')    
         ],[
-            InlineKeyboardButton('🔐 ғsᴜʙ', callback_data='fsub'),
-            InlineKeyboardButton('🗣️ ᴀɪ ᴛᴛs', callback_data='tts')
+            InlineKeyboardButton('🔐 FSUB', callback_data='fsub'),
+            InlineKeyboardButton('🗣️ ', callback_data='tts')
 	],[
-            InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
-            InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅ', callback_data='admincmd')	    
+            InlineKeyboardButton('⇚ Home', callback_data='start'),
+            InlineKeyboardButton('Admin Only', callback_data='admincmd')	    
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)	
         await query.message.edit_text(                     
