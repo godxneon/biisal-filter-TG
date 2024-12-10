@@ -11,7 +11,7 @@ from datetime import date, datetime
 import datetime
 import pytz
 from aiohttp import web
-from plugins import web_server, check_expired_premium
+from plugins import web_server
 import time
 import os 
 import sys
