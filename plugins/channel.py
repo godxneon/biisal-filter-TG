@@ -28,7 +28,7 @@ async def get_imdb(file_name):
     imdb_file_name = await movie_name_format(file_name)
     imdb = await get_poster(imdb_file_name)
     if imdb:
-        return imdb.get('rating'), imdb.get('genres'), imdb.get('poster')
+        return imdb.get('rating'), imdb.get('genres'), imdb.get('url'), imdb.get('poster')
     return None
     
 async def movie_name_format(file_name):
@@ -77,7 +77,9 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
             InlineKeyboardButton('⚠️ Get File', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}'),
-            InlineKeyboardButton(' Get All Files 📂', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
+            InlineKeyboardButton('Get All Files 📂', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
+        ],[
+            InlineKeyboardButton('🔮 Click Here To Search 🔍', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
