@@ -669,9 +669,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "features":
         buttons = [[
             InlineKeyboardButton('🔖 G-Filter', callback_data='gfilter'),
-            InlineKeyboardButton('🔮 IMDb', callback_data='tts')
+            InlineKeyboardButton('💢 Auto-Filter', callback_data='tts')
         ],[
             InlineKeyboardButton('🔐 Force Sub', callback_data='fsub'),
+            InlineKeyboardButton('🔮 IMDb', callback_data='tts'),
             InlineKeyboardButton('🧩 Req-FSub', callback_data='telegraph')            
 	],[
             InlineKeyboardButton('⇚ Home', callback_data='start'),
