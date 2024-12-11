@@ -672,7 +672,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('💢 Auto-Filter', callback_data='tts')
         ],[
             InlineKeyboardButton('🔐 Force Sub', callback_data='fsub'),
-            InlineKeyboardButton('🔮 IMDb', callback_data='tts'),
+            InlineKeyboardButton('Extra Mods', callback_data='tts'),
             InlineKeyboardButton('🧩 Req-FSub', callback_data='telegraph')            
 	],[
             InlineKeyboardButton('⇚ Home', callback_data='start'),
