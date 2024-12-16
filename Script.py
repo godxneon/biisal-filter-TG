@@ -1,8 +1,8 @@
 class script(object):
    
-    START_TXT = """<b>{} {}, ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ ᴀᴜᴛᴏғɪʟᴛᴇʀ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ.
+    START_TXT = """<b>{} {}, I Am A Powerful Auto-Filter Bot You Can Use Me In your Group I Will Give Movies And Series In Your Group And PM</b>"""
 
-<spoiler>➪ ʟᴀᴛᴇsᴛ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs /list</spoiler></b>"""
+#<spoiler>➪ ʟᴀᴛᴇsᴛ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs /list</spoiler>
     
     HELP_TXT = """<b>ʜᴇʀᴇ ɪs ᴀ ʙʀɪᴇғ ᴅᴇᴛᴀɪʟs ᴀʙᴏᴜᴛ sᴏᴍᴇ ᴏғ ᴛʜᴇ ғᴇᴀᴛᴜʀᴇs ᴏғ ᴍɪɴᴇ</b>"""
     
