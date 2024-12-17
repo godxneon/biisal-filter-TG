@@ -38,8 +38,7 @@ class script(object):
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
 ‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href="https://www.mongodb.com/">ᴍᴏɴɢᴏ ᴅʙ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href="https://www.python.org/">ᴘʏᴛʜᴏɴ 𝟹</a>
-‣ ʟɪʙʀᴀʀʏ : <a href="https://github.com/Mayuri-Chan/pyrofork">ᴘʏʀᴏғᴏʀᴋ</a>
-‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href="https://telegram.me/HacKerJr_Bot">⏤͟͟͞͞HᴀᴄKᴇʀ Jʀ ᠰ</a></b>"""
+‣ ʟɪʙʀᴀʀʏ : <a href="https://github.com/Mayuri-Chan/pyrofork">ᴘʏʀᴏғᴏʀᴋ</a></b>"""
    
     SUPPORT_GRP_MOVIE_TEXT = '''<b>ʜᴇʏ {}
 
