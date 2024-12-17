@@ -668,15 +668,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )      
     elif query.data == "features":
         buttons = [[
-            InlineKeyboardButton('🔖 G-Filter', callback_data='gfilter'),
+            InlineKeyboardButton('💢 Auto-Filter', callback_data='tts'),
             InlineKeyboardButton('Extra Mods', callback_data='tts'),
-            InlineKeyboardButton('💢 Auto-Filter', callback_data='tts')
+	    InlineKeyboardButton('🔖 G-Filter', callback_data='gfilter')
         ],[
             InlineKeyboardButton('🔐 Force Sub', callback_data='fsub'),            
             InlineKeyboardButton('🧩 Req-FSub', callback_data='telegraph')            
 	],[
             InlineKeyboardButton('⇚ Home', callback_data='start'),
-            InlineKeyboardButton('Admin Only', callback_data='admincmd')	    
+            InlineKeyboardButton('Admin CMDS', callback_data='admincmd')	    
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)	
         await query.message.edit_text(                     
