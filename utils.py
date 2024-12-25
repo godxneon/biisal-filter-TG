@@ -223,7 +223,7 @@ def get_hash(media_msg: Message) -> str:
     return getattr(media, "file_unique_id", "")[:6]
 
 def get_status():
-    tz = pytz.timezone('Asia/Colombo')
+    tz = pytz.timezone('Asia/Kolkata')
     hour = datetime.now(tz).time().hour
     if 5 <= hour < 12:
         sts = "ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ"
