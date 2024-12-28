@@ -7,6 +7,12 @@ import re
 from Script import script
 from database.users_chats_db import db
 
+      #btn = [[            
+        #    InlineKeyboardButton('⚠️ Get Sample File 📂', url=f'https://t.me/{temp.U_NAME}?start=pm_mode_file_{ADMINS[0]}_{file_id}')
+      #  ],[
+       #     InlineKeyboardButton('🔮 Click Here To Search 🔍', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
+ #       ]]
+
 processed_movies = set()
 media_filter = filters.document | filters.video
 
