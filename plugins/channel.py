@@ -81,7 +81,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[            
-            InlineKeyboardButton('Click Here To Download', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
+            InlineKeyboardButton('💢 Click Here To Download 💢', url=f'https://t.me/{temp.U_NAME}?start=getfile-{search_movie}')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
