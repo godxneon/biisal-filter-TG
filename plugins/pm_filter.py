@@ -647,7 +647,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('🗽 ғᴇᴀᴛᴜʀᴇs', callback_data='features'),
+            InlineKeyboardButton('🧩 ғᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info'),
         ],[
             InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
@@ -672,8 +672,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 	    InlineKeyboardButton('🔖 ɢ-ғɪʟᴛᴇʀ', callback_data='gfilter')
         ],[
             InlineKeyboardButton('🔐 ғᴏʀᴄᴇ-sᴜʙ', callback_data='fsub'),  
-	    InlineKeyboardButton('ᴇxᴛʀᴀ ᴍᴏᴅs', callback_data='tts'),
-            InlineKeyboardButton('🧩 ʀᴇǫ-ғsᴜʙ', callback_data='telegraph')            
+	    InlineKeyboardButton('❒ ᴇxᴛʀᴀ ᴍᴏᴅs', callback_data='tts')            
 	],[
             InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅs', callback_data='admincmd')	    
