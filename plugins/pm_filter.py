@@ -1010,7 +1010,8 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             ])
     else:
         btn.insert(0,[
-	    InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+	    InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/+8jqKylneHvg1NzQ9"),
+            InlineKeyboardButton("IMDB Info", url=imdb['url'])
         ])
                              
     if spoll:
@@ -1122,7 +1123,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling (<u>Google</u> Or <u>IMDB</u>) Button Below Will Help You..\n\n➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n\n🔖 Example : Aavesham 2024, Aavesham Malayalam\n\n➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released.!!\n\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂</blockquote>\n\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</b>"        
+    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling (<u>Google</u> Or <u>IMDB</u>) Button Below Will Help You..\n\n➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n\n🔖 Example : Aavesham 2024, Aavesham Malayalam\n\n➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released.!!\n\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</blockquote></b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
@@ -1130,9 +1131,8 @@ async def advantage_spell_chok(msg):
         InlineKeyboardButton('Google', url=f"https://google.com/search?q={search}"),
         InlineKeyboardButton('IMDB', url=f"https://imdb.com/find?q={search}")        
     ]]
-    await msg.reply_photo(
-            photo="https://envs.sh/pTu.jpg", 
-            caption=spl.format(mv_rqst),
+    await msg.reply_text(
+            text=spl.format(mv_rqst),
             reply_markup=InlineKeyboardMarkup(btn))            
     #await msg.delete()
     return   
