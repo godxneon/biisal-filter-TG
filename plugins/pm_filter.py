@@ -1121,22 +1121,13 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-    spl = f"<b>❝ 𝖧𝖾𝗒 : {msg.from_user.mention} 𝗌𝗈𝗆𝖾𝗍𝗁𝗂𝗇𝗀 𝖨𝗌 𝖶𝗋𝗈𝗇𝗀 ❞ \n\n➪ 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 𝖮𝖿 𝖬𝗈𝗏𝗂𝖾 <u>𝖢𝗁𝖾𝖼𝗄 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀 (𝗀𝗈𝗈𝗀𝗅𝖾)</u> 𝖡𝗎𝗍𝗍𝗈𝗇 𝖡𝖾𝗅𝗈𝗐 𝖶𝗂𝗅𝗅 𝖧𝖾𝗅𝗉 𝖸𝗈𝗎..𓁉\n\n➪ 𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖫𝖺𝗇𝗀𝖺𝗎𝗀𝖾 𝖥𝗋𝗈𝗆 𝖳𝗁𝖾 𝖫𝗂𝗌𝗍 𝖡𝖾𝗅𝗈𝗐 𝖳𝗈 𝖬𝗈𝗋𝖾 𝖧𝖾𝗅𝗉..☃︎</b>"        
+    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling (<u>Google</u> Or <u>IMDB</u>) Button Below Will Help You..\n\n➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n\n🔖 Example : Aavesham 2024, Aavesham Malayalam\n\n➪ If You Ask For A Movie Released In Theaters, You Will not Get It, Movie Is Only Available When OTT & DVD Is Released.!!\n\n📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
     btn = [[
-        InlineKeyboardButton('𝗠𝘂𝘀𝘁 𝗥𝗲𝗮𝗱', 'mstd'),
-        InlineKeyboardButton('Rules', callback_data=f'rules#{search}'),
-        InlineKeyboardButton('Format', 'formt')
-        ],[
-        InlineKeyboardButton('ᴇɴɢ', callback_data=f'eng#{search}'),
-        InlineKeyboardButton('ᴍᴀʟ', callback_data=f'mal#{search}'),
-        InlineKeyboardButton('ʜɪɴ', callback_data=f'hin#{search}'),
-        InlineKeyboardButton('ᴛᴀᴍ', callback_data=f'tam#{search}'),
-        InlineKeyboardButton('ᴛᴇʟ', callback_data=f'tel#{search}')
-        ],[
-        InlineKeyboardButton("📢 𝗖𝗼𝗿𝗿𝗲𝗰𝘁 𝗦𝗽𝗲𝗹𝗹𝗶𝗻𝗴 (𝗚𝗼𝗼𝗴𝗹𝗲) 📢", url=f"https://google.com/search?q={search}")                   
+        InlineKeyboardButton('Google', url=f"https://google.com/search?q={search}"),
+        InlineKeyboardButton('IMDB', url=f"https://imdb.com/find?q={search}")        
     ]]
     await msg.reply_photo(
             photo="https://envs.sh/018.jpg", 
