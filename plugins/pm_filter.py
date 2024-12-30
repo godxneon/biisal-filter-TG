@@ -1121,13 +1121,12 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling (<u>Google</u> Or <u>IMDB</u>) Button Below Will Help You..\n\n➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n\n<blockquote expandable>🔖 Example :- Aavesham 2024\nAavesham Malayalam\nSquid Game 𝖲01\nSquid Game 𝖲01E01</blockquote>\n\n➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released.!!\n\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</blockquote></b>"        
+    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n\n🔖 Example :-\nAavesham 2024\nAavesham Malayalam\nSquid Game 𝖲01\nSquid Game 𝖲01E01</blockquote>\n\n➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released.!!\n\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</blockquote></b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
     btn = [[
-        InlineKeyboardButton('Google', url=f"https://google.com/search?q={search}"),
-        InlineKeyboardButton('IMDB', url=f"https://imdb.com/find?q={search}")        
+        InlineKeyboardButton('🔍 Check Spelling On G𝗈𝗈𝗀𝗅𝖾 🔎', url=f"https://google.com/search?q={search}")
     ]]
     await msg.reply_text(
             text=spl.format(mv_rqst),
