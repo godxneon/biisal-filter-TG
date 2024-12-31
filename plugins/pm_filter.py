@@ -1094,11 +1094,11 @@ async def advantage_spell_chok(msg):
     btn = [[
         InlineKeyboardButton('🔍 Check Spelling On G𝗈𝗈𝗀𝗅𝖾 🔎', url=f"https://google.com/search?q={search}")
     ]]
-    await msg.reply_text(
+    k = await message.reply_text(
             text=spl.format(mv_rqst),
             reply_markup=InlineKeyboardMarkup(btn))   
     await asyncio.sleep(DELETE_TIME)         
-    await msg.delete()
+    await k.delete()
     try:
         await message.delete()
     except:
