@@ -985,6 +985,14 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 InlineKeyboardButton("𝖲𝖾𝖺𝗌𝗈𝗇", callback_data=f"seasons#{key}#{offset}#{req}"),
                 InlineKeyboardButton("𝖰𝗎𝖺𝗅𝗂𝗍𝗒 ⇓", callback_data=f"qualities#{key}#{offset}#{req}")           
 	    ])         
+        else:
+            btn.insert(0,[
+                InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+            ])
+    else:
+        btn.insert(0,[
+	    InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+        ])         
 
     if offset != "":
         BUTTONS[key] = search
@@ -1090,7 +1098,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n🔖 Example :-\nAavesham 2024\nAavesham Malayalam</blockquote>\n➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➪ New OTT Files Channel Link Button Below 👇\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</blockquote></b>"        
+    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n🔖 Example :-\nAavesham 2024\nAavesham Malayalam</blockquote>\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD</blockquote>\n➪ New OTT Files Channel Link Button Below 👇\n<blockquote expandable>📵 Theater Print Not Available 🥴..!\n🚯 Don't Use Symbols : ':(!,./) 🙅‍♂\n⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻</blockquote></b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
