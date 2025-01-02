@@ -1093,6 +1093,8 @@ async def advantage_spell_chok(msg):
     search = msg.text.replace(" ", "+")      
     btn = [[
         InlineKeyboardButton('🔍 Check Spelling On G𝗈𝗈𝗀𝗅𝖾 🔎', url=f"https://google.com/search?q={search}")
+    ],[
+        InlineKeyboardButton('💥 New OTT Release 💥', url="https://t.me/+u0ui7CYGak42Yjdl")
     ]]
     k = await message.reply_text(
             text=spl.format(mv_rqst),
