@@ -978,6 +978,9 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     if offset != "":
         if total_results >= MAX_BTN:
             btn.insert(0,[
+                InlineKeyboardButton("💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"https://t.me/+8jqKylneHvg1NzQ9")
+            ])
+            btn.insert(1,[
                 InlineKeyboardButton("⇓ 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾", callback_data=f"languages#{key}#{offset}#{req}"),
                 InlineKeyboardButton("𝖲𝖾𝖺𝗌𝗈𝗇", callback_data=f"seasons#{key}#{offset}#{req}"),
                 InlineKeyboardButton("𝖰𝗎𝖺𝗅𝗂𝗍𝗒 ⇓", callback_data=f"qualities#{key}#{offset}#{req}")           
