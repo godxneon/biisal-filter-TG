@@ -44,7 +44,11 @@ async def pm_search(client, message):
                                  reply_markup=InlineKeyboardMarkup([[
 		                     InlineKeyboardButton("📝 Movie Search Group 1️⃣ ", url=f'https://t.me/KLMovieGroup')
 				     ],[
-			             InlineKeyboardButton("📝 Movie Search Group 2️⃣", url=f"https://t.me/KeralaRockers_Group")
+			             InlineKeyboardButton("📝 Movie Search Group 2️⃣", url=f"https://t.me/KLMovieGroupTG")
+			             ],[
+			             InlineKeyboardButton("📝 Movie Search Group 3️⃣", url=f"https://t.me/KeralaRockers_Group")
+			             ],[
+			             InlineKeyboardButton("📝 Movie Search Group 4️⃣", url=f"https://t.me/KL_Group2")					 
 				     ]]))
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
