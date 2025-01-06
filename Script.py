@@ -1,6 +1,6 @@
 class script(object):
    
-    START_TXT = """<b>{} {}, ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ ᴀᴜᴛᴏғɪʟᴛᴇʀ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ</b>"""
+    START_TXT = """<b>{} {}, ɪ ᴀᴍ ᴀᴜᴛᴏғɪʟᴛᴇʀ ʙᴏᴛ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴍᴏᴠɪᴇs ᴏʀ sᴇʀɪᴇs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴘᴍ</b>"""
 
 #<spoiler>➪ ʟᴀᴛᴇsᴛ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs /list</spoiler>
     
@@ -49,8 +49,8 @@ class script(object):
     OWNER_INFO = """
 <b>⍟───[ <u>ᴏᴡɴᴇʀ ᴅᴇᴛᴀɪʟꜱ</u> ]───⍟
     
-‣ ꜰᴜʟʟ ɴᴀᴍᴇ : HᴀᴄKᴇʀ Jʀ ~ 🦅
-‣ ᴜꜱᴇʀɴᴀᴍᴇ : <a href="https://telegram.me/HacKerJr_Bot">Hacker Jr</a>
+‣ ꜰᴜʟʟ ɴᴀᴍᴇ : ⏤͟͟͞͞HᴀᴄKᴇʀ Jʀ ᠰ
+‣ ᴜꜱᴇʀɴᴀᴍᴇ : <a href="https://telegram.me/HacKer_Jr">HᴀᴄKᴇʀ Jʀ ᠰ</a>
 ‣ ᴄᴏᴜɴᴛʀʏ : ɪɴᴅɪᴀ 🇮🇳</b>"""    
     
     STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
