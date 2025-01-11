@@ -71,7 +71,7 @@ async def get_search_results(query, max_results=MAX_BTN, offset=0, lang=None):
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
     except:
         regex = query
-    filter = {'file_name': regex}
+    filter = {'$or': [{'file_name': regex}, {'caption': regex}]}
     cursor = Media.find(filter)
     cursor.sort('$natural', -1)
     if lang:
@@ -102,7 +102,7 @@ async def get_bad_files(query, file_type=None, offset=0, filter=False):
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
     except:
         return []
-    filter = {'file_name': regex}
+    filter = {'$or': [{'file_name': regex}, {'caption': regex}]}
     if file_type:
         filter['file_type'] = file_type
     total_results = await Media.count_documents(filter)
