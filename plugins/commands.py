@@ -73,7 +73,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('🗽 Features', callback_data='features'),
             InlineKeyboardButton('🧑‍💻 Owner', callback_data='owner_info')
         ],[
-            InlineKeyboardButton('🎭 Community', callback_data='comunity_link'),
+            InlineKeyboardButton('🎭 sᴜᴘᴘᴏʀᴛ', callback_data='comunity_link'),
             InlineKeyboardButton('🏷 About', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ How To Request Movies 🤷‍♂', callback_data='earn')
@@ -123,7 +123,7 @@ async def start(client:Client, message):
             InlineKeyboardButton('🗽 Features', callback_data='features'),
             InlineKeyboardButton('🧑‍💻 Owner', callback_data='owner_info')
         ],[            
-            InlineKeyboardButton('🎭 Community', callback_data='comunity_link'),
+            InlineKeyboardButton('🎭 sᴜᴘᴘᴏʀᴛ', callback_data='comunity_link'),
             InlineKeyboardButton('🏷 About', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ How To Request Movies 🤷‍♂', callback_data='earn')
