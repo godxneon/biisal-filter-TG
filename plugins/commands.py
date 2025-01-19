@@ -133,7 +133,7 @@ async def start(client:Client, message):
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
             reply_markup=reply_markup,
             show_caption_above_media=True,                             
-            parse_mode=enums.ParseMode.HTML,                             
+            parse_mode=enums.ParseMode.HTML                                         
         )
         
     if data.startswith('pm_mode_'):
