@@ -81,8 +81,8 @@ async def start(client:Client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
             reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML,
-            show_caption_above_media = True
+            show_caption_above_media=True,
+            parse_mode=enums.ParseMode.HTML            
         )
         return
     if AUTH_CHANNEL and not await is_req_subscribed(client, message):
@@ -132,8 +132,8 @@ async def start(client:Client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
             reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML,
-            show_caption_above_media = True                             
+            show_caption_above_media=True,                             
+            parse_mode=enums.ParseMode.HTML,                             
         )
         
     if data.startswith('pm_mode_'):
