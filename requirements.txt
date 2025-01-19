@@ -31,22 +31,3 @@ Flask
 itsdangerous==2.0.1 
 python-Levenshtein 
  
- 
-#jisshu 
-opencv-python-headless==4.7.0.68  
- python-dotenv==0.21.1  
- speedtest==0.0.1  
- humanize==4.6.0  
- Pillow==9.4.0  
- psutil==5.9.4  
- NumPy  
- wheel  
- dnspython==2.3.0 
-python-decouple 
-ffmpeg-python>=0.2.0 
- 
-jinja2 
-apscheduler 
-pyshorteners 
-pyromod 
-colorama
