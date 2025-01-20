@@ -68,15 +68,15 @@ async def start(client:Client, message):
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(temp.B_LINK, message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('⇆ Add Me To Your Groups ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('🗽 Features', callback_data='features'),
-            InlineKeyboardButton('🧑‍💻 Owner', callback_data='owner_info')
+            InlineKeyboardButton('🗽 ғᴇᴀᴛᴜʀᴇs', callback_data='features'),
+            InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],[
             InlineKeyboardButton('🎭 sᴜᴘᴘᴏʀᴛ', callback_data='comunity_link'),
-            InlineKeyboardButton('🏷 About', callback_data='about')
+            InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
-            InlineKeyboardButton('🤷‍♂ How To Request Movies 🤷‍♂', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇsᴛ ᴍᴏᴠɪᴇs 🤷‍♂', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
@@ -119,15 +119,15 @@ async def start(client:Client, message):
 
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('⇆ Add Me To Your Groups ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('🗽 Features', callback_data='features'),
-            InlineKeyboardButton('🧑‍💻 Owner', callback_data='owner_info')
+            InlineKeyboardButton('🗽 ғᴇᴀᴛᴜʀᴇs', callback_data='features'),
+            InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info')
         ],[            
             InlineKeyboardButton('🎭 sᴜᴘᴘᴏʀᴛ', callback_data='comunity_link'),
-            InlineKeyboardButton('🏷 About', callback_data='about')
+            InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
-            InlineKeyboardButton('🤷‍♂ How To Request Movies 🤷‍♂', callback_data='earn')
+            InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇsᴛ ᴍᴏᴠɪᴇs 🤷‍♂', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(get_status(), message.from_user.mention, message.from_user.id),
