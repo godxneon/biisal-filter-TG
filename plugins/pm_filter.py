@@ -636,7 +636,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🧩 ғᴇᴀᴛᴜʀᴇs', callback_data='features'),
             InlineKeyboardButton('🧑‍💻 ᴏᴡɴᴇʀ', callback_data='owner_info'),
         ],[
-            InlineKeyboardButton('🎭 ᴄᴏᴍᴍᴜɴɪᴛʏ', callback_data='comunity_link'),
+            InlineKeyboardButton('🎭 sᴜᴘᴘᴏʀᴛ', callback_data='comunity_link'),
             InlineKeyboardButton('🏷 ᴀʙᴏᴜᴛ', callback_data='about')
         ],[
             InlineKeyboardButton('🤷‍♂ ʜᴏᴡ ᴛᴏ ʀᴇǫᴜᴇsᴛ ᴍᴏᴠɪᴇs 🤷‍♂', callback_data='earn')
@@ -654,14 +654,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )      
     elif query.data == "features":
         buttons = [[
-            InlineKeyboardButton('💢 ᴀᴜᴛᴏ-ғɪʟᴛᴇʀ', callback_data='tts'),
-	    InlineKeyboardButton('🔖 ɢ-ғɪʟᴛᴇʀ', callback_data='gfilter')
+            InlineKeyboardButton('💢 ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs 💢', callback_data='admincmd')
         ],[
             InlineKeyboardButton('🔐 ғᴏʀᴄᴇ-sᴜʙ', callback_data='fsub'),  
 	    InlineKeyboardButton('❒ ᴇxᴛʀᴀ ᴍᴏᴅs', callback_data='tts')            
 	],[
-            InlineKeyboardButton('⇚ ʜᴏᴍᴇ', callback_data='start'),
-            InlineKeyboardButton('ᴀᴅᴍɪɴ ᴄᴍᴅs', callback_data='admincmd')	    
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ 📄', callback_data='start')
         ]] 
         reply_markup = InlineKeyboardMarkup(buttons)	
         await query.message.edit_text(                     
