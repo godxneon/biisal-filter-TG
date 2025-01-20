@@ -129,7 +129,22 @@ User - {}"""
     CUDNT_FND = """🤧 𝗛𝗲𝗹𝗹𝗼 {}
 
 𝗜 𝗰𝗼𝘂𝗹𝗱𝗻'𝘁 𝗳𝗶𝗻𝗱 𝗮𝗻𝘆𝘁𝗵𝗶𝗻𝗴 𝗿𝗲𝗹𝗮𝘁𝗲𝗱 𝘁𝗼 𝘁𝗵𝗮𝘁 𝗱𝗶𝗱 𝘆𝗼𝘂 𝗺𝗲𝗮𝗻 𝗮𝗻𝘆 𝗼𝗻𝗲 𝗼𝗳 𝘁𝗵𝗲𝘀𝗲 ?? 👇"""
+
+    AUTOFILTER_TXT = """<b>➪ <u>AUTO FILTER NOTE:</u>
     
+AutoFilter Module Searches IMDB For Movie Details And Database For Files And Sends Results For Each Message In A Groups.
+
+• This Command Only Works For My Admin
+
+➥ Enable  : /autofilter on
+➥ Disable : /autofilter off</b>"""
+
+    FILEINDEX_TXT = """<blockquote><b>➪ <u>FILE INDEX NOTE:</u>
+
+➥ Make Me The Admin Of Your Channel If It's Private.
+➥ Make Sure That Your Channel Does Not Contains Camrips, Porn And Fake Files.
+➥ Forward The Last Message To Me With Quotes. I'll Add All The Files In That Channel To My Database.</b></blockquote>"""
+
     GLOBE_TXT = """<b>ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs. ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs ᴀʀᴇ ᴛʜᴇ ғɪʟᴛᴇʀs sᴇᴛ ʙʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴡʜɪᴄʜ ᴡɪʟʟ ᴡᴏʀᴋ ᴏɴ ᴀʟʟ ɢʀᴏᴜᴘs.
 
 <u>ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ᴜsᴀɢᴇ:</u>
