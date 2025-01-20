@@ -22,17 +22,17 @@ class script(object):
 
 ᴛᴏ ᴄʜᴇᴄᴋ ɪғ ғsᴜʙ ɪs ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴏʀ ɴᴏᴛ, ᴜsᴇ <code>/show_fsub</code></b>"""
     
-    ADMIN_CMD_TXT = """<b>• /stream - Set Stream Link For Bot
-• /del_stream - Delete Stream Link
-• /set_muc - Set Movie Updates Chat Id
+    ADMIN_CMD_TXT = """<b>• /set_muc - Set Movie Updates Chat Id
 • /del_muc - Delete Movie Updates Chat Id
 • /movie_update_on - Enable Movie Updates
 • /movie_update_off - Disable Movie Updates
 • /pm_search_on - Enable PM Search
-• /pm_search_off - Disable PM Search</b>"""
-    
-    TTS_TXT="""
-<b>• sᴇɴᴅ /tts ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ</b>"""
+• /pm_search_off - Disable PM Search
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+• /gfilter - To Create A Global Filters.
+• /gfilters - To View All Global Filters.
+• /delg - To Delete A Particular Global Filters.
+• /delallg - To Delete All Global Filters.</b>"""   
 
     ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
@@ -129,31 +129,7 @@ User - {}"""
     CUDNT_FND = """🤧 𝗛𝗲𝗹𝗹𝗼 {}
 
 𝗜 𝗰𝗼𝘂𝗹𝗱𝗻'𝘁 𝗳𝗶𝗻𝗱 𝗮𝗻𝘆𝘁𝗵𝗶𝗻𝗴 𝗿𝗲𝗹𝗮𝘁𝗲𝗱 𝘁𝗼 𝘁𝗵𝗮𝘁 𝗱𝗶𝗱 𝘆𝗼𝘂 𝗺𝗲𝗮𝗻 𝗮𝗻𝘆 𝗼𝗻𝗲 𝗼𝗳 𝘁𝗵𝗲𝘀𝗲 ?? 👇"""
-
-    AUTOFILTER_TXT = """<b>➪ <u>AUTO FILTER NOTE:</u>
     
-AutoFilter Module Searches IMDB For Movie Details And Database For Files And Sends Results For Each Message In A Groups.
-
-• This Command Only Works For My Admin
-
-➥ Enable  : /autofilter on
-➥ Disable : /autofilter off</b>"""
-
-    FILEINDEX_TXT = """<blockquote><b>➪ <u>FILE INDEX NOTE:</u>
-
-➥ Make Me The Admin Of Your Channel If It's Private.
-➥ Make Sure That Your Channel Does Not Contains Camrips, Porn And Fake Files.
-➥ Forward The Last Message To Me With Quotes. I'll Add All The Files In That Channel To My Database.</b></blockquote>"""
-
-    GLOBE_TXT = """<b>ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs. ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs ᴀʀᴇ ᴛʜᴇ ғɪʟᴛᴇʀs sᴇᴛ ʙʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴡʜɪᴄʜ ᴡɪʟʟ ᴡᴏʀᴋ ᴏɴ ᴀʟʟ ɢʀᴏᴜᴘs.
-
-<u>ᴄᴏᴍᴍᴀɴᴅs ᴀɴᴅ ᴜsᴀɢᴇ:</u>
-
-• /gfilter - ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀ.
-• /gfilters - ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀs.
-• /delg - ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ɢʟᴏʙᴀʟ ғɪʟᴛᴇʀ.
-• /delallg - ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ɢʟᴏʙᴀʟ ꜰɪʟᴛᴇʀꜱ.</b>"""
-
     SOURCE_TXT = """<b>🧑‍💻 <u>𝗦𝗢𝗨𝗥𝗖𝗘 𝗖𝗢𝗗𝗘 : </u>
 
 ᴛʜɪꜱ ɴᴏᴛ ᴀɴ ᴏᴘᴇɴ sᴏᴜʀᴄᴇ ᴘʀᴏᴊᴇᴄᴛ
