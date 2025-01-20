@@ -1,4 +1,4 @@
-kurigram
+pyrofork==2.3.45
 https://codeload.github.com/Jisshubot/pyrogram/zip/refs/heads/dev 
 tgcrypto 
 pymongo==4.8.0 
