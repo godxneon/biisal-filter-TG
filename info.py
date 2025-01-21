@@ -41,6 +41,7 @@ YEARS = [f'{i}' for i in range(2025 , 2002,-1 )]
 SEASONS = [f'season {i}'for i in range (1 , 23)]
 auth_channel = environ.get('AUTH_CHANNEL')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
+request_channel = environ.get('REQUEST_CHANNEL', '-1002079370592')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001845390899'))
 IS_SEND_MOVIE_UPDATE = is_enabled('IS_SEND_MOVIE_UPDATE', False)
