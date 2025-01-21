@@ -23,8 +23,7 @@ import traceback
 from fuzzywuzzy import process
 from database.gfilters_mdb import (
     find_gfilter,
-    get_gfilters,
-    del_allg
+    get_gfilters
 )
 import logging
 logger = logging.getLogger(__name__)
