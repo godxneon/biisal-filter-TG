@@ -8,12 +8,13 @@ import psutil, shutil, sys
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, NOR_IMG, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, FILE_CAPTION, DELETE_TIME
+from info import SETTINGS, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, NOR_IMG, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, IMDB, IMDB_TEMPLATE, FILE_CAPTION, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
 from utils import temp, get_settings, is_check_admin, get_status, get_hash, get_size, save_group_settings, is_req_subscribed, get_poster, get_status, get_readable_time , imdb , formate_file_name, humanbytes
 from database.users_chats_db import db
+from database.gfilters_mdb import find_gfilter, get_gfilters, del_allg
 from database.ia_filterdb import Media, get_search_results, get_bad_files, get_file_details
 from database.config_db import mdb
 import random
@@ -503,6 +504,41 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)    
 
+    elif query.data == "gfiltersdeleteallconfirm":
+        await del_allg(query.message, 'gfilters')
+        await query.answer("Done !")
+        return
+    elif query.data == "gfiltersdeleteallcancel": 
+        await query.message.reply_to_message.delete()
+        await query.message.delete()
+        await query.answer("Process Cancelled !")
+        return
+    elif query.data == "delallconfirm":
+        userid = query.from_user.id
+        chat_type = query.message.chat.type
+
+    elif "gfilteralert" in query.data:
+        grp_id = query.message.chat.id
+        i = query.data.split(":")[1]
+        keyword = query.data.split(":")[2]
+        reply_text, btn, alerts, fileid = await find_gfilter('gfilters', keyword)
+        if alerts is not None:
+            alerts = ast.literal_eval(alerts)
+            alert = alerts[int(i)]
+            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
+            await query.answer(alert, show_alert=True)
+    
+    elif "alertmessage" in query.data:
+        grp_id = query.message.chat.id
+        i = query.data.split(":")[1]
+        keyword = query.data.split(":")[2]
+        reply_text, btn, alerts, fileid = await find_filter(grp_id, keyword)
+        if alerts is not None:
+            alerts = ast.literal_eval(alerts)
+            alert = alerts[int(i)]
+            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
+            await query.answer(alert, show_alert=True)
+		
     elif query.data.startswith("checksub"):
         ident, file_id , grp_id = query.data.split("#")
         if grp_id != 'None' or grp_id != '':
