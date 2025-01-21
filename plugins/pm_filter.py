@@ -513,9 +513,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
         await query.answer("Process Cancelled !")
         return
-    elif query.data == "delallconfirm":
-        userid = query.from_user.id
-        chat_type = query.message.chat.type
 
     elif "gfilteralert" in query.data:
         grp_id = query.message.chat.id
