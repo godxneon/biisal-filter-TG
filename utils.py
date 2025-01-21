@@ -218,7 +218,7 @@ def get_file_id(message: "Message") -> Any:
                 setattr(media, "message_type", attr)
                 return media
 
-def split_quotes(text: str) -> List:
+def split_quotes(text: str) -> Any:
     if not any(text.startswith(char) for char in START_CHAR):
         return text.split(None, 1)
     counter = 1  # ignore first char -> is some kind of quote
