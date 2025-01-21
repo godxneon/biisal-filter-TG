@@ -657,7 +657,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('💢 ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs 💢', callback_data='admincmd')
         ],[
             InlineKeyboardButton('🔐 ғᴏʀᴄᴇ-sᴜʙ', callback_data='fsub'),  
-	    InlineKeyboardButton('❒ ᴇxᴛʀᴀ ᴍᴏᴅs', callback_data='tts')            
+	    InlineKeyboardButton('❒ ᴇxᴛʀᴀ ᴍᴏᴅs', callback_data='extrmod')            
 	],[
             InlineKeyboardButton('⇚ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ᴘᴀɢᴇ 📄', callback_data='start')
         ]] 
@@ -693,12 +693,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "tts":
+    elif query.data == "extrmod":
         buttons = [[
             InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features'),
         ]]
         await query.message.edit_text(
-            text=script.TTS_TXT,
+            text=script.EXTRAMOD_TXT,
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=enums.ParseMode.HTML
         )
@@ -1100,7 +1100,7 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ Try To Ask In [MovieName, Year, Language] This Format..!!\n🔖 Example :-\nAavesham 2024\nAavesham Malayalam</blockquote>\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
+    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
