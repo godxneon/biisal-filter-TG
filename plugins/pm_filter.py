@@ -52,80 +52,10 @@ async def pm_search(client, message):
 				     ]]))
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
-async def group_search(client, message):
-    user_id = message.from_user.id if message.from_user else None
-    chat_id = message.chat.id
-    settings = await get_settings(chat_id)
-    ifJoinedFsub = await is_user_fsub(client,message)
-    if ifJoinedFsub == False:
-        return
-    if message.chat.id == SUPPORT_GROUP :
-                if message.text.startswith("/"):
-                    return
-                files, n_offset, total = await get_search_results(message.text, offset=0)
-                if total != 0:
-                    link = await db.get_set_grp_links(index=1)
-                    msg = await message.reply_text(script.SUPPORT_GRP_MOVIE_TEXT.format(message.from_user.mention() , total) ,             reply_markup=InlineKeyboardMarkup([
-                        [ InlineKeyboardButton('ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ 😉' , url=link)]
-                        ]))
-                    await asyncio.sleep(300)
-                    return await msg.delete()
-                else: return     
-    if settings["auto_filter"]:
-        if not user_id:
-            await message.reply("<b>🚨 ɪ'ᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ғᴏʀ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ!</b>")
-            return
-        
-        if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
-            return await auto_filter(client, message)
-
-        elif message.text.startswith("/"):
-            return
-        
-        elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+', message.text):
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            await message.delete()
-            return await message.reply("<b>sᴇɴᴅɪɴɢ ʟɪɴᴋ ɪsɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ ❌🤞🏻</b>")
-
-        elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            admins = []
-            async for member in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                if not member.user.is_bot:
-                    admins.append(member.user.id)
-                    if member.status == enums.ChatMemberStatus.OWNER:
-                        if message.reply_to_message:
-                            try:
-                                sent_msg = await message.reply_to_message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-                        else:
-                            try:
-                                sent_msg = await message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-            hidden_mentions = (f'[\u2064](tg://user?id={user_id})' for user_id in admins)
-            await message.reply_text('<code>Report sent</code>' + ''.join(hidden_mentions))
-            return               
-        else:
-            try: 
-                await auto_filter(client, message)
-            except Exception as e:
-                traceback.print_exc()
-                print('found err in grp search  :',e)
-
-    else:
-        k=await message.reply_text('<b>⚠️ ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ᴍᴏᴅᴇ ɪꜱ ᴏғғ...</b>')
-        await asyncio.sleep(10)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
+async def give_filter(client, message):
+    k = await global_filters(client, message)
+    if k == False:
+        await auto_filter(client, message)           
              
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
@@ -1120,3 +1050,72 @@ async def advantage_spell_chok(msg):
         pass
     return   
 
+async def global_filters(client, message, text=False):
+    settings = await get_settings(message.chat.id)
+    group_id = message.chat.id
+    name = text or message.text
+    reply_id = message.reply_to_message.id if message.reply_to_message else message.id
+    keywords = await get_gfilters('gfilters')
+    for keyword in reversed(sorted(keywords, key=len)):
+        pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
+        if re.search(pattern, name, flags=re.IGNORECASE):
+            reply_text, btn, alert, fileid = await find_gfilter('gfilters', keyword)
+
+            if reply_text:
+                reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
+
+            if btn is not None:
+                try:
+                    if fileid == "None":
+                        if btn == "[]":
+                            hackjr = await client.send_message(
+                                group_id, 
+                                reply_text, 
+                                disable_web_page_preview=True,
+                                reply_to_message_id=reply_id
+                            )
+                            await asyncio.sleep(DELETE_TIME)
+                            await hackjr.delete()
+                            await message.delete()
+                            
+                        else:
+                            button = eval(btn)
+                            hmm = await client.send_message(
+                                group_id,
+                                reply_text,
+                                disable_web_page_preview=True,
+                                reply_markup=InlineKeyboardMarkup(button),
+                                reply_to_message_id=reply_id
+                            )
+                            await asyncio.sleep(DELETE_TIME)
+                            await hmm.delete()
+                            await message.delete()
+
+                    elif btn == "[]":
+                        oto = await client.send_cached_media(
+                            group_id,
+                            fileid,
+                            caption=reply_text or "",
+                            reply_to_message_id=reply_id
+                        )
+                        await asyncio.sleep(DELETE_TIME)
+                        await oto.delete()
+                        await message.delete()
+
+                    else:
+                        button = eval(btn)
+                        dlt = await message.reply_cached_media(
+                            fileid,
+                            caption=reply_text or "",
+                            reply_markup=InlineKeyboardMarkup(button),
+                            reply_to_message_id=reply_id
+                        )
+                        await asyncio.sleep(DELETE_TIME)
+                        await dlt.delete()
+                        await message.delete()
+ 
+                except Exception as e:
+                    logger.exception(e)
+                break
+    else:
+        return False
