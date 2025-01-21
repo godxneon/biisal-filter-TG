@@ -103,7 +103,7 @@ async def get_all_gfilters(client, message):
     )
         
 @Client.on_message(filters.command('delg') & filters.incoming & filters.user(ADMINS))
-async def deletegfilter(client, message):
+async def delallgfilters(client, message):
     try:
         cmd, text = message.text.split(" ", 1)
     except:
