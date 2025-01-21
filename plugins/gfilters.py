@@ -72,7 +72,7 @@ async def addgfilter(client, message):
         quote=True,
         parse_mode=enums.ParseMode.MARKDOWN
     )
-
+    
 @Client.on_message(filters.command(['viewgfilters', 'gfilters']) & filters.incoming & filters.user(ADMINS))
 async def get_all_gfilters(client, message):
     texts = await get_gfilters('gfilters')
@@ -101,7 +101,7 @@ async def get_all_gfilters(client, message):
         quote=True,
         parse_mode=enums.ParseMode.MARKDOWN
     )
-
+        
 @Client.on_message(filters.command('delg') & filters.incoming & filters.user(ADMINS))
 async def deletegfilter(client, message):
     try:
@@ -119,14 +119,20 @@ async def deletegfilter(client, message):
 
     await delete_gfilter(message, query, 'gfilters')
 
+
 @Client.on_message(filters.command('delallg') & filters.user(ADMINS))
-async def delallgfilters(client, message):
+async def delallgfill(client, message):
     await message.reply_text(
             f"Do you want to continue??",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text="YES",callback_data="gfiltersdeleteallconfirm")],
-                [InlineKeyboardButton(text="CANCEL",callback_data="gfiltersdeleteallcancel")]
+                [InlineKeyboardButton(text="YES",callback_data="gconforme")],
+                [InlineKeyboardButton(text="CANCEL",callback_data="close_data")]
             ]),
             quote=True
         )
-  
+
+@Client.on_callback_query(filters.regex("gconforme"))
+async def dellacbd(client, message):
+    await del_allg(message.message, 'gfilters')
+    return await message.reply("👍 Done")
+    
