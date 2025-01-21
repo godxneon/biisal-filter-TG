@@ -103,7 +103,7 @@ async def get_all_gfilters(client, message):
     )
         
 @Client.on_message(filters.command('delg') & filters.incoming & filters.user(ADMINS))
-async def delallgfilters(client, message):
+async def deletegfilter(client, message):
     try:
         cmd, text = message.text.split(" ", 1)
     except:
@@ -119,20 +119,14 @@ async def delallgfilters(client, message):
 
     await delete_gfilter(message, query, 'gfilters')
 
-
 @Client.on_message(filters.command('delallg') & filters.user(ADMINS))
-async def delallgfill(client, message):
+async def delallgfilters(client, message):
     await message.reply_text(
             f"Do you want to continue??",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text="YES",callback_data="gconforme")],
-                [InlineKeyboardButton(text="CANCEL",callback_data="close_data")]
+                [InlineKeyboardButton(text="YES",callback_data="gfiltersdeleteallconfirm")],
+                [InlineKeyboardButton(text="CANCEL",callback_data="gfiltersdeleteallcancel")]
             ]),
             quote=True
         )
 
-@Client.on_callback_query(filters.regex("gconforme"))
-async def dellacbd(client, message):
-    await del_allg(message.message, 'gfilters')
-    return await message.reply("👍 Done")
-    
