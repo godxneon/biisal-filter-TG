@@ -18,6 +18,7 @@ from database.gfilters_mdb import find_gfilter, get_gfilters, del_allg
 from database.ia_filterdb import Media, get_search_results, get_bad_files, get_file_details
 from database.config_db import mdb
 import random
+import logging
 lock = asyncio.Lock()
 from .components.checkFsub import is_user_fsub
 import traceback
