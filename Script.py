@@ -28,7 +28,7 @@ class script(object):
 • /movie_update_off - Disable Movie Updates
 • /pm_search_on - Enable PM Search
 • /pm_search_off - Disable PM Search
-┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 • /gfilter - To Create A Global Filters.
 • /gfilters - To View All Global Filters.
 • /delg - To Delete A Particular Global Filters.
