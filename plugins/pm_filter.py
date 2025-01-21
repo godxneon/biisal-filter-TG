@@ -1105,15 +1105,14 @@ async def global_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            hackjr = await client.send_message(
+                            joelkb = await client.send_message(
                                 group_id, 
                                 reply_text, 
                                 disable_web_page_preview=True,
                                 reply_to_message_id=reply_id
                             )
-                            await asyncio.sleep(DELETE_TIME)
-                            await hackjr.delete()
-                            await message.delete()
+                            await asyncio.sleep(200)
+                            await joelkb.delete()
                             
                         else:
                             button = eval(btn)
@@ -1124,9 +1123,8 @@ async def global_filters(client, message, text=False):
                                 reply_markup=InlineKeyboardMarkup(button),
                                 reply_to_message_id=reply_id
                             )
-                            await asyncio.sleep(DELETE_TIME)
+                            await asyncio.sleep(200)
                             await hmm.delete()
-                            await message.delete()
 
                     elif btn == "[]":
                         oto = await client.send_cached_media(
@@ -1135,9 +1133,8 @@ async def global_filters(client, message, text=False):
                             caption=reply_text or "",
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep(DELETE_TIME)
+                        await asyncio.sleep(200)
                         await oto.delete()
-                        await message.delete()
 
                     else:
                         button = eval(btn)
@@ -1147,10 +1144,9 @@ async def global_filters(client, message, text=False):
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep(DELETE_TIME)
+                        await asyncio.sleep(200)
                         await dlt.delete()
-                        await message.delete()
- 
+
                 except Exception as e:
                     logger.exception(e)
                 break
