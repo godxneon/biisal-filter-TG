@@ -8,7 +8,7 @@ from pyrogram import enums
 import pytz, re, os 
 from shortzy import Shortzy
 from datetime import datetime
-from typing import Any
+from typing import Any, List
 from database.users_chats_db import db
 
 logger = logging.getLogger(__name__)
@@ -221,7 +221,7 @@ def get_file_id(message: "Message") -> Any:
                 setattr(media, "message_type", attr)
                 return media
 
-def split_quotes(text: str) -> Any:
+def split_quotes(text: str) -> List:
     if not any(text.startswith(char) for char in START_CHAR):
         return text.split(None, 1)
     counter = 1  # ignore first char -> is some kind of quote
@@ -347,6 +347,19 @@ async def get_seconds(time_string):
         return value * 86400 * 365
     else:
         return 0
+
+def remove_escapes(text: str) -> str:
+    res = ""
+    is_escaped = False
+    for counter in range(len(text)):
+        if is_escaped:
+            res += text[counter]
+            is_escaped = False
+        elif text[counter] == "\\":
+            is_escaped = True
+        else:
+            res += text[counter]
+    return res
 
 def get_readable_time(seconds):
     periods = [('days', 86400), ('hour', 3600), ('min', 60), ('sec', 1)]
