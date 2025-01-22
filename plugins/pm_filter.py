@@ -18,13 +18,9 @@ from database.ia_filterdb import Media, get_search_results, get_bad_files, get_f
 from database.config_db import mdb
 import random
 lock = asyncio.Lock()
-from .components.checkFsub import is_user_fsub
 import traceback
 from fuzzywuzzy import process
-from database.gfilters_mdb import (
-    find_gfilter,
-    get_gfilters
-)
+
 import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
