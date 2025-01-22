@@ -25,6 +25,7 @@ CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHAN
 PICS = (environ.get('PICS', 'https://telegra.ph/file/84e783f76428bc2abbfdd.jpg https://telegra.ph/file/c3d08e78e8a8f3127f669.jpg')).split()
 START_IMG = environ.get('START_IMG', 'https://telegra.ph/file/84e783f76428bc2abbfdd.jpg')
 NOR_IMG = environ.get('NOR_IMG', "https://envs.sh/pTu.jpg")
+SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002112017446'))
 BIN_CHANNEL = int(environ.get('BIN_CHANNEL','-1002031180571'))
 DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-1001834934471'))
 URL = environ.get('URL', 'mytestbot-jvdfhbj.com')
