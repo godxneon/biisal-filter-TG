@@ -24,15 +24,12 @@ class script(object):
     
     ADMIN_CMD_TXT = """<b>• /set_muc - Set Movie Updates Chat Id
 • /del_muc - Delete Movie Updates Chat Id
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 • /movie_update_on - Enable Movie Updates
 • /movie_update_off - Disable Movie Updates
-• /pm_search_on - Enable PM Search
-• /pm_search_off - Disable PM Search
 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-• /gfilter - To Create A Global Filters.
-• /gfilters - To View All Global Filters.
-• /delg - To Delete A Particular Global Filters.
-• /delallg - To Delete All Global Filters.</b>"""   
+• /pm_search_on - Enable PM Search
+• /pm_search_off - Disable PM Search</b>"""   
 
     ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
