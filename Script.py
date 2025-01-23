@@ -96,7 +96,7 @@ User - {}"""
 🌟 runtime - {runtime}
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>"""
 
-    FILE_CAPTION = """<b>@Team_KL ~ {file_caption}
+    FILE_CAPTION = """<b>@Team_KL ~ {file_name}
     
 ➠ @KLxFiles 
 ➠ @KLMovieGroup  
