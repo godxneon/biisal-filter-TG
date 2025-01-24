@@ -16,14 +16,17 @@ class script(object):
 /totalrequests : ɢᴇᴛ ᴛᴏᴛᴀʟ ʀᴇǫᴜᴇsᴛ ᴄᴏᴜɴᴛs ᴏɴ ᴄᴜʀʀᴇɴᴛ ғsᴜʙ ᴄʜᴀɴɴᴇʟ
 /purgerequests : ᴄʟᴇᴀʀ ʀᴇǫᴜᴇsᴛs ᴏɴ ᴄᴜʀʀᴇɴᴛ ғsᴜʙ ᴄʜᴀɴɴᴇʟ</b>"""
    
-    ADMIN_CMD_TXT = """<b>• /set_muc - sᴇᴛ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ
-• /del_muc - ᴅᴇʟᴇᴛᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ
-┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-• /movie_update_on - ᴇɴᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs
-• /movie_update_off - ᴅɪsᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs
-┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-• /pm_search_on - ᴇɴᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ
-• /pm_search_off - ᴅɪsᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ</b>"""   
+    ADMIN_CMD_TXT = """<b>• /set_muc - sᴇᴛ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ.
+• /del_muc - ᴅᴇʟᴇᴛᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ.
+• /movie_update_on - ᴇɴᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs.
+• /movie_update_off - ᴅɪsᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs.
+• /pm_search_on - ᴇɴᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ.
+• /pm_search_off - ᴅɪsᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ.
+• /file_text - sᴇᴛ ᴛᴏ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs ɴᴀᴍᴇs.
+• /index - ɪɴᴅᴇx ᴀʟʟ ғɪʟᴇs.
+• /leave - ʟᴇᴀᴠᴇ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ɢʀᴏᴜᴘ.
+• /broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs.
+• /grp_broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs.</b>"""   
 
     ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
