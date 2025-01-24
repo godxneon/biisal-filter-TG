@@ -6,30 +6,24 @@ class script(object):
     
     HELP_TXT = """<b>ʜᴇʀᴇ ɪs ᴀ ʙʀɪᴇғ ᴅᴇᴛᴀɪʟs ᴀʙᴏᴜᴛ sᴏᴍᴇ ᴏғ ᴛʜᴇ ғᴇᴀᴛᴜʀᴇs ᴏғ ᴍɪɴᴇ</b>"""
     
-    TELE_TXT = """<b>/telegraph - sᴇɴᴅ ᴍᴇ ᴘɪᴄᴛᴜʀᴇ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ (5ᴍʙ)
+    FSUB_TXT = """<b>➜ <u>ʀᴇǫᴜᴇsᴛ ғᴏʀᴄᴇsᴜʙ ᴍᴏᴅ:</u>
+    
+➥ ᴛʜɪs ᴍᴏᴅᴜʟᴇ ᴏɴʟʏ ᴡᴏʀᴋs ғᴏʀ ᴍʏ ᴀᴅᴍɪɴ
 
-ɴᴏᴛᴇ - ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋ ɪɴ ʙᴏᴛʜ ɢʀᴏᴜᴘs ᴀɴᴅ ʙᴏᴛ ᴘᴍ</b>"""
+/setchat : ᴀᴅᴅ ғᴏʀᴄᴇsᴜʙ / ʀᴇǫᴜᴇsᴛ ᴄʜᴀɴɴᴇʟ ɪᴅ
+/delchat : ᴅᴇʟᴇᴛᴇᴅ ғᴏʀᴄᴇsᴜʙ ᴄʜᴀɴɴᴇʟ
+/viewchat : ɢᴇᴛ sᴀᴠᴇᴅ ғᴏʀᴄᴇsᴜʙ ᴄʜᴀɴɴᴇʟ ᴅᴇᴛᴀɪʟ
+/totalrequests : ɢᴇᴛ ᴛᴏᴛᴀʟ ʀᴇǫᴜᴇsᴛ ᴄᴏᴜɴᴛs ᴏɴ ᴄᴜʀʀᴇɴᴛ ғsᴜʙ ᴄʜᴀɴɴᴇʟ
+/purgerequests : ᴄʟᴇᴀʀ ʀᴇǫᴜᴇsᴛs ᴏɴ ᴄᴜʀʀᴇɴᴛ ғsᴜʙ ᴄʜᴀɴɴᴇʟ</b>"""
    
-    FSUB_TXT = """<b>• ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ 😗
-    
-• ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ᴛᴀʀɢᴇᴛ ғᴏʀᴄᴇ sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ ᴏʀ Gʀᴏᴜᴘ  😉
-
-• sᴇɴᴅ /fsub ʏᴏᴜʀ_ᴛᴀʀɢᴇᴛ_ᴄʜᴀᴛ_ɪᴅ ᴇx: <code>/fsub -1004646464646</code>
-
-ɴᴏᴡ ɪᴛ's ᴅᴏɴᴇ.ɪ ᴡɪʟʟ ᴄᴏᴍᴘᴇʟ ʏᴏᴜʀ ᴜsᴇʀs ᴛᴏ ᴊᴏɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ/ɢʀᴏᴜᴘ, ᴀɴᴅ I ᴡɪʟʟ ɴᴏᴛ ᴘʀᴏᴠɪᴅᴇ ᴀɴʏ ғɪʟᴇs ᴜɴᴛɪʟ ʏᴏᴜʀ ᴜsᴇʀs ᴊᴏɪɴ ʏᴏᴜʀ ᴛᴀʀɢᴇᴛ ᴄʜᴀɴɴᴇʟ.
-
-ᴛᴏ ᴅɪsᴀʙʟᴇ ғsᴜʙ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ, sɪᴍᴘʟʏ sᴇɴᴅ <code>/del_fsub</code>
-
-ᴛᴏ ᴄʜᴇᴄᴋ ɪғ ғsᴜʙ ɪs ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴏʀ ɴᴏᴛ, ᴜsᴇ <code>/show_fsub</code></b>"""
-    
-    ADMIN_CMD_TXT = """<b>• /set_muc - Set Movie Updates Chat Id
-• /del_muc - Delete Movie Updates Chat Id
+    ADMIN_CMD_TXT = """<b>• /set_muc - sᴇᴛ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ
+• /del_muc - ᴅᴇʟᴇᴛᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀᴛ ɪᴅ
 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-• /movie_update_on - Enable Movie Updates
-• /movie_update_off - Disable Movie Updates
+• /movie_update_on - ᴇɴᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs
+• /movie_update_off - ᴅɪsᴀʙʟᴇ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇs
 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-• /pm_search_on - Enable PM Search
-• /pm_search_off - Disable PM Search</b>"""   
+• /pm_search_on - ᴇɴᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ
+• /pm_search_off - ᴅɪsᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ</b>"""   
 
     ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
@@ -49,6 +43,12 @@ class script(object):
 ‣ ꜰᴜʟʟ ɴᴀᴍᴇ : ⏤͟͟͞͞HᴀᴄKᴇʀ Jʀ ᠰ
 ‣ ᴜꜱᴇʀɴᴀᴍᴇ : <a href="https://telegram.me/HacKer_Jr">HᴀᴄKᴇʀ Jʀ ᠰ</a>
 ‣ ᴄᴏᴜɴᴛʀʏ : ɪɴᴅɪᴀ 🇮🇳</b>"""    
+
+EXTRAMOD_TXT = """<b>➜ <u>ᴇxᴛʀᴀ ᴍᴏᴅs ᴄᴏᴍᴍᴀɴᴅs:</u>
+
+• /id - ɢᴇᴛ ɪᴅ ᴏғ ᴀ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ
+• /imdb - ɢᴇᴛ ᴛʜᴇ ғɪʟᴍ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ғʀᴏᴍ ɪᴍᴅʙ sᴏᴜʀᴄᴇ
+• /image - ʜᴏsᴛ  ɪᴍᴀɢᴇ  ɢɪᴠᴇs  ʟɪɴᴋ (ᴛᴇʟᴇɢʀᴀᴘʜ)</b>"""
     
     STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
 
