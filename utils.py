@@ -29,6 +29,7 @@ class temp(object):
     USERS_CANCEL = False
     GROUPS_CANCEL = False    
     CHAT = {}
+    BANNED_USERS = []
 
 def formate_file_name(file_name):
     file_name = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file_name.split()))
