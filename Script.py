@@ -23,6 +23,7 @@ class script(object):
 • /pm_search_on - ᴇɴᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ.
 • /pm_search_off - ᴅɪsᴀʙʟᴇ ᴘᴍ sᴇᴀʀᴄʜ.
 • /file_text - sᴇᴛ ᴛᴏ ɴᴇᴡ ʀᴇʟᴇᴀsᴇs ɴᴀᴍᴇs.
+• /link - ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ᴀᴜᴛᴏғɪʟᴛᴇʀ ʟɪɴᴋs.
 • /index - ɪɴᴅᴇx ᴀʟʟ ғɪʟᴇs.
 • /leave - ʟᴇᴀᴠᴇ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ɢʀᴏᴜᴘ.
 • /broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs.
