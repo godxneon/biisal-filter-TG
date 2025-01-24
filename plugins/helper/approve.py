@@ -27,8 +27,4 @@ async def autoapprove(client, message: ChatJoinRequest):
         )   
 #    await asyncio.sleep(35)
 #    await k.delete()
-    except Exception as e:
-        print(f"Error approving request: {e}")
-        await bot.send_message(LOG_CHANNEL, f'Error approving request - {e}')
     
-  
