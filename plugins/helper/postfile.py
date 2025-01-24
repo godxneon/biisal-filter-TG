@@ -8,7 +8,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 translator = Translator()
 
-async def get_hindi(plot):
+async def get_malayalam(plot):
     try:
         translated = translator.translate(plot, dest='mal')
         return translated.text
@@ -16,7 +16,7 @@ async def get_hindi(plot):
         print(f"Translation Error: {e}")
         return plot
 
-@Client.on_message(filters.command('getfile'))
+@Client.on_message(filters.command('postfile'))
 async def getfile(client, message):
     try:
         query = message.text.split(" ", 1) 
@@ -34,7 +34,7 @@ async def getfile(client, message):
         genres = movie_details.get('genres', 'N/A')
         plot = movie_details.get('plot', 'N/A')
         year = movie_details.get('year', 'N/A')
-        hindi_plot = await get_hindi(plot)
+        malayalam_plot = await get_malayalam(plot)
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         safari_markup = InlineKeyboardMarkup([
@@ -53,7 +53,7 @@ async def getfile(client, message):
                     f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>📆 Year: {year}</b>\n\n"
-                    f"📕 Story: {hindi_plot}"
+                    f"📕 Story: {malayalam_plot}"
                 ),
                 reply_markup=safari_markup,
                 parse_mode=enums.ParseMode.HTML,
@@ -63,11 +63,11 @@ async def getfile(client, message):
         else:
             await message.reply_text(
                 (
-                    f"<b>🔖Title: {movie_title}</b>\n"
+                    f"<b>🔖 Title: {movie_title}</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>📆 Year: {year}</b>\n\n"
-                    f"📕 Story: {hindi_plot}"
+                    f"📕 Story: {malayalam_plot}"
                 ),
                 reply_markup=safari_markup,
                 parse_mode=enums.ParseMode.HTML,
@@ -93,7 +93,7 @@ async def post_to_channels(client, callback_query):
         genres = movie_details.get('genres', 'N/A')
         plot = movie_details.get('plot', 'N/A')
         year = movie_details.get('year', 'N/A')
-        hindi_plot = await get_hindi(plot)
+        malayalam_plot = await get_malayalam(plot)
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([
@@ -110,7 +110,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>📆 Year: {year}</b>\n\n"
-                            f"📕 Story: {hindi_plot}"
+                            f"📕 Story: {malayalam_plot}"
                         ),
                         reply_markup=reply_markup,
                         parse_mode=enums.ParseMode.HTML
@@ -123,7 +123,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>📆 Year: {year}</b>\n\n"
-                            f"📕 Story: {hindi_plot}"
+                            f"📕 Story: {malayalam_plot}"
                         ),
                         reply_markup=reply_markup,
                         parse_mode=enums.ParseMode.HTML
