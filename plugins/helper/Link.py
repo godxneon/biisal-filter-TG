@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from info import *
 
 @Client.on_message(filters.command("link") & filters.user(ADMINS))
 async def generate_link(client, message):
