@@ -44,7 +44,7 @@ class script(object):
 ‣ ᴜꜱᴇʀɴᴀᴍᴇ : <a href="https://telegram.me/HacKer_Jr">HᴀᴄKᴇʀ Jʀ ᠰ</a>
 ‣ ᴄᴏᴜɴᴛʀʏ : ɪɴᴅɪᴀ 🇮🇳</b>"""    
 
-EXTRAMOD_TXT = """<b>➜ <u>ᴇxᴛʀᴀ ᴍᴏᴅs ᴄᴏᴍᴍᴀɴᴅs:</u>
+    EXTRAMOD_TXT = """<b>➜ <u>ᴇxᴛʀᴀ ᴍᴏᴅs ᴄᴏᴍᴍᴀɴᴅs:</u>
 
 • /id - ɢᴇᴛ ɪᴅ ᴏғ ᴀ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ
 • /imdb - ɢᴇᴛ ᴛʜᴇ ғɪʟᴍ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ғʀᴏᴍ ɪᴍᴅʙ sᴏᴜʀᴄᴇ
