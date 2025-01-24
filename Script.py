@@ -86,9 +86,9 @@ User - {}"""
 
 🎁 ʀᴇǫᴜᴇꜱᴛ ᴍꜱɢ - <code>{}</code></b>"""  
     
-    IMDB_TEMPLATE_TXT = """<b>📻 ᴛɪᴛʟᴇ - <a href={url}>{title}</a>
+    IMDB_TEMPLATE_TXT = """<b>📻 ᴛɪᴛʟᴇ - {title}
 🎭 ɢᴇɴʀᴇs - {genres}
-🎖 ʀᴀᴛɪɴɢ - <a href={url}/ratings>{rating}</a> / 10 (ʙᴀsᴇᴅ ᴏɴ {votes} ᴜsᴇʀ ʀᴀᴛɪɴɢ.)
+🎖 ʀᴀᴛɪɴɢ - {rating} / 10 
 📆 ʏᴇᴀʀ - {release_date}
 🌟 runtime - {runtime}
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>"""
