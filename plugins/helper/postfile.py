@@ -10,7 +10,7 @@ translator = Translator()
 
 async def get_hindi(plot):
     try:
-        translated = translator.translate(plot, dest='hi')
+        translated = translator.translate(plot, dest='mal')
         return translated.text
     except Exception as e:
         print(f"Translation Error: {e}")
@@ -49,7 +49,7 @@ async def getfile(client, message):
             await message.reply_photo(
                 poster,
                 caption=(
-                    f"<b>🔖Title: {movie_title}</b>\n"
+                    f"<b>🔖 Title: {movie_title}</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>📆 Year: {year}</b>\n\n"
