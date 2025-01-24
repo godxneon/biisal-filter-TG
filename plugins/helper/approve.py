@@ -5,7 +5,7 @@ import pytz
 import datetime
 from pyrogram import Client, filters
 from pyrogram.types import Message, User, InlineKeyboardMarkup, InlineKeyboardButton, ChatJoinRequest
-from info import CHAT_ID, TEXT, APPROVED, APICS
+from info import CHAT_ID, TEXT, APPROVED, APICS, LOG_CHANNEL
 
 @Client.on_chat_join_request((filters.group | filters.channel) & filters.chat(CHAT_ID) if CHAT_ID else (filters.group | filters.channel))
 async def autoapprove(client, message: ChatJoinRequest):
@@ -27,3 +27,8 @@ async def autoapprove(client, message: ChatJoinRequest):
         )   
 #    await asyncio.sleep(35)
 #    await k.delete()
+    except Exception as e:
+        print(f"Error approving request: {e}")
+        await bot.send_message(LOG_CHANNEL, f'Error approving request - {e}')
+    
+  
