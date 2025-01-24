@@ -3,7 +3,7 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-@Client.on_message(filters.command(["img", "cup"], prefixes="/") & filters.reply)
+@Client.on_message(filters.command(["image", "cup"], prefixes="/") & filters.reply)
 async def c_upload(client, message: Message):
     reply = message.reply_to_message
 
