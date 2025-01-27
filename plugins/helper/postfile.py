@@ -39,13 +39,15 @@ async def getfile(client, message):
                 poster,
                 caption=(
                     f"<b>🔖 Title: {movie_title}</b>\n"
-                    f"<b>🎬 Genres: {genres}</b>\n"
-                    f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>📆 Year: {year}</b>\n"
-                    f"<b>🌐 Language: {languages}</b>\n\n"
-                    f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
+                    f"<b>🌐 Language: {languages}</b>\n"
+                    f"<b>⭐️ Rating: {rating}/10</b>\n"
+                    f"<b>🎬 Genres: {genres}</b>\n\n"
+                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                    <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
                 ),
                 reply_markup=safari_markup,
+                has_spoiler=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNELS ?",
@@ -54,13 +56,15 @@ async def getfile(client, message):
             await message.reply_text(
                 (
                     f"<b>🔖 Title: {movie_title}</b>\n"
-                    f"<b>🎬 Genres: {genres}</b>\n"
-                    f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>📆 Year: {year}</b>\n"
-                    f"<b>🌐 Language: {languages}</b>\n\n"
-                    f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
+                    f"<b>🌐 Language: {languages}</b>\n"
+                    f"<b>⭐️ Rating: {rating}/10</b>\n"
+                    f"<b>🎬 Genres: {genres}</b>\n\n"
+                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                    <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
                 ),
                 reply_markup=safari_markup,
+                has_spoiler=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNEL ?",
@@ -98,13 +102,15 @@ async def post_to_channels(client, callback_query):
                         photo=poster,
                         caption=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
-                            f"<b>🎬 Genres: {genres}</b>\n"
-                            f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>📆 Year: {year}</b>\n"
-                            f"<b>🌐 Language: {languages}</b>\n\n"
-                            f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
+                            f"<b>🌐 Language: {languages}</b>\n"
+                            f"<b>⭐️ Rating: {rating}/10</b>\n"
+                            f"<b>🎬 Genres: {genres}</b>\n\n"
+                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                            <b>🔥 Uploaded: @KLxFiles | @Team_KL</b>
                         ),
                         reply_markup=reply_markup,
+                        has_spoiler=True,
                         parse_mode=enums.ParseMode.HTML
                     )
                 else:
@@ -112,13 +118,15 @@ async def post_to_channels(client, callback_query):
                         chat_id=channel_id,
                         text=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
-                            f"<b>🎬 Genres: {genres}</b>\n"
-                            f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>📆 Year: {year}</b>\n"
-                            f"<b>🌐 Language: {languages}</b>\n\n"
-                            f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
+                            f"<b>🌐 Language: {languages}</b>\n"
+                            f"<b>⭐️ Rating: {rating}/10</b>\n"
+                            f"<b>🎬 Genres: {genres}</b>\n\n"
+                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                            <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
                         ),
                         reply_markup=reply_markup,
+                        has_spoiler=True,
                         parse_mode=enums.ParseMode.HTML
                     )
             except Exception as e:
