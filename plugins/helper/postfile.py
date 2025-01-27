@@ -2,6 +2,7 @@ from utils import temp
 from utils import get_poster
 from info import POST_CHANNELS
 from pyrogram import Client, filters, enums
+from database.users_chats_db import db
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @Client.on_message(filters.command('postfile'))
@@ -90,16 +91,16 @@ async def post_to_channels(client, callback_query):
         plot = movie_details.get('plot', 'N/A')
         year = movie_details.get('year', 'N/A')
         languages = movie_details.get('languages', 'N/A')
-        
+
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
         ]])
-        for channel_id in POST_CHANNELS:
+        for channel_id in await db.postfile_channel_id():
             try:
                 if poster:
                     await client.send_photo(
-                        chat_id=channel_id,
+                        channel_id if channel_id else POST_CHANNELS,
                         photo=poster,
                         caption=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
@@ -117,7 +118,7 @@ async def post_to_channels(client, callback_query):
                     )
                 else:
                     await client.send_message(
-                        chat_id=channel_id,
+                        channel_id if channel_id else POST_CHANNELS,
                         text=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
                             f"<b>📆 Year: {year}</b>\n"
