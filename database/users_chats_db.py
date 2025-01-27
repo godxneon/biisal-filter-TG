@@ -18,7 +18,6 @@ class Database:
         self.pmMode = mydb.pmMode
         self.grp_and_ids = fsubs.grp_and_ids
         self.movies_update_channel = mydb.movies_update_channel
-        self.postfile_channel = mydb.postfile_channel
         self.botcol = mydb.botcol
     def new_user(self, id, name):
         return dict(
@@ -167,15 +166,6 @@ class Database:
         else:
             await self.botcol.insert_one({'id': int(bot_id), 'movie_update_feature': enable})      
 
-    async def postfile_channel_id(self , id=None):
-        if id is None:
-            myLinks = await self.postfile_channel.find_one({})
-            if myLinks is not None:
-                return myLinks.get("id")
-            else:
-                return None
-        return await self.postfile_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
-        
     async def movies_update_channel_id(self , id=None):
         if id is None:
             myLinks = await self.movies_update_channel.find_one({})
