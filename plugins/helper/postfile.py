@@ -2,31 +2,20 @@
 from utils import temp
 from utils import get_poster
 from info import POST_CHANNELS
-from googletrans import Translator
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-translator = Translator()
-
-async def get_malayalam(plot):
-    try:
-        translated = translator.translate(plot, dest='mal')
-        return translated.text
-    except Exception as e:
-        print(f"Translation Error: {e}")
-        return plot
 
 @Client.on_message(filters.command('postfile'))
 async def getfile(client, message):
     try:
         query = message.text.split(" ", 1) 
         if len(query) < 2:
-            return await message.reply_text("<b>Usage:</b> /getfile <movie_name>\n\nExample: /getfile Money Heist")
+            return await message.reply_text("<b>Usage :</b> /postfile {movie_name}\n\nExample : /postfile Money Heist")
         file_name = query[1].strip() 
         movie_details = await get_poster(file_name)
         
         if not movie_details:
-            return await message.reply_text(f"No results found for {file_name} on IMDB.")
+            return await message.reply_text(f"No Results Found For {file_name} On IMDB.")
 
         poster = movie_details.get('poster', None)
         movie_title = movie_details.get('title', 'N/A')
@@ -34,15 +23,15 @@ async def getfile(client, message):
         genres = movie_details.get('genres', 'N/A')
         plot = movie_details.get('plot', 'N/A')
         year = movie_details.get('year', 'N/A')
-        malayalam_plot = await get_malayalam(plot)
+        languages = movie_details.get('languages', 'N/A')
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         safari_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("Get File 📁", url=custom_link)
         ]])
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Yes", callback_data=f"post_yes_{file_name}"),
-             InlineKeyboardButton("No", callback_data=f"post_no_{file_name}")]
+            [InlineKeyboardButton("😊 Yes", callback_data=f"post_yes_{file_name}"),
+             InlineKeyboardButton("🥺 No", callback_data=f"post_no_{file_name}")]
         ])
         
         if poster:
@@ -52,13 +41,14 @@ async def getfile(client, message):
                     f"<b>🔖 Title: {movie_title}</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
-                    f"<b>📆 Year: {year}</b>\n\n"
-                    f"📕 Story: {malayalam_plot}"
+                    f"<b>📆 Year: {year}</b>\n"
+                    f"<b>🌐 Language: {languages}</b>\n\n"
+                    f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
                 ),
                 reply_markup=safari_markup,
                 parse_mode=enums.ParseMode.HTML,
             )
-            await message.reply_text("Do you want to post this content on POST_CAHNNELS ?",
+            await message.reply_text("Do You Want To Post This Content On POST_CAHNNELS ?",
                 reply_markup=reply_markup)
         else:
             await message.reply_text(
@@ -66,13 +56,14 @@ async def getfile(client, message):
                     f"<b>🔖 Title: {movie_title}</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
-                    f"<b>📆 Year: {year}</b>\n\n"
-                    f"📕 Story: {malayalam_plot}"
+                    f"<b>📆 Year: {year}</b>\n"
+                    f"<b>🌐 Language: {languages}</b>\n\n"
+                    f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
                 ),
                 reply_markup=safari_markup,
                 parse_mode=enums.ParseMode.HTML,
             )
-            await message.reply_text("Do you want to post this content on POST_CAHNNEL ?",
+            await message.reply_text("Do You Want To Post This Content On POST_CAHNNEL ?",
                 reply_markup=reply_markup)
     except Exception as e:
         await message.reply_text(f"Error: {str(e)}")
@@ -85,7 +76,7 @@ async def post_to_channels(client, callback_query):
         movie_details = await get_poster(file_name)
         
         if not movie_details:
-            return await callback_query.message.reply_text(f"No results found for {file_name} on IMDB.")
+            return await callback_query.message.reply_text(f"No Results Found For {file_name} On IMDB.")
         
         poster = movie_details.get('poster', None)
         movie_title = movie_details.get('title', 'N/A')
@@ -93,7 +84,7 @@ async def post_to_channels(client, callback_query):
         genres = movie_details.get('genres', 'N/A')
         plot = movie_details.get('plot', 'N/A')
         year = movie_details.get('year', 'N/A')
-        malayalam_plot = await get_malayalam(plot)
+        languages = movie_details.get('languages', 'N/A')
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([
@@ -106,11 +97,12 @@ async def post_to_channels(client, callback_query):
                         chat_id=channel_id,
                         photo=poster,
                         caption=(
-                            f"<b>🔖Title: {movie_title}</b>\n"
+                            f"<b>🔖 Title: {movie_title}</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
-                            f"<b>📆 Year: {year}</b>\n\n"
-                            f"📕 Story: {malayalam_plot}"
+                            f"<b>📆 Year: {year}</b>\n"
+                            f"<b>🌐 Language: {languages}</b>\n\n"
+                            f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
                         ),
                         reply_markup=reply_markup,
                         parse_mode=enums.ParseMode.HTML
@@ -119,21 +111,22 @@ async def post_to_channels(client, callback_query):
                     await client.send_message(
                         chat_id=channel_id,
                         text=(
-                            f"<b>🔖Title: {movie_title}</b>\n"
+                            f"<b>🔖 Title: {movie_title}</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
-                            f"<b>📆 Year: {year}</b>\n\n"
-                            f"📕 Story: {malayalam_plot}"
+                            f"<b>📆 Year: {year}</b>\n"
+                            f"<b>🌐 Language: {languages}</b>\n\n"
+                            f"<b><blockquote expandable>📕 Story: {plot}</blockquote></b>"
                         ),
                         reply_markup=reply_markup,
                         parse_mode=enums.ParseMode.HTML
                     )
             except Exception as e:
-                await callback_query.message.reply_text(f"Error posting to channel {channel_id}: {str(e)}")
+                await callback_query.message.reply_text(f"Error Posting To Channel {channel_id}: {str(e)}")
         
-        await callback_query.message.edit_text("Movie details successfully posted to channels.")
+        await callback_query.message.edit_text("Movie Details Successfully Posted To Channels.")
     
     elif action == "no":
-        await callback_query.message.edit_text("Movie details will not be posted to channels.")
+        await callback_query.message.edit_text("Movie Details Will Not Be Posted To Channels.")
 
   
