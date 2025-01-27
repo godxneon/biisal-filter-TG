@@ -1,4 +1,3 @@
-
 from utils import temp
 from utils import get_poster
 from info import POST_CHANNELS
@@ -42,9 +41,9 @@ async def getfile(client, message):
                     f"<b>📆 Year: {year}</b>\n"
                     f"<b>🌐 Language: {languages}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
-                    f"<b>🎬 Genres: {genres}</b>\n\n"
+                    f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                    "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
+                    "<b>🔥 Uploaded : @KLxFiles</b>"
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
@@ -60,9 +59,9 @@ async def getfile(client, message):
                     f"<b>📆 Year: {year}</b>\n"
                     f"<b>🌐 Language: {languages}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
-                    f"<b>🎬 Genres: {genres}</b>\n\n"
+                    f"<b>🎬 Genres: {genres}</b>\n"
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                    "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
+                    "<b>🔥 Uploaded : @KLxFiles</b>"
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
@@ -107,9 +106,9 @@ async def post_to_channels(client, callback_query):
                             f"<b>📆 Year: {year}</b>\n"
                             f"<b>🌐 Language: {languages}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
-                            f"<b>🎬 Genres: {genres}</b>\n\n"
+                            f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                            "<b>🔥 Uploaded: @KLxFiles | @Team_KL</b>"
+                            "<b>🔥 Uploaded: @KLxFiles</b>"
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
@@ -124,9 +123,9 @@ async def post_to_channels(client, callback_query):
                             f"<b>📆 Year: {year}</b>\n"
                             f"<b>🌐 Language: {languages}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
-                            f"<b>🎬 Genres: {genres}</b>\n\n"
+                            f"<b>🎬 Genres: {genres}</b>\n"
                             f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                            "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
+                            "<b>🔥 Uploaded : @KLxFiles</b>"
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
