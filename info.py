@@ -45,8 +45,9 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 request_channel = environ.get('REQUEST_CHANNEL', '-1002079370592')
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001845390899'))
+POST_CHANNELS = int(environ.get('POST_CHANNELS', '-1001845390899'))
 IS_SEND_MOVIE_UPDATE = is_enabled('IS_SEND_MOVIE_UPDATE', False)
-POST_CHANNELS = list(map(int, (channel.strip() for channel in environ.get('POST_CHANNELS', '-1001845390899').split(','))))
+#POST_CHANNELS = list(map(int, (channel.strip() for channel in environ.get('POST_CHANNELS', '-1001845390899').split(','))))
 
 #Auto Approve 
 APICS = (environ.get('APICS', 'https://telegra.ph/file/251b7e8892f3d6fca2536.jpg https://telegra.ph/file/4fc1332714da789d5d960.jpg')).split()
