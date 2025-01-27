@@ -44,7 +44,7 @@ async def getfile(client, message):
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n\n"
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                    <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
+                    "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
                 ),
                 reply_markup=safari_markup,
                 has_spoiler=True,
@@ -61,7 +61,7 @@ async def getfile(client, message):
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n\n"
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                    <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
+                    "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
                 ),
                 reply_markup=safari_markup,
                 has_spoiler=True,
@@ -107,7 +107,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n\n"
                             f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                            <b>🔥 Uploaded: @KLxFiles | @Team_KL</b>
+                            "<b>🔥 Uploaded: @KLxFiles | @Team_KL</b>"
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
@@ -123,7 +123,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n\n"
                             f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
-                            <b>🔥 Uploaded : @KLxFiles | @Team_KL</b>
+                            "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
