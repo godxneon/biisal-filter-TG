@@ -31,3 +31,20 @@ async def del_muc_id(client, message):
     except Exception as e:
         print('Err in del_muc_id', e)
         await message.reply("Failed to delete movies channel id!")
+
+
+@Client.on_message(filters.command("set_postfile") & filters.user(ADMINS))
+async def set_postfile_id(client, message):
+    try:
+        id = message.command[1]
+        if id:
+            is_suc = await db.postfile_channel_id(int(id))
+            if is_suc:
+                await message.reply("Successfully set postfile  channel id : " + id)
+            else:
+                await message.reply("Failed to set postfile channel id : " + id)
+        else:
+            await message.reply("Invalid channel id : " + id)
+    except Exception as e:
+        print('Err in set_muc_id', e)
+        await message.reply("Failed to set movies channel id!")
