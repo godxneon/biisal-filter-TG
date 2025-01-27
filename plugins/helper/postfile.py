@@ -2,7 +2,6 @@ from utils import temp
 from utils import get_poster
 from info import POST_CHANNELS
 from pyrogram import Client, filters, enums
-from database.users_chats_db import db
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @Client.on_message(filters.command('postfile'))
@@ -96,11 +95,11 @@ async def post_to_channels(client, callback_query):
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
         ]])
-        for channel_id in await db.postfile_channel_id():
+        for channel_id in POST_CHANNELS:
             try:
                 if poster:
-                    await client.send_photo(
-                        channel_id if channel_id else POST_CHANNELS,
+                    await client.send_photo( 
+                        chat_id=channel_id,
                         photo=poster,
                         caption=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
@@ -118,7 +117,7 @@ async def post_to_channels(client, callback_query):
                     )
                 else:
                     await client.send_message(
-                        channel_id if channel_id else POST_CHANNELS,
+                        chat_id=channel_id,
                         text=(
                             f"<b>🔖 Title: {movie_title}</b>\n"
                             f"<b>📆 Year: {year}</b>\n"
