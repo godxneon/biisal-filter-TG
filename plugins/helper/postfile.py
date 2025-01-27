@@ -26,8 +26,8 @@ async def getfile(client, message):
         languages = movie_details.get('languages', 'N/A')
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
-        safari_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Get File 📁", url=custom_link)
+        hackerjr_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
         ]])
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("😊 Yes", callback_data=f"post_yes_{file_name}"),
@@ -46,8 +46,9 @@ async def getfile(client, message):
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
                     "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
                 ),
-                reply_markup=safari_markup,
+                reply_markup=hackerjr_markup,
                 has_spoiler=True,
+                show_caption_above_media=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNELS ?",
@@ -63,8 +64,9 @@ async def getfile(client, message):
                     f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
                     "<b>🔥 Uploaded : @KLxFiles | @Team_KL</b>"
                 ),
-                reply_markup=safari_markup,
+                reply_markup=hackerjr_markup,
                 has_spoiler=True,
+                show_caption_above_media=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNEL ?",
@@ -92,7 +94,7 @@ async def post_to_channels(client, callback_query):
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("Get File 📁", url=custom_link)
+            [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
         ]])
         for channel_id in POST_CHANNELS:
             try:
@@ -111,6 +113,7 @@ async def post_to_channels(client, callback_query):
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
+                        show_caption_above_media=True,
                         parse_mode=enums.ParseMode.HTML
                     )
                 else:
@@ -127,6 +130,7 @@ async def post_to_channels(client, callback_query):
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
+                        show_caption_above_media=True,
                         parse_mode=enums.ParseMode.HTML
                     )
             except Exception as e:
