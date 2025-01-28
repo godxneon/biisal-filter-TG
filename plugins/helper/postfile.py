@@ -26,10 +26,10 @@ async def getfile(client, message):
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         hackerjr_markup = InlineKeyboardMarkup([[
-            InlineKeyboardButton("💥 Click Here To Download 💥", url=custom_link)
+            InlineKeyboardButton("💥 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 𝖳𝗈 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 💥", url=custom_link)
             ],[
-            InlineKeyboardButton("⚡️ Main Channel ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
-            InlineKeyboardButton("🔮 Main Group 🔮",  url=f"https://t.me/KLMovieGroup")
+            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅 ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("🔮 𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("😊 Yes", callback_data=f"post_yes_{file_name}"),
@@ -96,10 +96,10 @@ async def post_to_channels(client, callback_query):
 
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
         reply_markup = InlineKeyboardMarkup([[
-            InlineKeyboardButton("💥 Click Here To Download 💥", url=custom_link)
+            InlineKeyboardButton("💥 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 𝖳𝗈 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 💥", url=custom_link)
             ],[
-            InlineKeyboardButton("⚡️ Main Channel ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
-            InlineKeyboardButton("🔮 Main Group 🔮",  url=f"https://t.me/KLMovieGroup")
+            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅 ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("🔮 𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         for channel_id in POST_CHANNELS:
             try:
