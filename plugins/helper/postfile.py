@@ -28,8 +28,8 @@ async def getfile(client, message):
         hackerjr_markup = InlineKeyboardMarkup([[
             InlineKeyboardButton("💥 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 𝖳𝗈 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 💥", url=custom_link)
             ],[
-            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅 ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
-            InlineKeyboardButton("🔮 𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
+            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("😊 Yes", callback_data=f"post_yes_{file_name}"),
@@ -98,8 +98,8 @@ async def post_to_channels(client, callback_query):
         reply_markup = InlineKeyboardMarkup([[
             InlineKeyboardButton("💥 𝖢𝗅𝗂𝖼𝗄 𝖧𝖾𝗋𝖾 𝖳𝗈 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 💥", url=custom_link)
             ],[
-            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅 ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
-            InlineKeyboardButton("🔮 𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
+            InlineKeyboardButton("⚡️ 𝖬𝖺𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("𝖬𝖺𝗂𝗇 𝖦𝗋𝗈𝗎𝗉 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         for channel_id in POST_CHANNELS:
             try:
