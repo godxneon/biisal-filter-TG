@@ -76,7 +76,8 @@ class script(object):
     
 ➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..
 
-<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>
+<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD
+➲ New OTT Files Channel Link Button Below 👇</blockquote>
 <blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻 
 🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"""
 
