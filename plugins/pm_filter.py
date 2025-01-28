@@ -1098,7 +1098,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
 async def advantage_spell_chok(msg):
    # spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
     message = msg
-    mv_id = msg.id
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
     btn = [[
@@ -1109,7 +1108,6 @@ async def advantage_spell_chok(msg):
     k = await message.reply_text(
             text=script.SPELL_TEXT.format(msg.from_user.mention),
             reply_markup=InlineKeyboardMarkup(btn))   
-	    reply_to_message_id=msg.id
     await asyncio.sleep(DELETE_TIME)         
     await k.delete()
     try:
