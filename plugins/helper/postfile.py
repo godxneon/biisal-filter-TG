@@ -25,8 +25,11 @@ async def getfile(client, message):
         languages = movie_details.get('languages', 'N/A')
         
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
-        hackerjr_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
+        hackerjr_markup = InlineKeyboardMarkup([[
+            InlineKeyboardButton("💥 Click Here To Download 💥", url=custom_link)
+            ],[
+            InlineKeyboardButton("⚡️ Main Channel ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("🔮 Main Group 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("😊 Yes", callback_data=f"post_yes_{file_name}"),
@@ -92,8 +95,11 @@ async def post_to_channels(client, callback_query):
         languages = movie_details.get('languages', 'N/A')
 
         custom_link = f"https://t.me/{temp.U_NAME}?start=getfile-{file_name.replace(' ', '-').lower()}"
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("💥 𝗖𝗹𝗶𝗰𝗸 𝗛𝗲𝗿𝗲 𝗧𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 💥", url=custom_link)
+        reply_markup = InlineKeyboardMarkup([[
+            InlineKeyboardButton("💥 Click Here To Download 💥", url=custom_link)
+            ],[
+            InlineKeyboardButton("⚡️ Main Channel ⚡️",  url=f"https://t.me/+d1RAYYmgtTI5YWJl"),
+            InlineKeyboardButton("🔮 Main Group 🔮",  url=f"https://t.me/KLMovieGroup")
         ]])
         for channel_id in POST_CHANNELS:
             try:
