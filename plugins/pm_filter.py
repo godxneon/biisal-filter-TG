@@ -8,7 +8,7 @@ import psutil, shutil, sys
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, PICS, NOR_IMG, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, IMDB, IMDB_TEMPLATE, FILE_CAPTION, DELETE_TIME, SUPPORT_GROUP
+from info import SETTINGS, MAX_BTN, USERNAME, ADMINS, PICS, NOR_IMG, LANGUAGES, QUALITIES, YEARS, SEASONS, AUTH_CHANNEL, IMDB, IMDB_TEMPLATE, FILE_CAPTION, DELETE_TIME, SUPPORT_GROUP
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
@@ -20,7 +20,11 @@ import random
 lock = asyncio.Lock()
 import traceback
 from fuzzywuzzy import process
-
+from database.gfilters_mdb import (
+    find_gfilter,
+    get_gfilters,
+    del_allg
+)
 import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -55,87 +59,12 @@ async def pm_search(client, message):
 			             InlineKeyboardButton("📝 Movie Search Group 4️⃣", url=f"https://t.me/KL_Group2")					 
 				     ]]))
 
-#@Client.on_message(filters.group & filters.text & filters.incoming)
-#async def give_filter(client, message):
-#    k = await global_filters(client, message)
-#    if k == False:
-#        await auto_filter(client, message)   
-
-@Client.on_message(filters.group & filters.text & filters.incoming)
-async def group_search(client, message):
-    #await message.react(emoji=random.choice(REACTIONS))
-    await mdb.update_top_messages(message.from_user.id, message.text)
-    user_id = message.from_user.id if message.from_user else None
-    chat_id = message.chat.id
-    settings = await get_settings(chat_id)
- 
-    if message.chat.id == SUPPORT_GROUP :
-                if message.text.startswith("/"):
-                    return
-                files, n_offset, total = await get_search_results(message.text, offset=0)
-                if total != 0:
-                    link = await db.get_set_grp_links(index=1)
-                    msg = await message.reply_text(script.SUPPORT_GRP_MOVIE_TEXT.format(message.from_user.mention(), total), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ 😉' , url='https://t.me/KLMovieGroup')]]))
-                    await asyncio.sleep(300)
-                    return await msg.delete()
-                else: return     
-    if settings["auto_filter"]:
-        if not user_id:
-            #await message.reply("<b>🚨 ɪ'ᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ғᴏʀ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ!</b>")
-            return
-        
-        if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
-            return await auto_filter(client, message)
-
-        elif message.text.startswith("/"):
-            return
-        
-        elif re.findall(r'https?://\S+|www\.\S+|t\.me/\S+', message.text):
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            await message.delete()
-            return await message.reply("<b>sᴇɴᴅɪɴɢ ʟɪɴᴋ ɪsɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ ❌🤞🏻</b>")
-
-        elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
-            if await is_check_admin(client, message.chat.id, message.from_user.id):
-                return
-            admins = []
-            async for member in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                if not member.user.is_bot:
-                    admins.append(member.user.id)
-                    if member.status == enums.ChatMemberStatus.OWNER:
-                        if message.reply_to_message:
-                            try:
-                                sent_msg = await message.reply_to_message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.reply_to_message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-                        else:
-                            try:
-                                sent_msg = await message.forward(member.user.id)
-                                await sent_msg.reply_text(f"#Attention\n★ User: {message.from_user.mention}\n★ Group: {message.chat.title}\n\n★ <a href={message.link}>Go to message</a>", disable_web_page_preview=True)
-                            except:
-                                pass
-            hidden_mentions = (f'[\u2064](tg://user?id={user_id})' for user_id in admins)
-            await message.reply_text('<code>Report sent</code>' + ''.join(hidden_mentions))
-            return               
-        else:
-            try: 
-                await auto_filter(client, message)
-            except Exception as e:
-                traceback.print_exc()
-                print('found err in grp search  :',e)
-
-    else:
-        k=await message.reply_text('<b>⚠️ ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ ᴍᴏᴅᴇ ɪꜱ ᴏғғ...</b>')
-        await asyncio.sleep(10)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
-
-             
+@Client.on_message((filters.group | filters.private) & filters.text & filters.incoming)
+async def give_filter(client, message):
+    k = await global_filters(client, message)
+    if k == False:
+        await auto_filter(client, message)
+            
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
@@ -528,27 +457,6 @@ async def lang_search(client: Client, query: CallbackQuery):
     return
     await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
-@Client.on_callback_query(filters.regex(r"^spol"))
-async def advantage_spoll_choker(bot, query):
-    _, id, user = query.data.split('#')
-    if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer(script.ALRT_TXT, show_alert=True)
-    movie = await get_poster(id, id=True)
-    search = movie.get('title')
-    await query.answer('ᴄʜᴇᴄᴋɪɴɢ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀꜱᴇ 🌚')
-    files, offset, total_results = await get_search_results(search)
-    if files:
-        k = (search, files, offset, total_results)
-        await auto_filter(bot, query, k)
-    else:
-        k = await query.message.edit(script.NO_RESULT_TXT)
-        await asyncio.sleep(60)
-        await k.delete()
-        try:
-            await query.message.reply_to_message.delete()
-        except:
-            pass
-
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
@@ -564,6 +472,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
+    elif query.data == "gfiltersdeleteallconfirm":
+        await del_allg(query.message, 'gfilters')
+        await query.answer("Done !")
+        return
+    elif query.data == "gfiltersdeleteallcancel": 
+        await query.message.reply_to_message.delete()
+        await query.message.delete()
+        await query.answer("Process Cancelled !")
+        return
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -581,7 +498,29 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     pass
             else:
                 await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)    
-    
+
+    elif "gfilteralert" in query.data:
+        grp_id = query.message.chat.id
+        i = query.data.split(":")[1]
+        keyword = query.data.split(":")[2]
+        reply_text, btn, alerts, fileid = await find_gfilter('gfilters', keyword)
+        if alerts is not None:
+            alerts = ast.literal_eval(alerts)
+            alert = alerts[int(i)]
+            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
+            await query.answer(alert, show_alert=True)
+		
+    elif "alertmessage" in query.data:
+        grp_id = query.message.chat.id
+        i = query.data.split(":")[1]
+        keyword = query.data.split(":")[2]
+        reply_text, btn, alerts, fileid = await find_gfilter(grp_id, keyword)
+        if alerts is not None:
+            alerts = ast.literal_eval(alerts)
+            alert = alerts[int(i)]
+            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
+            await query.answer(alert, show_alert=True)
+		
     elif query.data.startswith("checksub"):
         ident, file_id , grp_id = query.data.split("#")
         if grp_id != 'None' or grp_id != '':
@@ -597,25 +536,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         files = files_[0]
         await query.answer(url=f'https://t.me/{temp.U_NAME}?start=file_{chat_id}_{file_id}')
         return await query.message.edit(text=f'<b><a href="https://t.me/Team_KL">⚡ Thanks For Joined Our Channel 💥</a></b>')
-
-    elif query.data.startswith("stream"):
-        user_id = query.from_user.id
-        file_id = query.data.split('#', 1)[1]
-        STREAM_LINK = await db.get_stream_link()
-        AKS = await client.send_cached_media(
-            chat_id=BIN_CHANNEL,
-            file_id=file_id)
-        online = f"{STREAM_LINK if STREAM_LINK else URL}/watch/{AKS.id}?hash={get_hash(AKS)}"
-        download = f"{STREAM_LINK if STREAM_LINK else URL}/{AKS.id}?hash={get_hash(AKS)}"
-        btn= [[
-            InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online),
-            InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
-        ],[
-            InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
-        ]]
-        await query.edit_message_reply_markup(
-            reply_markup=InlineKeyboardMarkup(btn)
-        )
 
     elif query.data == "buttons":
         await query.answer("ɴᴏ ᴍᴏʀᴇ ᴘᴀɢᴇs 😊", show_alert=True)
@@ -1096,7 +1016,6 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
     return    
 	
 async def advantage_spell_chok(msg):
-   # spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
     message = msg
     mv_rqst = msg.text
     search = msg.text.replace(" ", "+")      
@@ -1115,4 +1034,73 @@ async def advantage_spell_chok(msg):
     except:
         pass
     return   
+
+async def global_filters(client, message, text=False):
+    group_id = message.chat.id
+    name = text or message.text
+    reply_id = message.reply_to_message.id if message.reply_to_message else message.id
+    keywords = await get_gfilters('gfilters')
+    for keyword in reversed(sorted(keywords, key=len)):
+        pattern = r"( |^|[^\w])" + re.escape(keyword) + r"( |$|[^\w])"
+        if re.search(pattern, name, flags=re.IGNORECASE):
+            reply_text, btn, alert, fileid = await find_gfilter('gfilters', keyword)
+
+            if reply_text:
+                reply_text = reply_text.replace("\\n", "\n").replace("\\t", "\t")
+
+            if btn is not None:
+                try:
+                    if fileid == "None":
+                        if btn == "[]":
+                            knd3 = await client.send_message(
+                                group_id, 
+                                reply_text, 
+                                disable_web_page_preview=True,
+                                reply_to_message_id=reply_id
+                            )
+                            await asyncio.sleep(DELETE_TIME)
+                            await knd3.delete()
+                            await message.delete()
+
+                        else:
+                            button = eval(btn)
+                            knd2 = await client.send_message(
+                                group_id,
+                                reply_text,
+                                disable_web_page_preview=True,
+                                reply_markup=InlineKeyboardMarkup(button),
+                                reply_to_message_id=reply_id
+                            )
+                            await asyncio.sleep(DELETE_TIME)
+                            await knd2.delete()
+                            await message.delete()
+
+                    elif btn == "[]":
+                        knd1 = await client.send_cached_media(
+                            group_id,
+                            fileid,
+                            caption=reply_text or "",
+                            reply_to_message_id=reply_id
+                        )
+                        await asyncio.sleep(DELETE_TIME)
+                        await knd1.delete()
+                        await message.delete()
+
+                    else:
+                        button = eval(btn)
+                        knd = await message.reply_cached_media(
+                            fileid,
+                            caption=reply_text or "",
+                            reply_markup=InlineKeyboardMarkup(button),
+                            reply_to_message_id=reply_id
+                        )
+                        await asyncio.sleep(DELETE_TIME)
+                        await knd.delete()
+                        await message.delete()
+
+                except Exception as e:
+                    logger.exception(e)
+                break
+    else:
+        return False
 
