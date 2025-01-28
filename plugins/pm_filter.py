@@ -1095,24 +1095,52 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
                 pass
     return    
 	
+#async def advantage_spell_chok(msg):
+#    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
+#    message = msg
+ #   mv_rqst = msg.text
+#    search = msg.text.replace(" ", "+")      
+ #   btn = [[
+     #   InlineKeyboardButton('🔍 Check Spelling On G𝗈𝗈𝗀𝗅𝖾 🔎', url=f"https://google.com/search?q={search}")
+#    ],[
+     #   InlineKeyboardButton('💥 New OTT Release 💥', url="https://t.me/+u0ui7CYGak42Yjdl")
+#    ]]
+ #   k = await message.reply_text(
+         #   text=spl.format(mv_rqst),
+   #         reply_markup=InlineKeyboardMarkup(btn))   
+  #  await asyncio.sleep(DELETE_TIME)         
+#    await k.delete()
+   # try:
+    #    await message.delete()
+ #   except:
+    #    pass
+ #   return   
+
 async def advantage_spell_chok(msg):
-    spl = f"<b>🙋🏻‍♂ Hey {msg.from_user.mention}, Something Is Wrong 🫣\n\n➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..\n\n<blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD\n➲ New OTT Files Channel Link Button Below 👇</blockquote>\n<blockquote expandable>⚠️ Movie Is Not Available in My Database Report To Admin @KLAdmin1Bot 👨🏻‍💻\n🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"        
-    message = msg
+    mv_id = msg.id
     mv_rqst = msg.text
-    search = msg.text.replace(" ", "+")      
-    btn = [[
-        InlineKeyboardButton('🔍 Check Spelling On G𝗈𝗈𝗀𝗅𝖾 🔎', url=f"https://google.com/search?q={search}")
-    ],[
-        InlineKeyboardButton('💥 New OTT Release 💥', url="https://t.me/+u0ui7CYGak42Yjdl")
-    ]]
-    k = await message.reply_text(
-            text=spl.format(mv_rqst),
-            reply_markup=InlineKeyboardMarkup(btn))   
-    await asyncio.sleep(DELETE_TIME)         
-    await k.delete()
+    reqstr1 = msg.from_user.id if msg.from_user else 0
+    query = re.sub(
+        r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
+        "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
+    query = query.strip() + " movie"
     try:
-        await message.delete()
-    except:
-        pass
-    return   
+        movies = await get_poster(mv_rqst, bulk=True)
+    except Exception as e:
+        logger.exception(e)
+        reqst_gle = mv_rqst.replace(" ", "+")
+        button = [[
+                InlineKeyboardButton("⚠️ 𝖡𝗈𝗍 1️⃣", url=f"https://t.me/pfautofilebot"),
+                InlineKeyboardButton("⚠️ 𝖡𝗈𝗍 2️⃣", url=f"https://t.me/profilesv3bot")
+
+            ]]        
+        k = await msg.reply_text(
+            text=script.SPELL_TEXT.format(msg.from_user.mention),
+            reply_markup=InlineKeyboardMarkup(button),
+            reply_to_message_id=msg.id
+        )                                           
+        await msg.delete()
+        await asyncio.sleep(17)
+        await k.delete()      
+        return
 
