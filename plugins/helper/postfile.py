@@ -45,7 +45,7 @@ async def getfile(client, message):
                     f"<b>🌐 Language: {languages}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
-                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n"
                     "<b>🔥 Uploaded : @KLxFiles</b>"
                 ),
                 reply_markup=hackerjr_markup,
@@ -63,7 +63,7 @@ async def getfile(client, message):
                     f"<b>🌐 Language: {languages}</b>\n"
                     f"<b>⭐️ Rating: {rating}/10</b>\n"
                     f"<b>🎬 Genres: {genres}</b>\n"
-                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                    f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n"
                     "<b>🔥 Uploaded : @KLxFiles</b>"
                 ),
                 reply_markup=hackerjr_markup,
@@ -113,7 +113,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>🌐 Language: {languages}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n"
-                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n"
                             "<b>🔥 Uploaded: @KLxFiles</b>"
                         ),
                         reply_markup=reply_markup,
@@ -130,7 +130,7 @@ async def post_to_channels(client, callback_query):
                             f"<b>🌐 Language: {languages}</b>\n"
                             f"<b>⭐️ Rating: {rating}/10</b>\n"
                             f"<b>🎬 Genres: {genres}</b>\n"
-                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n\n"
+                            f"<b><blockquote expandable>📕 Story Line: {plot}</blockquote></b>\n"
                             "<b>🔥 Uploaded : @KLxFiles</b>"
                         ),
                         reply_markup=reply_markup,
