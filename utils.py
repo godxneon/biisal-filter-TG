@@ -16,6 +16,9 @@ logger.setLevel(logging.INFO)
 
 BANNED = {}
 imdb = Cinemagoer() 
+SMART_OPEN = '“'
+SMART_CLOSE = '”'
+START_CHAR = ('\'', '"', SMART_OPEN)
  
 class temp(object):
     ME = None
@@ -241,7 +244,7 @@ async def is_check_admin(bot, chat_id, user_id):
     except:
         return False
 
-def split_quotes(text: str) -> List:
+def split_quotes(text: str) -> Any:
     if not any(text.startswith(char) for char in START_CHAR):
         return text.split(None, 1)
     counter = 1  
