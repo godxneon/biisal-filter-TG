@@ -53,7 +53,7 @@ async def getfile(client, message):
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
-                protect_content=True,
+                #show_caption_above_media=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNELS ?",
@@ -71,7 +71,7 @@ async def getfile(client, message):
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
-                protect_content=True,
+                #show_caption_above_media=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNEL ?",
