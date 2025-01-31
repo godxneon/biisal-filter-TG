@@ -48,7 +48,7 @@ class Bot(Client):
             plugins={"root": "plugins"}
         )
         
-    async def start(self, **kwargs):
+    async def start(self):
         st = time.time()
         b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
