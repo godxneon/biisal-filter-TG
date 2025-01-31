@@ -4,6 +4,9 @@ from info import POST_CHANNELS
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+#protect_content=True
+#show_caption_above_media=True
+
 @Client.on_message(filters.command('postfile'))
 async def getfile(client, message):
     try:
@@ -50,7 +53,7 @@ async def getfile(client, message):
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
-                show_caption_above_media=True,
+                protect_content=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNELS ?",
@@ -68,7 +71,7 @@ async def getfile(client, message):
                 ),
                 reply_markup=hackerjr_markup,
                 has_spoiler=True,
-                show_caption_above_media=True,
+                protect_content=True,
                 parse_mode=enums.ParseMode.HTML,
             )
             await message.reply_text("Do You Want To Post This Content On POST_CAHNNEL ?",
@@ -118,7 +121,7 @@ async def post_to_channels(client, callback_query):
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
-                        show_caption_above_media=True,
+                        protect_content=True,
                         parse_mode=enums.ParseMode.HTML
                     )
                 else:
@@ -135,7 +138,7 @@ async def post_to_channels(client, callback_query):
                         ),
                         reply_markup=reply_markup,
                         has_spoiler=True,
-                        show_caption_above_media=True,
+                        protect_content=True,
                         parse_mode=enums.ParseMode.HTML
                     )
             except Exception as e:
