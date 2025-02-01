@@ -536,15 +536,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
-    elif query.data == "gfiltersdeleteallconfirm":
-        await del_allg(query.message, 'gfilters')
-        await query.answer("Done !")
-        return
-    elif query.data == "gfiltersdeleteallcancel": 
-        await query.message.reply_to_message.delete()
-        await query.message.delete()
-        await query.answer("Process Cancelled !")
-        return
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -562,28 +553,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     pass
             else:
                 await query.answer(script.ALRT_TXT.format(query.from_user.first_name), show_alert=True)    
-
-    elif "gfilteralert" in query.data:
-        grp_id = query.message.chat.id
-        i = query.data.split(":")[1]
-        keyword = query.data.split(":")[2]
-        reply_text, btn, alerts, fileid = await find_gfilter('gfilters', keyword)
-        if alerts is not None:
-            alerts = ast.literal_eval(alerts)
-            alert = alerts[int(i)]
-            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
-            await query.answer(alert, show_alert=True)
-		
-    elif "alertmessage" in query.data:
-        grp_id = query.message.chat.id
-        i = query.data.split(":")[1]
-        keyword = query.data.split(":")[2]
-        reply_text, btn, alerts, fileid = await find_gfilter(grp_id, keyword)
-        if alerts is not None:
-            alerts = ast.literal_eval(alerts)
-            alert = alerts[int(i)]
-            alert = alert.replace("\\n", "\n").replace("\\t", "\t")
-            await query.answer(alert, show_alert=True)
 		
     elif query.data.startswith("checksub"):
         ident, file_id , grp_id = query.data.split("#")
@@ -678,8 +647,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not query.from_user.id in ADMINS:
             return await query.answer('This Feature Is Only For Admins !' , show_alert=True)
         buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')],
-            [InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')]]
+            InlineKeyboardButton('⇚ ʙᴀᴄᴋ', callback_data='features')]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.FSUB_TXT,
