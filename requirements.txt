@@ -31,8 +31,6 @@ Flask
 itsdangerous==2.0.1 
 python-Levenshtein 
 
-googletrans==4.0.0-rc1
-
 opencv-python-headless==4.7.0.68  
  python-dotenv==0.21.1  
  speedtest==0.0.1  
