@@ -19,7 +19,7 @@ async def broadcast_cancel(bot, query):
         temp.GROUPS_CANCEL = True
         await query.message.edit("Trying to cancel groups broadcasting...")
                
-@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
+@Client.on_message(filters.command(["broadcast", "pin_broadcast"]) & filters.user(ADMINS) & filters.reply)
 async def broadcast_users(bot, message):
     if lock.locked():
         return await message.reply('Currently broadcast processing, Wait for complete.')
@@ -59,7 +59,7 @@ async def broadcast_users(bot, message):
         await b_sts.edit(f"Users broadcast completed.\nCompleted in {time_taken}\n\nTotal Users: <code>{total_users}</code>\nCompleted: <code>{done} / {total_users}</code>\nSuccess: <code>{success}</code>")
 
 
-@Client.on_message(filters.command("grp_broadcast") & filters.user(ADMINS) & filters.reply)
+@Client.on_message(filters.command(["grp_broadcast", "pin_grp_broadcast"]) & filters.user(ADMINS) & filters.reply)
 async def broadcast_group(bot, message):
     if lock.locked():
         return await message.reply('Currently broadcast processing, Wait for complete.')
