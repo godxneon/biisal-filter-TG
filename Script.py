@@ -78,8 +78,8 @@ class script(object):
 
 <blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD
 ➲ New OTT Files Channel Link Button Below 👇</blockquote>
-<blockquote expandable>⚠️ Movie Is Not Available in My Database. You Report To Admin @KLAdmin1Bot 👨🏻‍💻 
-🙅‍♂ Don't Ask Theater Print 📵</blockquote></b>"""
+⚠️ Movie Is Not Available in My Database. You Report To Admin @KLAdmin1Bot 👨🏻‍💻 
+🙅‍♂ Don't Ask Theater Print 📵</b>"""
 
     NEW_USER_TXT = """<b>#New_User {}
 
