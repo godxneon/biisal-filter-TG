@@ -78,7 +78,6 @@ class script(object):
     SPELL_TEXT = """<b>🙋🏻‍♂ Hey {}, Something Is Wrong 🫣
     
 ➪ Check Your Spelling Of Movie Check Correct Spelling <u>Google</u> Button Below Will Help You..
-
 <blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD
 ➲ New OTT Files Channel Link Button Below 👇</blockquote>
 ⚠️ Movie Is Not Available in My Database. You Report To Admin @KLAdmin1Bot 🙅‍♂ Don't Ask Theater Print 📵</b>"""
