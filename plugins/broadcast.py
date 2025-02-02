@@ -45,7 +45,7 @@ async def broadcast_users(bot, message):
                 temp.USERS_CANCEL = False
                 await b_sts.edit(f"Users broadcast Cancelled!\nCompleted in {time_taken}\n\nTotal Users: <code>{total_users}</code>\nCompleted: <code>{done} / {total_users}</code>\nSuccess: <code>{success}</code>")
                 return
-            sts = await users_broadcast((int(user['id']), b_msg, is_pin)
+            sts = await users_broadcast(int(user['id']), b_msg, pin)
             if sts == 'Success':
                 success += 1
             elif sts == 'Error':
@@ -57,7 +57,6 @@ async def broadcast_users(bot, message):
                 ]]
                 await b_sts.edit(f"Users broadcast in progress...\n\nTotal Users: <code>{total_users}</code>\nCompleted: <code>{done} / {total_users}</code>\nSuccess: <code>{success}</code>", reply_markup=InlineKeyboardMarkup(btn))
         await b_sts.edit(f"Users broadcast completed.\nCompleted in {time_taken}\n\nTotal Users: <code>{total_users}</code>\nCompleted: <code>{done} / {total_users}</code>\nSuccess: <code>{success}</code>")
-
 
 @Client.on_message(filters.command(["grp_broadcast", "pin_grp_broadcast"]) & filters.user(ADMINS) & filters.reply)
 async def broadcast_group(bot, message):
@@ -83,7 +82,7 @@ async def broadcast_group(bot, message):
                 temp.GROUPS_CANCEL = False
                 await b_sts.edit(f"Groups broadcast Cancelled!\nCompleted in {time_taken}\n\nTotal Groups: <code>{total_chats}</code>\nCompleted: <code>{done} / {total_chats}</code>\nSuccess: <code>{success}</code>\nFailed: <code>{failed}</code>")
                 return
-            sts = await groups_broadcast(int(chat['id']), b_msg, is_pin)
+            sts = await groups_broadcast(int(chat['id']), b_msg, pin)
             if sts == 'Success':
                 success += 1
             elif sts == 'Error':
