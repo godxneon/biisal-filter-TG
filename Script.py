@@ -28,7 +28,10 @@ class script(object):
 • /index - ɪɴᴅᴇx ᴀʟʟ ғɪʟᴇs.
 • /leave - ʟᴇᴀᴠᴇ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ɢʀᴏᴜᴘ.
 • /broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs.
-• /grp_broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs.</b>"""   
+• /grp_broadcast - ʙʀᴏᴀᴅᴄᴀsᴛ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘs.
+• /pin_broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴀs ᴘɪɴ ᴛᴏ ᴀʟʟ ʙᴏᴛ.
+• /pin_grp_broadcast - ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ᴀs ᴘɪɴ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴘs.
+• /restart - ᴛᴏ ʀᴇsᴛᴀʀᴛ ʙᴏᴛ.</b>"""   
 
     ABOUT_TEXT = """<b>‣ ᴍʏ ɴᴀᴍᴇ : <a href="https://t.me/Neon_X_Bot/">Lᴜғғʏ ❟❛❟</a> 
 ‣ ʜᴏsᴛᴇᴅ ᴏɴ : <a href="https://www.heroku.com/">ʜᴇʀᴏᴋᴜ</a>
@@ -78,8 +81,7 @@ class script(object):
 
 <blockquote expandable>➪ If You Ask For A Movie Released In Theaters, You Will Not Get It, Movie Is Only Available When OTT & DVD Is Released. We Are Not Promote Theatre Prints, Leaked HD
 ➲ New OTT Files Channel Link Button Below 👇</blockquote>
-⚠️ Movie Is Not Available in My Database. You Report To Admin @KLAdmin1Bot 👨🏻‍💻 
-🙅‍♂ Don't Ask Theater Print 📵</b>"""
+⚠️ Movie Is Not Available in My Database. You Report To Admin @KLAdmin1Bot 🙅‍♂ Don't Ask Theater Print 📵</b>"""
 
     NEW_USER_TXT = """<b>#New_User {}
 
