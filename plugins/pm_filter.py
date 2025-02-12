@@ -827,9 +827,10 @@ async def auto_filter(client, msg, spoll=False , pm_mode = False):
             search = re.sub(r"\s+", " ", search).strip()
             search = search.replace("-", " ")
             search = search.replace(":","")
-            settings = await get_settings(chat_id , pm_mode=pm_mode)
-            files, offset, total_results = await get_search_results(search)
-            if not files:
+        settings = await get_settings(chat_id , pm_mode=pm_mode)
+        files, offset, total_results = await get_search_results(search)
+        if not files:
+            if settings["spell_check"]: 
                 is_misspelled = await ai_spell_check(search)
                 if is_misspelled:
                     msg.text = is_misspelled
